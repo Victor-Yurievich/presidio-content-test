@@ -19,14 +19,14 @@ contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 5.0.0
-    itemVersion: 1.7.14
+    itemVersion: 1.7.56
     packID: CommonScripts
     packName: Common Scripts
     packPropagationLabels:
     - all
     propagationLabels: []
     toServerVersion: ""
-dockerimage: demisto/python:2.7.18.27799
+dockerimage: demisto/python3:3.10.6.33415
 enabled: true
 engineinfo: {}
 mainengineinfo: {}
@@ -49,32 +49,51 @@ outputs:
 pswd: ""
 runas: DBotWeakRole
 runonce: false
-script: |-
+script: |
+  register_module_line('Base64ListToFile', 'start', __line__())
   import base64
   import zlib
 
 
-  # Output file name
-  if 'filename' in demisto.args():
-      outfilename = demisto.args()['filename']
-  else:
-      outfilename = demisto.args()['listname']
 
-  # get the list
-  res = demisto.executeCommand('getList', {'listName': demisto.args()['listname']})
-  res = res[0]
-  if isError(res):
-    return_error("error reading list %s from demisto" % demisto.args()['listname'])
 
-  # convert base64 file to binary file
-  bin_file = base64.decodestring(res['Contents'])
-  if demisto.args()['isZipFile'] == 'yes':
-      bin_file = zlib.decompress(bin_file)
 
-  # output file to warroom
-  demisto.results(fileResult(outfilename, bin_file))
+  def base64_list_to_file(args):
+      # Output file name
+      if 'filename' in args:
+          outfilename = args['filename']
+      else:
+          outfilename = args['listname']
+
+      # get the list
+      res = demisto.executeCommand('getList', {'listName': args['listname']})
+      res = res[0]
+      if is_error(res):
+          raise DemistoException("error reading list %s from demisto" % args['listname'])
+
+      # convert base64 file to binary file
+      bin_file = base64.decodebytes(bytes(res['Contents'], 'utf-8'))
+      if args.get('isZipFile', 'no') == 'yes':
+          bin_file = zlib.decompress(bin_file)
+
+      # output file to warroom
+      return fileResult(outfilename, bin_file)
+
+
+  def main():
+      try:
+          file_entry = base64_list_to_file(demisto.args())
+          return_results(file_entry)
+      except DemistoException as ex:
+          return_error(ex.message)
+
+
+  if __name__ in ["__builtin__", "builtins"]:
+      main()
+
+  register_module_line('Base64ListToFile', 'end', __line__())
 scripttarget: 0
-subtype: python2
+subtype: python3
 system: true
 tags:
 - list
