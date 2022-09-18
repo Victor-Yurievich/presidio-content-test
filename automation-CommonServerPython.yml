@@ -6,7 +6,7 @@ contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 5.0.0
-    itemVersion: 1.31.8
+    itemVersion: 1.31.21
     packID: Base
     packName: Base
     packPropagationLabels:
@@ -170,17 +170,17 @@ script: |
   import sys
 
   SERVER_ERROR_MARKER = '[ERROR-fd5a7750-7182-4b38-90ba-091824478903]'
-  INTEGRATION = 'Integration'
-  SCRIPT = 'Script'
 
 
   class Demisto:
       """Wrapper class to interface with the Demisto server via stdin, stdout"""
+      INTEGRATION = 'Integration'
+      SCRIPT = 'Script'
 
       def __init__(self, context):
           self.callingContext = context
           self.is_integration = self.callingContext['integration']
-          self.item_type = INTEGRATION if self.is_integration else SCRIPT
+          self.item_type = self.INTEGRATION if self.is_integration else self.SCRIPT
           self.is_debug = False
           self._args = dict(self.callingContext.get(u'args', {}))
           if 'demisto_machine_learning_magic_key' in self._args:
@@ -214,7 +214,7 @@ script: |
               self.__stdout_lock = Lock()
 
       def long_running_heartbeat_thread(self, enable=True):
-          self.raise_exception_if_not_implemented(INTEGRATION, 'long_running_heartbeat_thread')
+          self.raise_exception_if_not_implemented(self.INTEGRATION, 'long_running_heartbeat_thread')
           if self._heartbeat_enabled == enable:
               # nothing to do as state hasn't changed
               return
@@ -261,15 +261,15 @@ script: |
               return self.incidents()[0]
 
       def alerts(self):
-          self.raise_exception_if_not_implemented(SCRIPT, 'alerts')
+          self.raise_exception_if_not_implemented(self.SCRIPT, 'alerts')
           return self.incidents()
 
       def get_incidents(self):
-          self.raise_exception_if_not_implemented(INTEGRATION, 'get_incidents')
+          self.raise_exception_if_not_implemented(self.INTEGRATION, 'get_incidents')
           return self.callingContext[u'context'][u'Incidents']
 
       def get_alerts(self):
-          self.raise_exception_if_not_implemented(INTEGRATION, 'get_alerts')
+          self.raise_exception_if_not_implemented(self.INTEGRATION, 'get_alerts')
           return self.get_incidents()
 
       def alert(self):
@@ -282,7 +282,7 @@ script: |
           return self.callingContext[u'context'][u'ExecutionContext']
 
       def integrationInstance(self):
-          self.raise_exception_if_not_implemented(INTEGRATION, 'integrationInstance')
+          self.raise_exception_if_not_implemented(self.INTEGRATION, 'integrationInstance')
           return self.callingContext[u'context'][u'IntegrationInstance']
 
       def args(self):
@@ -295,19 +295,19 @@ script: |
           return self.__do({'type': 'getFileByEntryID', 'command': 'getFilePath', 'args': {'id': id}})
 
       def getLastRun(self):
-          self.raise_exception_if_not_implemented(INTEGRATION, 'getLastRun')
+          self.raise_exception_if_not_implemented(self.INTEGRATION, 'getLastRun')
           return self.__do({'type': 'executeCommand', 'command': 'getLastRun', 'args': {}})
 
       def setLastRun(self, value):
-          self.raise_exception_if_not_implemented(INTEGRATION, 'setLastRun')
+          self.raise_exception_if_not_implemented(self.INTEGRATION, 'setLastRun')
           return self.__do({'type': 'executeCommand', 'command': 'setLastRun', 'args': {'value': value}})
 
       def getLastMirrorRun(self):
-          self.raise_exception_if_not_implemented(INTEGRATION, 'getLastMirrorRun')
+          self.raise_exception_if_not_implemented(self.INTEGRATION, 'getLastMirrorRun')
           return self.__do({'type': 'executeCommand', 'command': 'getLastMirrorRun', 'args': {}})
 
       def setLastMirrorRun(self, value):
-          self.raise_exception_if_not_implemented(INTEGRATION, 'setLastMirrorRun')
+          self.raise_exception_if_not_implemented(self.INTEGRATION, 'setLastMirrorRun')
           return self.__do({'type': 'executeCommand', 'command': 'setLastMirrorRun', 'args': {'value': value}})
 
       def internalHttpRequest(self, method, uri, body=None):
@@ -315,22 +315,22 @@ script: |
                             'args': {'method': method, 'uri': uri, 'body': body}})
 
       def getIntegrationContext(self):
-          self.raise_exception_if_not_implemented(INTEGRATION, 'getIntegrationContext')
+          self.raise_exception_if_not_implemented(self.INTEGRATION, 'getIntegrationContext')
           resObj = self.__do({'type': 'executeCommand', 'command': 'getIntegrationContext', 'args': {'refresh': False}})
           return resObj['context']
 
       def setIntegrationContext(self, value):
-          self.raise_exception_if_not_implemented(INTEGRATION, 'setIntegrationContext')
+          self.raise_exception_if_not_implemented(self.INTEGRATION, 'setIntegrationContext')
           return self.__do({'type': 'executeCommand', 'command': 'setIntegrationContext',
                             'args': {'value': value, 'version': {"version": -1, "sequenceNumber": -1, "primaryTerm": -1},
                                      'sync': False}})
 
       def getIntegrationContextVersioned(self, refresh=False):
-          self.raise_exception_if_not_implemented(INTEGRATION, 'getIntegrationContextVersioned')
+          self.raise_exception_if_not_implemented(self.INTEGRATION, 'getIntegrationContextVersioned')
           return self.__do({'type': 'executeCommand', 'command': 'getIntegrationContext', 'args': {'refresh': refresh}})
 
       def setIntegrationContextVersioned(self, value, version, sync=False):
-          self.raise_exception_if_not_implemented(INTEGRATION, 'setIntegrationContextVersioned')
+          self.raise_exception_if_not_implemented(self.INTEGRATION, 'setIntegrationContextVersioned')
           return self.__do({'type': 'executeCommand', 'command': 'setIntegrationContext',
                             'args': {'value': value, 'version': version, 'sync': sync}})
 
@@ -341,17 +341,17 @@ script: |
           return self.__do({'type': 'executeCommand', 'command': 'getLicenseID', 'args': {}})['id']
 
       def createIncidents(self, incidents, lastRun=None, userID=None):
-          self.raise_exception_if_not_implemented(INTEGRATION, 'createIncidents')
+          self.raise_exception_if_not_implemented(self.INTEGRATION, 'createIncidents')
           return self.__do({'type': 'executeCommand', 'command': 'createIncidents',
                             'args': {'incidents': incidents, 'lastRun': lastRun, 'userID': userID}})
 
       def createAlerts(self, alerts, lastRun=None, userID=None):
-          self.raise_exception_if_not_implemented(INTEGRATION, 'createAlerts')
+          self.raise_exception_if_not_implemented(self.INTEGRATION, 'createAlerts')
           return self.__do({'type': 'executeCommand', 'command': 'createAlerts',
                             'args': {'alerts': alerts, 'lastRun': lastRun, 'userID': userID}})
 
       def createIndicators(self, indicators, lastRun=None, noUpdate=False):
-          self.raise_exception_if_not_implemented(INTEGRATION, 'createIndicators')
+          self.raise_exception_if_not_implemented(self.INTEGRATION, 'createIndicators')
           return self.__do({'type': 'executeCommand', 'command': 'createIndicators',
                             'args': {'indicators': indicators, 'lastRun': lastRun, 'noUpdate': noUpdate}})
 
@@ -363,22 +363,22 @@ script: |
                                      'populateFields': populateFields}})
 
       def getIndexHash(self):
-          self.raise_exception_if_not_implemented(INTEGRATION, 'getIndexHash')
+          self.raise_exception_if_not_implemented(self.INTEGRATION, 'getIndexHash')
           return self.__do({'type': 'executeCommand', 'command': 'getIndexHash'})
 
       def updateModuleHealth(self, err, is_error=False):
-          self.raise_exception_if_not_implemented(INTEGRATION, 'updateModuleHealth')
+          self.raise_exception_if_not_implemented(self.INTEGRATION, 'updateModuleHealth')
           return self.__do(
               {'type': 'executeCommand', 'command': 'updateModuleHealth', 'args': {'err': err, 'isError': is_error}})
 
       def addEntry(self, id, entry, username=None, email=None, footer=None):
-          self.raise_exception_if_not_implemented(INTEGRATION, 'addEntry')
+          self.raise_exception_if_not_implemented(self.INTEGRATION, 'addEntry')
           return self.__do({'type': 'executeCommand', 'command': 'addEntry', 'args': {'id': id, 'username': username,
                                                                                       'email': email, 'entry': entry,
                                                                                       'footer': footer}})
 
       def directMessage(self, message, username=None, email=None, anyoneCanOpenIncidents=None):
-          self.raise_exception_if_not_implemented(INTEGRATION, 'directMessage')
+          self.raise_exception_if_not_implemented(self.INTEGRATION, 'directMessage')
           tmp = self.__do({'type': 'executeCommand', 'command': 'directMessage',
                            'args': {'message': message,
                                     'username': username,
@@ -389,18 +389,18 @@ script: |
               return tmp["res"]
 
       def mirrorInvestigation(self, id, mirrorType, autoClose=False):
-          self.raise_exception_if_not_implemented(INTEGRATION, 'mirrorInvestigation')
+          self.raise_exception_if_not_implemented(self.INTEGRATION, 'mirrorInvestigation')
           return self.__do({'type': 'executeCommand', 'command': 'mirrorInvestigation', 'args': {'id': id,
                                                                                                  'mirrorType': mirrorType,
                                                                                                  'autoClose': autoClose}})
 
       def findUser(self, username="", email=""):
-          self.raise_exception_if_not_implemented(INTEGRATION, 'findUser')
+          self.raise_exception_if_not_implemented(self.INTEGRATION, 'findUser')
           return self.__do(
               {'type': 'executeCommand', 'command': 'findUser', 'args': {'username': username, 'email': email}})
 
       def handleEntitlementForUser(self, incidentID, guid, email, content, taskID=""):
-          self.raise_exception_if_not_implemented(INTEGRATION, 'handleEntitlementForUser')
+          self.raise_exception_if_not_implemented(self.INTEGRATION, 'handleEntitlementForUser')
           return self.__do({'type': 'executeCommand', 'command': 'handleEntitlementForUser',
                             'args': {'incidentID': incidentID, 'alertID': incidentID,
                                      'guid': guid, 'taskID': taskID, 'email': email, 'content': content}})
@@ -420,7 +420,7 @@ script: |
               return resObj['value']
 
       def _apiCall(self, name, params=None, data=None):
-          self.raise_exception_if_not_implemented(INTEGRATION, '_apiCall')
+          self.raise_exception_if_not_implemented(self.INTEGRATION, '_apiCall')
           return self.__do(
               {'type': 'executeCommand', 'command': '_apiCall', 'args': {'name': name, 'params': params, 'data': data}})
 
@@ -431,11 +431,11 @@ script: |
               return {}
 
       def command(self):
-          self.raise_exception_if_not_implemented(INTEGRATION, 'command')
+          self.raise_exception_if_not_implemented(self.INTEGRATION, 'command')
           return self.callingContext.get(u'command', '')
 
       def isFetch(self):
-          self.raise_exception_if_not_implemented(INTEGRATION, 'isFetch')
+          self.raise_exception_if_not_implemented(self.INTEGRATION, 'isFetch')
           """ used to encapsulate/hide 'fetch-incident' command from the code """
           return self.command() == 'fetch-incidents'
 
@@ -456,11 +456,11 @@ script: |
           return self.get(self.callingContext, 'args.' + arg, defaultParam)
 
       def execute(self, module, command, args):
-          self.raise_exception_if_not_implemented(SCRIPT, 'execute')
+          self.raise_exception_if_not_implemented(self.SCRIPT, 'execute')
           return self.__do({'type': 'execute', 'module': module, 'command': command.strip(), 'args': args})
 
       def executeCommand(self, command, args):
-          self.raise_exception_if_not_implemented(SCRIPT, 'executeCommand')
+          self.raise_exception_if_not_implemented(self.SCRIPT, 'executeCommand')
           return self.__do({'type': 'executeCommand', 'command': command.strip(), 'args': args})
 
       def demistoUrls(self):
@@ -470,7 +470,7 @@ script: |
           return self.__do({'type': 'demistoVersion'})
 
       def heartbeat(self, msg):
-          self.raise_exception_if_not_implemented(INTEGRATION, 'heartbeat')
+          self.raise_exception_if_not_implemented(self.INTEGRATION, 'heartbeat')
           return self.__do_no_res({'type': 'executeCommand', 'command': 'heartbeat', 'args': {'message': msg}})
 
       def info(self, *args):
@@ -484,7 +484,7 @@ script: |
           self.__do({'type': 'log', 'command': 'error', 'args': argsObj})
 
       def exception(self, ex):
-          self.raise_exception_if_not_implemented(SCRIPT, 'exception')
+          self.raise_exception_if_not_implemented(self.SCRIPT, 'exception')
           return self.__do({'type': 'exception', 'command': 'exception', 'args': ex})
 
       def debug(self, *args):
@@ -493,23 +493,23 @@ script: |
           self.__do({'type': 'log', 'command': 'debug', 'args': argsObj})
 
       def getAllSupportedCommands(self):
-          self.raise_exception_if_not_implemented(SCRIPT, 'getAllSupportedCommands')
+          self.raise_exception_if_not_implemented(self.SCRIPT, 'getAllSupportedCommands')
           return self.__do({'type': 'getAllModulesSupportedCmds'})
 
       def getModules(self):
-          self.raise_exception_if_not_implemented(SCRIPT, 'getModules')
+          self.raise_exception_if_not_implemented(self.SCRIPT, 'getModules')
           return self.__do({'type': 'getAllModules'})
 
       def setContext(self, name, value):
-          self.raise_exception_if_not_implemented(SCRIPT, 'setContext')
+          self.raise_exception_if_not_implemented(self.SCRIPT, 'setContext')
           return self.__do({'type': 'setContext', 'name': name, 'value': value})
 
       def getParam(self, p):
-          self.raise_exception_if_not_implemented(INTEGRATION, 'getParam')
+          self.raise_exception_if_not_implemented(self.INTEGRATION, 'getParam')
           return self.get(self.callingContext, 'params.' + p)
 
       def dt(self, data, q):
-          self.raise_exception_if_not_implemented(INTEGRATION, 'dt')
+          self.raise_exception_if_not_implemented(self.INTEGRATION, 'dt')
           return self.__do({'type': 'dt', 'name': q, 'value': data})['result']
 
       def __do_lock(self, lock, timeout):
@@ -562,7 +562,7 @@ script: |
 
       def convert(self, results):
           """ Convert whatever result into entry """
-          self.raise_exception_if_not_implemented(SCRIPT, 'convert')
+          self.raise_exception_if_not_implemented(self.SCRIPT, 'convert')
           if type(results) is dict:
               if 'Contents' in results and 'ContentsFormat' in results:
                   return results
@@ -579,7 +579,7 @@ script: |
 
       def __convert(self, results):
           """ Convert whatever result into entry """
-          self.raise_exception_if_not_implemented(INTEGRATION, '__convert')
+          self.raise_exception_if_not_implemented(self.INTEGRATION, '__convert')
           if type(results) is dict:
               if 'Contents' in results and 'ContentsFormat' in results:
                   return results
@@ -609,11 +609,11 @@ script: |
 
       def fetchResults(self, incidents_or_alerts):
           """ used to encapsulate/hide 'incidents' from the code """
-          self.raise_exception_if_not_implemented(INTEGRATION, 'fetchResults')
+          self.raise_exception_if_not_implemented(self.INTEGRATION, 'fetchResults')
           self.incidents(incidents_or_alerts)
 
       def credentials(self, credentials):
-          self.raise_exception_if_not_implemented(INTEGRATION, 'credentials')
+          self.raise_exception_if_not_implemented(self.INTEGRATION, 'credentials')
           self.results({'Type': 1, 'Contents': json.dumps(credentials), 'ContentsFormat': 'json'})
 
 
@@ -1014,6 +1014,8 @@ script: |
       Registry = "Registry Key"
       SSDeep = "ssdeep"
       URL = "URL"
+      AS = "ASN"
+      MUTEX = "Mutex"
 
       @staticmethod
       def is_valid_type(_type):
@@ -1031,7 +1033,9 @@ script: |
               FeedIndicatorType.IPv6CIDR,
               FeedIndicatorType.Registry,
               FeedIndicatorType.SSDeep,
-              FeedIndicatorType.URL
+              FeedIndicatorType.URL,
+              FeedIndicatorType.AS,
+              FeedIndicatorType.MUTEX
           )
 
       @staticmethod
@@ -7451,10 +7455,13 @@ script: |
           :rtype: ``dict``
       """
       is_command = hasattr(demisto, 'command')
-      is_server_handled = is_command and demisto.command() in ('fetch-incidents',
-                                                               'fetch-credentials',
-                                                               'long-running-execution',
-                                                               'fetch-indicators')
+      try:
+          is_server_handled = is_command and demisto.command() in ('fetch-incidents',
+                                                                   'fetch-credentials',
+                                                                   'long-running-execution',
+                                                                   'fetch-indicators')
+      except Exception:
+          is_server_handled = False
       message = LOG(message)
       if error:
           LOG(str(error))
@@ -7579,7 +7586,7 @@ script: |
 
       @staticmethod
       def is_supported():
-          if is_demisto_version_ge('7.0.0'):
+          if is_demisto_version_ge('6.8.0'):
               return True
           return False
 
@@ -7676,6 +7683,24 @@ script: |
                   else:
                       self._metrics.append({'Type': metric_type, 'APICallsCount': metric_value})
               self.metrics = CommandResults(execution_metrics=self._metrics)
+
+
+  def append_metrics(execution_metrics, results):
+      """
+      Returns a 'CommandResults' list appended with metrics.
+
+      :type execution_metrics: ``ExecutionMetrics``
+      :param execution_metrics: Metrics object to be added to CommandResults list(optional).
+
+      :type results: ``list``
+      :param results: 'CommandResults' list to append metrics to (required).
+
+      :return: results appended with the metrics if the server version is supported.
+      :rtype: ``list``
+      """
+      if execution_metrics.metrics is not None and execution_metrics.is_supported():
+          results.append(execution_metrics.metrics)
+      return results
 
 
   class CommandRunner:
@@ -8566,6 +8591,11 @@ script: |
               # found timezone - appending it to the date format
               date_format += time_zone[0]
 
+          # Make the fractions shorter less than 6 charactors
+          # e.g. '2022-01-23T12:34:56.123456789+09:00' to '2022-01-23T12:34:56.123456+09:00'
+          #      '2022-01-23T12:34:56.123456789' to '2022-01-23T12:34:56.123456'
+          date_string = re.sub(r'([0-9]+\.[0-9]{6})[0-9]*([Zz]|[+-]\S+?)?', '\\1\\2', date_string)
+
           return datetime.strptime(date_string, date_format)
 
 
@@ -8725,17 +8755,17 @@ script: |
           :type proxy: ``bool``
           :param proxy: Whether to run the integration using the system proxy.
 
-          :type ok_codes: ``tuple``
+          :type ok_codes: ``tuple`` or ``None``
           :param ok_codes:
               The request codes to accept as OK, for example: (200, 201, 204).
-              If you specify "None", will use requests.Response.ok
+              Will use requests.Response.ok if set to None.
 
-          :type headers: ``dict``
+          :type headers: ``dict`` or ``None``
           :param headers:
               The request headers, for example: {'Accept`: `application/json`}.
               Can be None.
 
-          :type auth: ``dict`` or ``tuple``
+          :type auth: ``dict`` or ``tuple`` or ``None``
           :param auth:
               The request authorization, for example: (username, password).
               Can be None.
@@ -8924,9 +8954,6 @@ script: |
                   The request codes to accept as OK, for example: (200, 201, 204). If you specify
                   "None", will use self._ok_codes.
 
-              :return: Depends on the resp_type parameter
-              :rtype: ``dict`` or ``str`` or ``requests.Response``
-
               :type retries: ``int``
               :param retries: How many retries should be made in case of a failure. when set to '0'- will fail on the first time
 
@@ -8961,13 +8988,15 @@ script: |
                   been exhausted.
 
               :type error_handler ``callable``
-              :param error_handler: Given an error entery, the error handler outputs the
+              :param error_handler: Given an error entry, the error handler outputs the
                   new formatted error message.
 
               :type empty_valid_codes: ``list``
               :param empty_valid_codes: A list of all valid status codes of empty responses (usually only 204, but
                   can vary)
 
+              :return: Depends on the resp_type parameter
+              :rtype: ``dict`` or ``str`` or ``bytes`` or ``xml.etree.ElementTree.Element`` or ``requests.Response``
               """
               try:
                   # Replace params if supplied
@@ -10473,10 +10502,16 @@ script: |
       """
 
       def dec(func):
-          def inner(client, args):
-              if not requires_polling_arg or args.get(polling_arg_name):
+          def inner(args, *arguments, **kwargs):
+              """
+              Args:
+                  args (dict): command arguments (demisto.args()).
+                  *arguments: any additional arguments to the command function.
+                  **kwargs: additional keyword arguments to the command function.
+              """
+              if not requires_polling_arg or argToBoolean(args.get(polling_arg_name)):
                   ScheduledCommand.raise_error_if_not_supported()
-                  poll_result = func(client, args)
+                  poll_result = func(args, *arguments, **kwargs)
 
                   should_poll = poll_result.continue_to_poll if isinstance(poll_result.continue_to_poll, bool) \
                       else poll_result.continue_to_poll()
@@ -10492,7 +10527,7 @@ script: |
                                                                      args=poll_args, timeout_in_seconds=timeout)
                   return poll_response
               else:
-                  return func(client, args).response
+                  return func(args, *arguments, **kwargs).response
 
           return inner
 
