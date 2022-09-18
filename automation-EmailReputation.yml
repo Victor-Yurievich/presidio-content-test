@@ -11,14 +11,14 @@ contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 5.0.0
-    itemVersion: 1.7.14
+    itemVersion: 1.7.56
     packID: CommonScripts
     packName: Common Scripts
     packPropagationLabels:
     - all
     propagationLabels: []
     toServerVersion: ""
-dockerimage: demisto/python:2.7.18.24398
+dockerimage: demisto/python3:3.10.6.33415
 enabled: true
 engineinfo: {}
 mainengineinfo: {}
@@ -26,16 +26,32 @@ name: EmailReputation
 pswd: ""
 runas: DBotWeakRole
 runonce: false
-script: |-
-  results = demisto.executeCommand('email', {'email': demisto.get(demisto.args(),'email')})
+script: |
+  register_module_line('EmailReputation', 'start', __line__())
 
-  for item in results:
-      if isError(item):
-          item['Contents'] = item['Brand'] + ' returned an error.\n' + item['Contents']
 
-  demisto.results(results)
+
+
+  def email_reputation():
+      results = demisto.executeCommand('email', {'email': demisto.get(demisto.args(), 'email')})
+
+      for item in results:
+          if isError(item):
+              item['Contents'] = item['Brand'] + ' returned an error.\n' + item['Contents']
+
+      demisto.results(results)
+
+
+  def main():
+      email_reputation()
+
+
+  if __name__ in ('__main__', '__builtin__', 'builtins'):  # pragma: no cover
+      main()
+
+  register_module_line('EmailReputation', 'end', __line__())
 scripttarget: 0
-subtype: python2
+subtype: python3
 system: true
 tags:
 - enhancement
