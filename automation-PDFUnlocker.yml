@@ -16,14 +16,14 @@ contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 5.0.0
-    itemVersion: 1.7.14
+    itemVersion: 1.7.56
     packID: CommonScripts
     packName: Common Scripts
     packPropagationLabels:
     - all
     propagationLabels: []
     toServerVersion: ""
-dockerimage: demisto/pypdf2:1.0.0.24277
+dockerimage: demisto/readpdf:1.0.0.33704
 enabled: true
 engineinfo: {}
 mainengineinfo: {}
@@ -49,9 +49,8 @@ script: |
       output = PdfFileWriter()
       for pageNum in range(0, input1.getNumPages()):
           output.addPage(input1.getPage(pageNum))
-      output_stream = file(output_name, "wb")
-      output.write(output_stream)
-      output_stream.close()
+      with open(output_name, "wb") as pf:
+          output.write(pf)
 
       demisto.results(file_result_existing_file(output_name))
 
@@ -66,7 +65,7 @@ script: |
 
   register_module_line('PDFUnlocker', 'end', __line__())
 scripttarget: 0
-subtype: python2
+subtype: python3
 system: true
 tags: []
 type: python
