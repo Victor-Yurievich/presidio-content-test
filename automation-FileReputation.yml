@@ -11,14 +11,14 @@ contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 5.0.0
-    itemVersion: 1.7.14
+    itemVersion: 1.7.56
     packID: CommonScripts
     packName: Common Scripts
     packPropagationLabels:
     - all
     propagationLabels: []
     toServerVersion: ""
-dockerimage: demisto/python:2.7.18.24398
+dockerimage: demisto/python3:3.10.6.33415
 enabled: true
 engineinfo: {}
 mainengineinfo: {}
@@ -26,16 +26,32 @@ name: FileReputation
 pswd: ""
 runas: DBotWeakRole
 runonce: false
-script: |-
-  results = demisto.executeCommand('file', {'file': demisto.get(demisto.args(),'file')})
+script: |
+  register_module_line('FileReputation', 'start', __line__())
 
-  for item in results:
-      if isError(item):
-          item['Contents'] = item['Brand'] + ' returned an error.\n' + item['Contents']
 
-  demisto.results(results)
+
+
+  def file_reputation():
+      results = demisto.executeCommand('file', {'file': demisto.get(demisto.args(), 'file')})
+
+      for item in results:
+          if isError(item):
+              item['Contents'] = item['Brand'] + ' returned an error.\n' + item['Contents']
+
+      demisto.results(results)
+
+
+  def main():
+      file_reputation()
+
+
+  if __name__ in ('__main__', '__builtin__', 'builtins'):  # pragma: no cover
+      main()
+
+  register_module_line('FileReputation', 'end', __line__())
 scripttarget: 0
-subtype: python2
+subtype: python3
 system: true
 tags:
 - enhancement
