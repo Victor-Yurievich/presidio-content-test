@@ -12,14 +12,14 @@ contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 5.0.0
-    itemVersion: 1.7.14
+    itemVersion: 1.7.56
     packID: CommonScripts
     packName: Common Scripts
     packPropagationLabels:
     - all
     propagationLabels: []
     toServerVersion: ""
-dockerimage: demisto/docxpy:1.0.0.24033
+dockerimage: demisto/docxpy:1.0.0.33689
 enabled: true
 engineinfo: {}
 mainengineinfo: {}
@@ -71,7 +71,7 @@ script: |
 
   register_module_line('ParseWordDoc', 'end', __line__())
 scripttarget: 0
-subtype: python2
+subtype: python3
 system: true
 tags:
 - word
