@@ -14,14 +14,14 @@ contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 5.0.0
-    itemVersion: 1.7.14
+    itemVersion: 1.7.56
     packID: CommonScripts
     packName: Common Scripts
     packPropagationLabels:
     - all
     propagationLabels: []
     toServerVersion: ""
-dockerimage: demisto/python3:3.10.1.25933
+dockerimage: demisto/python3:3.10.6.33415
 engineinfo: {}
 mainengineinfo: {}
 name: GetIndicatorDBotScore
@@ -58,7 +58,10 @@ script: |
       'File SHA-256': DBotScoreType.FILE,
       'Email': DBotScoreType.EMAIL,
       'URL': DBotScoreType.URL,
-      'IPv6': DBotScoreType.IP
+      'IPv6': DBotScoreType.IP,
+      'Account': DBotScoreType.ACCOUNT,
+      'CIDR': DBotScoreType.CIDR,
+      'DomainGlob': DBotScoreType.DOMAINGLOB,
   }
 
 
@@ -71,7 +74,7 @@ script: |
 
   def iterate_indicator_entry(indicator, entry):
       indicator_type = entry["indicator_type"]
-      indicator_type = INDICATOR_TYPES.get(indicator_type, indicator_type).lower()
+      indicator_type = INDICATOR_TYPES.get(indicator_type, DBotScoreType.CUSTOM)
       sources = entry.get('moduleToFeedMap', {})
       if entry.get('manualScore'):
           sources[entry.get('setBy')] = {}
