@@ -14,14 +14,14 @@ contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 5.0.0
-    itemVersion: 1.7.14
+    itemVersion: 1.7.56
     packID: CommonScripts
     packName: Common Scripts
     packPropagationLabels:
     - all
     propagationLabels: []
     toServerVersion: ""
-dockerimage: demisto/python:2.7.18.24398
+dockerimage: demisto/python3:3.10.6.33415
 enabled: true
 engineinfo: {}
 mainengineinfo: {}
@@ -38,12 +38,20 @@ outputs:
 pswd: ""
 runas: DBotWeakRole
 runonce: false
-script: |-
-  import requests, re
+script: |
+  register_module_line('URLNumberOfAds', 'start', __line__())
+  import re
 
-  def ads(html,termlist):
-      results = {}
-      tags = re.findall("<[^/][^>]*>",html)
+  import requests
+
+
+
+  from functools import reduce
+
+
+  def ads(html, termlist):
+      results: dict = {}
+      tags = re.findall("<[^/][^>]*>", html)
       for item in termlist.split('\n'):
           if not item.strip():
               continue
@@ -58,16 +66,27 @@ script: |-
                   results[item] = (results[item] + 1) if item in results else 1
       return results
 
-  u = demisto.args()['url']
-  r = requests.get(u)
-  reasy = requests.get(demisto.args()['easylist'] if 'easylist' in demisto.args() else 'https://easylist.github.io/easylist/easylist.txt')
-  res = ads(r.text, reasy.text)
-  nicerRes = [{'URL': k, 'Count': res[k]} for k in res]
-  totalAds = reduce(lambda x, y: x+y['Count'], nicerRes, 0)
-  demisto.results({'Type': entryTypes['note'], 'Contents': nicerRes, 'ContentsFormat': formats['json'], 'HumanReadable': tableToMarkdown('AD URLs', nicerRes) + '\nTotal: ' + str(totalAds),
-      'EntryContext': {'Ads': nicerRes, 'URL(val.Data == obj.Data)': {'Data': u, 'AdsCount': totalAds}}})
+
+  def main():  # pragma: no cover
+      u = demisto.args()['url']
+      r = requests.get(u)
+      reasy = requests.get(demisto.args()['easylist'] if 'easylist' in demisto.args()
+                           else 'https://easylist.github.io/easylist/easylist.txt')
+      res = ads(r.text, reasy.text)
+      nicerRes = [{'URL': k, 'Count': res[k]} for k in res]
+      totalAds = reduce(lambda x, y: x + y['Count'], nicerRes, 0)
+      demisto.results({'Type': entryTypes['note'], 'Contents': nicerRes, 'ContentsFormat': formats['json'],
+                       'HumanReadable': tableToMarkdown('AD URLs', nicerRes) + '\nTotal: ' + str(totalAds),
+                       'EntryContext': {'Ads': nicerRes,
+                                        'URL(val.Data == obj.Data)': {'Data': u, 'AdsCount': totalAds}}})
+
+
+  if __name__ in ['__main__', '__builtin__', 'builtins']:
+      main()
+
+  register_module_line('URLNumberOfAds', 'end', __line__())
 scripttarget: 0
-subtype: python2
+subtype: python3
 system: true
 tags:
 - Utility
