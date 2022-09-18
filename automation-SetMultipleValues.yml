@@ -17,14 +17,14 @@ contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 5.0.0
-    itemVersion: 1.7.14
+    itemVersion: 1.7.56
     packID: CommonScripts
     packName: Common Scripts
     packPropagationLabels:
     - all
     propagationLabels: []
     toServerVersion: ""
-dockerimage: demisto/python:2.7.18.24398
+dockerimage: demisto/python3:3.10.6.33415
 enabled: true
 engineinfo: {}
 mainengineinfo: {}
@@ -33,12 +33,25 @@ pswd: ""
 runas: DBotWeakRole
 runonce: false
 script: |
-  keys = [k.strip() for k in demisto.args()['keys'].split(',')]
-  values = [v.strip() for v in demisto.args()['values'].split(',')]
-  ec = {demisto.args()['parent']+'(true)': dict(zip(keys, values))}
-  demisto.results({'Type': entryTypes['note'], 'Contents': ec, 'ContentsFormat': formats['json'], 'HumanReadable': 'Keys ' + ','.join(keys) + ' set', 'EntryContext': ec})
+  register_module_line('SetMultipleValues', 'start', __line__())
+
+
+
+
+  def main():
+      keys = [k.strip() for k in demisto.args()['keys'].split(',')]
+      values = [v.strip() for v in demisto.args()['values'].split(',')]
+      ec = {demisto.args()['parent'] + '(true)': dict(zip(keys, values))}
+      demisto.results({'Type': entryTypes['note'], 'Contents': ec, 'ContentsFormat': formats['json'],
+                       'HumanReadable': 'Keys ' + ','.join(keys) + ' set', 'EntryContext': ec})
+
+
+  if __name__ in ('__main__', '__builtin__', 'builtins'):  # pragma: no cover
+      main()
+
+  register_module_line('SetMultipleValues', 'end', __line__())
 scripttarget: 0
-subtype: python2
+subtype: python3
 system: true
 tags:
 - Utility
