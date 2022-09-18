@@ -41,6 +41,7 @@
 	"packPropagationLabels": [
 		"all"
 	],
+	"propagationLabels": [],
 	"regex": "(?i)\\b(AS[N]?[-_]?\\d{1,10})\\b",
 	"reputationCommand": "",
 	"reputationScriptName": "",
