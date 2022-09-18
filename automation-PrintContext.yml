@@ -10,35 +10,52 @@ contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 5.0.0
-    itemVersion: 1.7.14
+    itemVersion: 1.7.56
     packID: CommonScripts
     packName: Common Scripts
     packPropagationLabels:
     - all
     propagationLabels: []
     toServerVersion: ""
-dockerimage: demisto/python:2.7.18.24398
+dockerimage: demisto/python3:3.10.6.33415
 engineinfo: {}
 mainengineinfo: {}
 name: PrintContext
 pswd: ""
 runas: DBotWeakRole
 runonce: false
-script: |-
-  fmt = demisto.get(demisto.args(), 'outputformat')
-  ctx = demisto.context()
-  if ctx:
-      if fmt == 'table':
-          demisto.results({'ContentsFormat': formats['table'], 'Type': entryTypes['note'], 'Contents': [{'Context key': d, 'Value': formatCell(ctx[d])} for d in ctx]})
-      elif fmt == 'json':
-          demisto.results(ctx)
+script: |
+  register_module_line('PrintContext', 'start', __line__())
+
+
+
+
+  def print_context(fmt, ctx):
+      if ctx:
+          if fmt == 'table':
+              demisto.results({'ContentsFormat': formats['table'], 'Type': entryTypes['note'], 'Contents': [
+                  {'Context key': d, 'Value': formatCell(ctx[d])} for d in ctx]})
+          elif fmt == 'json':
+              demisto.results(ctx)
+          else:
+              md = "**Context data**:\n```\n" + json.dumps(ctx, indent=4) + '\n```'
+              demisto.results({'ContentsFormat': formats['markdown'], 'Type': entryTypes['note'], 'Contents': md})
       else:
-          md = "**Context data**:\n```\n" + json.dumps(ctx, indent=4) + '\n```'
-          demisto.results({'ContentsFormat': formats['markdown'], 'Type': entryTypes['note'], 'Contents': md})
-  else:
-      demisto.results('Context empty.')
+          demisto.results('Context empty.')
+
+
+  def main():  # pragma: no cover
+      fmt = demisto.get(demisto.args(), 'outputformat')
+      ctx = demisto.context()
+      print_context(fmt, ctx)
+
+
+  if __name__ in ('__main__', '__builtin__', 'builtins'):  # pragma: no cover
+      main()
+
+  register_module_line('PrintContext', 'end', __line__())
 scripttarget: 0
-subtype: python2
+subtype: python3
 system: true
 tags:
 - Utility
