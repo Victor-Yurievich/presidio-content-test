@@ -3097,7 +3097,7 @@
 		"xsiamdashboard": null,
 		"xsiamreport": null
 	},
-	"created": "2020-07-26T20:01:30Z",
+	"created": "2020-07-26T23:01:30+03:00",
 	"currentVersion": "3.2.46",
 	"definitionId": "",
 	"dependencies": {
@@ -3198,7 +3198,7 @@
 		"Partner Spotlight"
 	],
 	"toServerVersion": "",
-	"updated": "2022-09-13T14:05:33Z",
+	"updated": "2022-09-13T17:06:36+03:00",
 	"useCases": [],
 	"version": -1,
 	"versionInfo": "3649843",
