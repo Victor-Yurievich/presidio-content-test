@@ -13,14 +13,14 @@ contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 5.0.0
-    itemVersion: 1.7.14
+    itemVersion: 1.7.56
     packID: CommonScripts
     packName: Common Scripts
     packPropagationLabels:
     - all
     propagationLabels: []
     toServerVersion: ""
-dockerimage: demisto/python:2.7.18.24398
+dockerimage: demisto/python3:3.10.6.33415
 enabled: true
 engineinfo: {}
 mainengineinfo: {}
@@ -28,16 +28,32 @@ name: JoinIfSingleElementOnly
 pswd: ""
 runas: DBotWeakRole
 runonce: false
-script: |-
-  value = demisto.args()["value"]
-  res = value
-  if isinstance(value, list):
-      if len(value)==1:
-          res = value[0]
+script: |
+  register_module_line('JoinIfSingleElementOnly', 'start', __line__())
 
-  demisto.results(res)
+
+
+
+  def return_first_element_if_single(value):
+      res = value
+      if isinstance(value, list):
+          if len(value) == 1:
+              res = value[0]
+      return res
+
+
+  def main():  # pragma: no cover
+      value = demisto.args()["value"]
+      res = return_first_element_if_single(value)
+      demisto.results(res)
+
+
+  if __name__ in ('__main__', '__builtin__', 'builtins'):
+      main()
+
+  register_module_line('JoinIfSingleElementOnly', 'end', __line__())
 scripttarget: 0
-subtype: python2
+subtype: python3
 system: true
 tags:
 - entirelist
