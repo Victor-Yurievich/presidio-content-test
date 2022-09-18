@@ -6,14 +6,14 @@ contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 6.0.0
-    itemVersion: 1.7.14
+    itemVersion: 1.7.56
     packID: CommonScripts
     packName: Common Scripts
     packPropagationLabels:
     - all
     propagationLabels: []
     toServerVersion: ""
-dockerimage: demisto/python3:3.9.8.24399
+dockerimage: demisto/python3:3.10.7.33922
 enabled: true
 engineinfo: {}
 mainengineinfo: {}
@@ -29,13 +29,20 @@ script: |
 
 
 
+  INTERNAL_MODULES_BRANDS = {
+      'Scripts',
+      'Builtin',
+      'd2',
+      'testmodule',
+  }
+
 
   def get_enabled_instances():
       enabled_instances = []
       readable_output = []
       instances = demisto.getModules()
       for instance_name, data in instances.items():
-          if data.get('state') == 'active':
+          if data.get('state') == 'active' and data.get('brand') not in INTERNAL_MODULES_BRANDS:
               enabled_instances.append(instance_name)
               readable_output.append({
                   'Instance Name': instance_name,
