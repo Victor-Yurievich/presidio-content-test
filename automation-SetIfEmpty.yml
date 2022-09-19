@@ -20,14 +20,14 @@ contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 5.0.0
-    itemVersion: 1.7.56
+    itemVersion: 1.7.60
     packID: CommonScripts
     packName: Common Scripts
     packPropagationLabels:
     - all
     propagationLabels: []
     toServerVersion: ""
-dockerimage: demisto/python3:3.9.7.24076
+dockerimage: demisto/python3:3.10.7.33922
 engineinfo: {}
 mainengineinfo: {}
 name: SetIfEmpty
@@ -48,7 +48,9 @@ script: |
       if value is None or (apply_if_empty and is_value_empty(value)):
           value = args.get('defaultValue')
 
-      if isinstance(value, list):
+      if value is None:
+          return []
+      elif isinstance(value, list):
           for i, item in enumerate(value):
               value[i] = encode_string_results(item)
 
