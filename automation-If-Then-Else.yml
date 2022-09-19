@@ -51,7 +51,7 @@ contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 5.0.0
-    itemVersion: 1.7.56
+    itemVersion: 1.7.60
     packID: CommonScripts
     packName: Common Scripts
     packPropagationLabels:
@@ -140,11 +140,11 @@ script: |2
           }
           case "==": {
               [lhs, rhs] = lowerIfPossible(lhs, rhs, options.case_insensitive);
-              return lhs == rhs;
+              return (lhs === null ? "" : lhs) == (rhs === null ? "" : rhs);
           }
           case "!=": {
               [lhs, rhs] = lowerIfPossible(lhs, rhs, options.case_insensitive);
-              return lhs != rhs;
+              return (lhs === null ? "" : lhs) != (rhs === null ? "" : rhs);
           }
           case ">": {
               [lhs, rhs] = lowerIfPossible(lhs, rhs, options.case_insensitive);
