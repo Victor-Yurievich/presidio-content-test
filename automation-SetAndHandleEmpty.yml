@@ -43,14 +43,14 @@ contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 5.0.0
-    itemVersion: 1.7.56
+    itemVersion: 1.7.60
     packID: CommonScripts
     packName: Common Scripts
     packPropagationLabels:
     - all
     propagationLabels: []
     toServerVersion: ""
-dockerimage: demisto/python3:3.10.1.25933
+dockerimage: demisto/python3:3.10.7.33922
 enabled: true
 engineinfo: {}
 mainengineinfo: {}
@@ -67,6 +67,8 @@ script: |
 
   def get_value(value, stringify=False):
       if stringify:
+          if value is None:
+              return ''
           return str(value)
       elif not value or not isinstance(value, (Text, bytes, bytearray)):
           return value
