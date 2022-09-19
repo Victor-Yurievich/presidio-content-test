@@ -548,6 +548,13 @@
 				]
 			},
 			{
+				"description": "Collect entries matching to the conditions in the war room",
+				"name": "GetEntries",
+				"tags": [
+					"Utility"
+				]
+			},
+			{
 				"description": "Return the single element in case the array has only 1 element in it, otherwise return the whole array",
 				"name": "JoinIfSingleElementOnly",
 				"tags": [
@@ -1852,7 +1859,6 @@
 			}
 		],
 		"classifier": null,
-		"correlationrule": null,
 		"dashboard": null,
 		"genericfield": null,
 		"generictype": null,
@@ -1862,18 +1868,14 @@
 		"integration": null,
 		"layoutscontainer": null,
 		"list": null,
-		"modelingrule": null,
-		"parsingrule": null,
 		"playbook": null,
 		"report": null,
 		"reputation": null,
 		"widget": null,
-		"wizard": null,
-		"xsiamdashboard": null,
-		"xsiamreport": null
+		"wizard": null
 	},
-	"created": "2020-07-27T12:01:37+03:00",
-	"currentVersion": "1.7.56",
+	"created": "2020-07-27T09:01:37Z",
+	"currentVersion": "1.7.60",
 	"definitionId": "",
 	"dependencies": {
 		"Base": {
@@ -1888,7 +1890,7 @@
 			"certification": "certified",
 			"mandatory": true,
 			"minVersion": "1.3.1",
-			"name": "Demisto REST API"
+			"name": "Cortex REST API"
 		},
 		"EWSMailSender": {
 			"author": "Cortex XSOAR",
@@ -1950,7 +1952,7 @@
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.0.6",
+			"minVersion": "1.0.7",
 			"name": "Remote Access"
 		},
 		"Shodan": {
@@ -1970,7 +1972,7 @@
 	},
 	"deprecated": false,
 	"description": "Frequently used scripts pack.",
-	"downloads": 72442,
+	"downloads": 72888,
 	"eulaLink": "https://github.com/demisto/content/blob/master/LICENSE",
 	"fromServerVersion": "5.0.0",
 	"general": [
@@ -2011,7 +2013,7 @@
 			"name": "SumoLogic"
 		}
 	],
-	"itemVersion": "1.7.56",
+	"itemVersion": "1.7.60",
 	"keywords": [],
 	"legacy": true,
 	"name": "Common Scripts",
@@ -2035,14 +2037,13 @@
 		"url": "https://www.paloaltonetworks.com/cortex"
 	},
 	"tags": [
-		"Transformer",
-		"Trending",
-		"Filter"
+		"Filter",
+		"Transformer"
 	],
 	"toServerVersion": "",
-	"updated": "2022-09-15T01:01:20+03:00",
+	"updated": "2022-09-19T10:10:40Z",
 	"useCases": [],
 	"version": -1,
-	"versionInfo": "3660124",
+	"versionInfo": "3684182",
 	"videos": []
 }
