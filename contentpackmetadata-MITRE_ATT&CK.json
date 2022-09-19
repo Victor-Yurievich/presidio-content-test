@@ -24,7 +24,6 @@
 			}
 		],
 		"classifier": null,
-		"correlationrule": null,
 		"dashboard": [
 			{
 				"name": "MITRE ATT\u0026CK"
@@ -62,8 +61,6 @@
 		],
 		"layoutscontainer": null,
 		"list": null,
-		"modelingrule": null,
-		"parsingrule": null,
 		"playbook": [
 			{
 				"description": "This playbook accepts as input MITRE techniques IDs.\nIt returns the MITRE technique name and full technique data using the MITRE integration.",
@@ -73,9 +70,7 @@
 		"report": null,
 		"reputation": null,
 		"widget": null,
-		"wizard": null,
-		"xsiamdashboard": null,
-		"xsiamreport": null
+		"wizard": null
 	},
 	"created": "2021-05-27T10:56:30Z",
 	"currentVersion": "1.1.3",
