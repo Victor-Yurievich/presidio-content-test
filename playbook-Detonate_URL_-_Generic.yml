@@ -2,7 +2,7 @@ contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 5.0.0
-    itemVersion: 2.2.9
+    itemVersion: 2.3.2
     packID: CommonPlaybooks
     packName: Common Playbooks
     packPropagationLabels:
@@ -391,6 +391,21 @@ outputs:
 - contextPath: HybridAnalysis.URL.Scanner
   description: The place holder for the scanner data.
   type: unknown
+- contextPath: SecneurXAnalysis.Report.SHA256
+  description: SHA256 value of the analyzed sample
+  type: string
+- contextPath: SecneurXAnalysis.Report.Verdict
+  description: Summary result of the analyzed sample
+  type: string
+- contextPath: SecneurXAnalysis.Report.Tags
+  description: More details of the analyzed sample
+  type: string
+- contextPath: SecneurXAnalysis.Report.IOC
+  description: List of IOC's observed in the analyzed sample
+  type: string
+- contextPath: SecneurXAnalysis.Report.Status
+  description: Analysis queued sample state
+  type: String
 starttaskid: "0"
 system: true
 tasks:
@@ -418,6 +433,7 @@ tasks:
       - "25"
       - "26"
       - "27"
+      - "28"
     note: false
     quietmode: 0
     separatecontext: false
@@ -1140,6 +1156,60 @@ tasks:
           "y": 195
         }
       }
+  "28":
+    continueonerrortype: ""
+    id: "28"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
+    nexttasks:
+      '#none#':
+      - "3"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      Priority:
+        simple: High
+      Reboot:
+        simple: "False"
+      ReportFormat:
+        simple: json
+      URL:
+        complex:
+          filters:
+          - - left:
+                iscontext: true
+                value:
+                  simple: URL.Data
+              operator: isExists
+          root: URL
+    separatecontext: true
+    skipunavailable: true
+    task:
+      brand: ""
+      description: Detonates a file using the SecneurX Analysis Integration. Returns
+        relevant reports to the War Room and file reputations to the context data.
+      id: ca1a3f90-8330-4eac-885c-eec86c8b8885
+      iscommand: false
+      name: Detonate URL - SecneurX Analysis
+      playbookName: Detonate URL - SecneurX Analysis
+      type: playbook
+      version: -1
+    taskid: ca1a3f90-8330-4eac-885c-eec86c8b8885
+    timertriggers: []
+    type: playbook
+    view: |-
+      {
+        "position": {
+          "x": 6320,
+          "y": 195
+        }
+      }
 version: -1
 view: |-
   {
@@ -1147,7 +1217,7 @@ view: |-
     "paper": {
       "dimensions": {
         "height": 385,
-        "width": 6690,
+        "width": 7090,
         "x": -390,
         "y": 50
       }
