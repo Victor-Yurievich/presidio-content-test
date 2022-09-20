@@ -2,7 +2,7 @@ contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 6.0.0
-    itemVersion: 2.2.9
+    itemVersion: 2.3.2
     packID: CommonPlaybooks
     packName: Common Playbooks
     packPropagationLabels:
@@ -31,8 +31,11 @@ outputs:
 - contextPath: Indicators
   description: Indicators extracted from the command line
   type: unknown
-- contextPath: commandline
-  description: The command line
+- contextPath: commandline.original
+  description: The original command line
+  type: unknown
+- contextPath: commandline.decoded
+  description: The decoded command line
   type: unknown
 - contextPath: CommandlineVerdict
   description: The command line verdict
@@ -333,7 +336,7 @@ tasks:
     scriptarguments:
       data:
         complex:
-          root: commandline
+          root: commandline.original
       group:
         simple: "1"
       regex:
@@ -732,7 +735,7 @@ tasks:
             iscontext: true
             value:
               complex:
-                root: commandline
+                root: commandline.original
           operator: containsGeneral
           right:
             value:
@@ -742,7 +745,7 @@ tasks:
             iscontext: true
             value:
               complex:
-                root: commandline
+                root: commandline.original
           operator: containsGeneral
           right:
             value:
@@ -752,7 +755,7 @@ tasks:
             iscontext: true
             value:
               complex:
-                root: commandline
+                root: commandline.original
           operator: containsGeneral
           right:
             value:
@@ -1230,7 +1233,7 @@ tasks:
               item:
                 iscontext: true
                 value:
-                  simple: inputs.CommandLine
+                  simple: inputs.Commandline
             operator: append
     separatecontext: false
     skipunavailable: false
@@ -1271,7 +1274,7 @@ tasks:
         simple: commandline.decoded
       value:
         complex:
-          root: inputs.CommandLine
+          root: inputs.Commandline
           transformers:
           - args:
               regex:
