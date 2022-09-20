@@ -26,15 +26,14 @@
 						"items": null,
 						"maxW": 3,
 						"minH": 1,
-						"minW": 1,
 						"moved": false,
 						"name": "Verdict",
 						"readOnly": true,
 						"static": false,
 						"type": "reputationSources",
 						"w": 1,
-						"x": 1,
-						"y": 1
+						"x": 0,
+						"y": 2
 					},
 					{
 						"columns": [
@@ -70,14 +69,13 @@
 							}
 						],
 						"displayType": "ROW",
-						"h": 3,
+						"h": 2,
 						"hideName": false,
 						"i": "main-c1f3f0d0-a09d-11e9-8956-390f602b039a",
 						"isVisible": true,
 						"items": null,
 						"maxW": 3,
 						"minH": 1,
-						"minW": 1,
 						"moved": false,
 						"name": "Related Incidents",
 						"readOnly": true,
@@ -85,11 +83,11 @@
 						"type": "relatedIncidents",
 						"w": 2,
 						"x": 0,
-						"y": 6
+						"y": 7
 					},
 					{
 						"displayType": "ROW",
-						"h": 2,
+						"h": 4,
 						"hideName": false,
 						"i": "main-e2c8c970-a09d-11e9-8956-390f602b039a",
 						"isVisible": true,
@@ -107,39 +105,39 @@
 							},
 							{
 								"endCol": 2,
-								"fieldId": "sha256",
+								"fieldId": "timestamp",
 								"height": 22,
-								"id": "e74947a0-987f-11eb-a24d-4941fb0e06df",
+								"id": "e702ebc0-779a-11ec-99cb-9b8c031b4139",
 								"index": 0,
 								"sectionItemType": "field",
 								"startCol": 0
 							},
 							{
-								"endCol": 2,
-								"fieldId": "md5",
-								"height": 22,
-								"id": "edc102d0-987f-11eb-a24d-4941fb0e06df",
-								"index": 1,
-								"sectionItemType": "field",
-								"startCol": 0
-							},
-							{
 								"dropEffect": "move",
 								"endCol": 2,
-								"fieldId": "sha1",
+								"fieldId": "modified",
 								"height": 22,
-								"id": "ea561270-987f-11eb-a24d-4941fb0e06df",
-								"index": 2,
+								"id": "2caa06a0-a2b6-11eb-b6c7-1f96e76b92a7",
+								"index": 1,
 								"listId": "main-e2c8c970-a09d-11e9-8956-390f602b039a",
 								"sectionItemType": "field",
 								"startCol": 0
 							},
 							{
+								"endCol": 2,
+								"fieldId": "stixid",
+								"height": 22,
+								"id": "c32a46e0-8a4f-11ec-a1ef-6369524b39c7",
+								"index": 2,
+								"sectionItemType": "field",
+								"startCol": 0
+							},
+							{
 								"dropEffect": "move",
 								"endCol": 2,
-								"fieldId": "sha512",
+								"fieldId": "filetype",
 								"height": 22,
-								"id": "e832e450-987f-11eb-a24d-4941fb0e06df",
+								"id": "03dec8e0-9880-11eb-a24d-4941fb0e06df",
 								"index": 3,
 								"listId": "main-e2c8c970-a09d-11e9-8956-390f602b039a",
 								"sectionItemType": "field",
@@ -147,9 +145,9 @@
 							},
 							{
 								"endCol": 2,
-								"fieldId": "imphash",
+								"fieldId": "blocked",
 								"height": 22,
-								"id": "f5d752d0-987f-11eb-a24d-4941fb0e06df",
+								"id": "48f1b8c0-779b-11ec-99cb-9b8c031b4139",
 								"index": 4,
 								"sectionItemType": "field",
 								"startCol": 0
@@ -157,140 +155,110 @@
 							{
 								"dropEffect": "move",
 								"endCol": 2,
-								"fieldId": "ssdeep",
+								"fieldId": "associatedfilenames",
 								"height": 22,
-								"id": "fa12b290-987f-11eb-a24d-4941fb0e06df",
+								"id": "0a626af0-9880-11eb-a24d-4941fb0e06df",
 								"index": 5,
 								"listId": "main-e2c8c970-a09d-11e9-8956-390f602b039a",
 								"sectionItemType": "field",
 								"startCol": 0
 							},
 							{
-								"endCol": 2,
-								"fieldId": "size",
-								"height": 22,
-								"id": "fd18edb0-987f-11eb-a24d-4941fb0e06df",
-								"index": 6,
-								"sectionItemType": "field",
-								"startCol": 0
-							},
-							{
-								"endCol": 2,
-								"fieldId": "filetype",
-								"height": 22,
-								"id": "03dec8e0-9880-11eb-a24d-4941fb0e06df",
-								"index": 7,
-								"sectionItemType": "field",
-								"startCol": 0
-							},
-							{
+								"dropEffect": "move",
 								"endCol": 2,
 								"fieldId": "fileextension",
 								"height": 22,
 								"id": "0582dbf0-9880-11eb-a24d-4941fb0e06df",
-								"index": 8,
+								"index": 6,
+								"listId": "main-e2c8c970-a09d-11e9-8956-390f602b039a",
 								"sectionItemType": "field",
 								"startCol": 0
 							},
 							{
-								"endCol": 2,
-								"fieldId": "associatedfilenames",
-								"height": 22,
-								"id": "0a626af0-9880-11eb-a24d-4941fb0e06df",
-								"index": 9,
-								"sectionItemType": "field",
-								"startCol": 0
-							},
-							{
+								"dropEffect": "move",
 								"endCol": 2,
 								"fieldId": "path",
 								"height": 22,
 								"id": "1021d2a0-9880-11eb-a24d-4941fb0e06df",
+								"index": 7,
+								"listId": "main-e2c8c970-a09d-11e9-8956-390f602b039a",
+								"sectionItemType": "field",
+								"startCol": 0
+							},
+							{
+								"dropEffect": "move",
+								"endCol": 2,
+								"fieldId": "size",
+								"height": 22,
+								"id": "fd18edb0-987f-11eb-a24d-4941fb0e06df",
+								"index": 8,
+								"listId": "main-e2c8c970-a09d-11e9-8956-390f602b039a",
+								"sectionItemType": "field",
+								"startCol": 0
+							},
+							{
+								"dropEffect": "move",
+								"endCol": 2,
+								"fieldId": "trafficlightprotocol",
+								"height": 22,
+								"id": "b36304a0-b6dd-11ea-842d-c3903a6d3bd1",
+								"index": 9,
+								"listId": "main-e2c8c970-a09d-11e9-8956-390f602b039a",
+								"sectionItemType": "field",
+								"startCol": 0
+							},
+							{
+								"endCol": 2,
+								"fieldId": "tags",
+								"height": 22,
+								"id": "1cf1e850-4e74-11ea-8bf6-67db400d7da5",
 								"index": 10,
 								"sectionItemType": "field",
 								"startCol": 0
 							},
 							{
-								"dropEffect": "move",
-								"endCol": 2,
-								"fieldId": "quarantined",
-								"height": 22,
-								"id": "19887060-9880-11eb-a24d-4941fb0e06df",
+								"args": {
+									"field": {
+										"simple": "tags"
+									}
+								},
+								"endCol": 1,
+								"fieldId": "",
+								"height": 44,
+								"id": "78925e60-a751-11eb-8813-85174f038837",
 								"index": 11,
-								"listId": "main-e2c8c970-a09d-11e9-8956-390f602b039a",
-								"sectionItemType": "field",
+								"name": "Add tags",
+								"scriptId": "Builtin|||appendIndicatorField",
+								"sectionItemType": "button",
 								"startCol": 0
 							},
 							{
-								"endCol": 2,
-								"fieldId": "signed",
-								"height": 22,
-								"id": "153b5d60-9880-11eb-a24d-4941fb0e06df",
-								"index": 12,
-								"sectionItemType": "field",
-								"startCol": 0
-							},
-							{
+								"args": {
+									"field": {
+										"simple": "tags"
+									}
+								},
 								"dropEffect": "move",
 								"endCol": 2,
-								"fieldId": "signaturecopyright",
-								"height": 22,
-								"id": "e0beab40-9880-11eb-a24d-4941fb0e06df",
-								"index": 13,
-								"listId": "main-e2c8c970-a09d-11e9-8956-390f602b039a",
-								"sectionItemType": "field",
-								"startCol": 0
-							},
-							{
-								"dropEffect": "move",
-								"endCol": 2,
-								"fieldId": "signaturedescription",
-								"height": 22,
-								"id": "22250760-9880-11eb-a24d-4941fb0e06df",
-								"index": 14,
-								"listId": "main-e2c8c970-a09d-11e9-8956-390f602b039a",
-								"sectionItemType": "field",
-								"startCol": 0
-							},
-							{
-								"dropEffect": "move",
-								"endCol": 2,
-								"fieldId": "downloadurl",
-								"height": 22,
-								"id": "1d1e4150-9880-11eb-a24d-4941fb0e06df",
-								"index": 15,
-								"listId": "main-e2c8c970-a09d-11e9-8956-390f602b039a",
-								"sectionItemType": "field",
-								"startCol": 0
-							},
-							{
-								"endCol": 2,
-								"fieldId": "modified",
-								"height": 22,
-								"id": "2caa06a0-a2b6-11eb-b6c7-1f96e76b92a7",
-								"index": 16,
-								"sectionItemType": "field",
-								"startCol": 0
-							},
-							{
-								"endCol": 2,
-								"fieldId": "firstseen",
-								"height": 22,
-								"id": "2fae6d00-a2b6-11eb-b6c7-1f96e76b92a7",
-								"index": 17,
-								"sectionItemType": "field",
-								"startCol": 0
+								"fieldId": "",
+								"height": 44,
+								"id": "7a35ae20-a751-11eb-8813-85174f038837",
+								"index": 11,
+								"listId": "main-0e19dbd0-4e74-11ea-8bf6-67db400d7da5",
+								"name": "Remove tags",
+								"scriptId": "Builtin|||removeIndicatorField",
+								"sectionItemType": "button",
+								"startCol": 1
 							}
 						],
 						"maxW": 3,
 						"minH": 1,
-						"minW": 1,
 						"moved": false,
 						"name": "File Details",
 						"static": false,
 						"w": 1,
-						"x": 0,
-						"y": 1
+						"x": 1,
+						"y": 0
 					},
 					{
 						"h": 1,
@@ -299,14 +267,13 @@
 						"items": null,
 						"maxW": 3,
 						"minH": 1,
-						"minW": 1,
 						"moved": false,
 						"name": "Reputation Status",
 						"static": false,
 						"type": "reputationStatus",
 						"w": 1,
-						"x": 1,
-						"y": 0
+						"x": 0,
+						"y": 1
 					},
 					{
 						"h": 1,
@@ -315,7 +282,6 @@
 						"items": null,
 						"maxW": 3,
 						"minH": 1,
-						"minW": 1,
 						"moved": false,
 						"name": "Expiration Status",
 						"static": false,
@@ -330,14 +296,13 @@
 						"items": null,
 						"maxW": 3,
 						"minH": 1,
-						"minW": 1,
 						"moved": false,
 						"name": "Timeline",
 						"static": false,
 						"type": "indicatorTimeline",
 						"w": 1,
 						"x": 2,
-						"y": 6
+						"y": 3
 					},
 					{
 						"h": 3,
@@ -345,84 +310,13 @@
 						"items": null,
 						"maxW": 3,
 						"minH": 1,
-						"minW": 1,
 						"moved": false,
 						"name": "Comments",
 						"static": false,
 						"type": "comments",
 						"w": 1,
 						"x": 2,
-						"y": 9
-					},
-					{
-						"displayType": "CARD",
-						"h": 2,
-						"hideItemTitleOnlyOne": false,
-						"hideName": false,
-						"i": "main-0e19dbd0-4e74-11ea-8bf6-67db400d7da5",
-						"items": [
-							{
-								"endCol": 2,
-								"fieldId": "tags",
-								"height": 53,
-								"id": "1cf1e850-4e74-11ea-8bf6-67db400d7da5",
-								"index": 0,
-								"sectionItemType": "field",
-								"startCol": 0
-							},
-							{
-								"args": {
-									"field": {
-										"simple": "tags"
-									}
-								},
-								"endCol": 1,
-								"fieldId": "",
-								"height": 53,
-								"id": "78925e60-a751-11eb-8813-85174f038837",
-								"index": 1,
-								"name": "Add tags",
-								"scriptId": "Builtin|||appendIndicatorField",
-								"sectionItemType": "button",
-								"startCol": 0
-							},
-							{
-								"endCol": 2,
-								"fieldId": "trafficlightprotocol",
-								"height": 53,
-								"id": "b36304a0-b6dd-11ea-842d-c3903a6d3bd1",
-								"index": 2,
-								"sectionItemType": "field",
-								"startCol": 0
-							},
-							{
-								"args": {
-									"field": {
-										"simple": "tags"
-									}
-								},
-								"dropEffect": "move",
-								"endCol": 2,
-								"fieldId": "",
-								"height": 53,
-								"id": "7a35ae20-a751-11eb-8813-85174f038837",
-								"index": 2,
-								"listId": "main-0e19dbd0-4e74-11ea-8bf6-67db400d7da5",
-								"name": "Remove tags",
-								"scriptId": "Builtin|||removeIndicatorField",
-								"sectionItemType": "button",
-								"startCol": 1
-							}
-						],
-						"maxW": 3,
-						"minH": 1,
-						"minW": 1,
-						"moved": false,
-						"name": "Tags and TLP",
-						"static": false,
-						"w": 1,
-						"x": 2,
-						"y": 1
+						"y": 6
 					},
 					{
 						"displayType": "ROW",
@@ -457,7 +351,6 @@
 						],
 						"maxW": 3,
 						"minH": 1,
-						"minW": 1,
 						"moved": false,
 						"name": "Actions",
 						"static": false,
@@ -466,25 +359,140 @@
 						"y": 0
 					},
 					{
+						"h": 3,
+						"i": "main-2e126740-96e4-11eb-a8d1-098e2c945225",
+						"items": [],
+						"maxW": 3,
+						"minH": 1,
+						"moved": false,
+						"name": "Relationships",
+						"static": false,
+						"type": "relationshipsTable",
+						"w": 2,
+						"x": 0,
+						"y": 4
+					},
+					{
+						"displayType": "ROW",
+						"h": 2,
+						"hideName": false,
+						"i": "main-c7da3c80-779a-11ec-99cb-9b8c031b4139",
+						"items": [
+							{
+								"dropEffect": "move",
+								"endCol": 2,
+								"fieldId": "md5",
+								"height": 22,
+								"id": "edc102d0-987f-11eb-a24d-4941fb0e06df",
+								"index": 1,
+								"listId": "main-e2c8c970-a09d-11e9-8956-390f602b039a",
+								"sectionItemType": "field",
+								"startCol": 0
+							},
+							{
+								"dropEffect": "move",
+								"endCol": 2,
+								"fieldId": "sha1",
+								"height": 22,
+								"id": "ea561270-987f-11eb-a24d-4941fb0e06df",
+								"index": 1,
+								"listId": "main-e2c8c970-a09d-11e9-8956-390f602b039a",
+								"sectionItemType": "field",
+								"startCol": 0
+							},
+							{
+								"endCol": 2,
+								"fieldId": "sha256",
+								"height": 22,
+								"id": "e74947a0-987f-11eb-a24d-4941fb0e06df",
+								"index": 2,
+								"sectionItemType": "field",
+								"startCol": 0
+							},
+							{
+								"dropEffect": "move",
+								"endCol": 2,
+								"fieldId": "sha512",
+								"height": 22,
+								"id": "e832e450-987f-11eb-a24d-4941fb0e06df",
+								"index": 3,
+								"listId": "main-e2c8c970-a09d-11e9-8956-390f602b039a",
+								"sectionItemType": "field",
+								"startCol": 0
+							},
+							{
+								"endCol": 2,
+								"fieldId": "imphash",
+								"height": 22,
+								"id": "f5d752d0-987f-11eb-a24d-4941fb0e06df",
+								"index": 4,
+								"sectionItemType": "field",
+								"startCol": 0
+							},
+							{
+								"dropEffect": "move",
+								"endCol": 2,
+								"fieldId": "ssdeep",
+								"height": 22,
+								"id": "fa12b290-987f-11eb-a24d-4941fb0e06df",
+								"index": 5,
+								"listId": "main-e2c8c970-a09d-11e9-8956-390f602b039a",
+								"sectionItemType": "field",
+								"startCol": 0
+							}
+						],
+						"maxW": 3,
+						"minH": 1,
+						"moved": false,
+						"name": "Hashes",
+						"static": false,
+						"w": 1,
+						"x": 2,
+						"y": 1
+					}
+				],
+				"type": "custom"
+			},
+			{
+				"hidden": false,
+				"id": "rrcrivpfll",
+				"name": "Additional Details",
+				"sections": [
+					{
+						"displayType": "CARD",
+						"h": 3,
+						"i": "rrcrivpfll-ztqyjv2jej-c11873d0-de2a-11eb-b5cc-73114eddb812",
+						"items": [],
+						"maxW": 3,
+						"minH": 1,
+						"moved": false,
+						"name": "Custom Details",
+						"static": false,
+						"type": "customDetails",
+						"w": 3,
+						"x": 0,
+						"y": 3
+					},
+					{
 						"displayType": "ROW",
 						"h": 3,
 						"hideName": false,
-						"i": "main-c5fe2a00-871a-11eb-a029-7dc36024189f",
+						"i": "rrcrivpfll-ztqyjv2jej-894aad80-76df-11ec-a07d-2796602c12c6",
 						"items": [
 							{
-								"endCol": 4,
-								"fieldId": "communitynotes",
-								"height": 106,
-								"id": "da2bb070-983f-11eb-a24d-4941fb0e06df",
+								"endCol": 6,
+								"fieldId": "description",
+								"height": 44,
+								"id": "99ec7d80-76df-11ec-a07d-2796602c12c6",
 								"index": 0,
 								"sectionItemType": "field",
 								"startCol": 0
 							},
 							{
-								"endCol": 4,
-								"fieldId": "publications",
+								"endCol": 6,
+								"fieldId": "communitynotes",
 								"height": 106,
-								"id": "dd873780-983f-11eb-a24d-4941fb0e06df",
+								"id": "a3096810-76df-11ec-a07d-2796602c12c6",
 								"index": 1,
 								"sectionItemType": "field",
 								"startCol": 0
@@ -492,93 +500,11 @@
 						],
 						"maxW": 3,
 						"minH": 1,
-						"minW": 1,
 						"moved": false,
-						"name": "Publications",
+						"name": "Additional Details",
 						"static": false,
-						"w": 2,
+						"w": 3,
 						"x": 0,
-						"y": 9
-					},
-					{
-						"h": 3,
-						"i": "main-2e126740-96e4-11eb-a8d1-098e2c945225",
-						"items": [],
-						"maxW": 3,
-						"minH": 1,
-						"minW": 1,
-						"moved": false,
-						"name": "Relationships",
-						"static": false,
-						"type": "relationshipsTable",
-						"w": 2,
-						"x": 0,
-						"y": 3
-					},
-					{
-						"displayType": "ROW",
-						"h": 3,
-						"hideName": false,
-						"i": "main-05b333f0-a2b6-11eb-b6c7-1f96e76b92a7",
-						"items": [
-							{
-								"endCol": 2,
-								"fieldId": "behavior",
-								"height": 106,
-								"id": "c86cf8c0-9881-11eb-a24d-4941fb0e06df",
-								"index": 0,
-								"sectionItemType": "field",
-								"startCol": 0
-							}
-						],
-						"maxW": 3,
-						"minH": 1,
-						"minW": 1,
-						"moved": false,
-						"name": "Behavior",
-						"static": false,
-						"w": 1,
-						"x": 2,
-						"y": 3
-					}
-				],
-				"type": "custom"
-			},
-			{
-				"hidden": false,
-				"id": "o6km6lsgfg",
-				"name": "Additional Details",
-				"sections": [
-					{
-						"displayType": "CARD",
-						"h": 8,
-						"i": "o6km6lsgfg-1e90e1a0-de30-11eb-b5cc-73114eddb812",
-						"items": [],
-						"maxW": 3,
-						"minH": 1,
-						"minW": 1,
-						"moved": false,
-						"name": "Extended Details",
-						"static": false,
-						"type": "extendedDetails",
-						"w": 2,
-						"x": 0,
-						"y": 0
-					},
-					{
-						"displayType": "CARD",
-						"h": 8,
-						"i": "o6km6lsgfg-2a2ada20-de30-11eb-b5cc-73114eddb812",
-						"items": [],
-						"maxW": 3,
-						"minH": 1,
-						"minW": 1,
-						"moved": false,
-						"name": "Custom Details",
-						"static": false,
-						"type": "customDetails",
-						"w": 1,
-						"x": 2,
 						"y": 0
 					}
 				],
@@ -604,42 +530,7 @@
 						"type": "expirationStatus",
 						"w": 1,
 						"x": 0,
-						"y": 1
-					},
-					{
-						"displayType": "ROW",
-						"h": 1,
-						"hideItemTitleOnlyOne": true,
-						"i": "indicator-quick-view-info-tags-section",
-						"items": [
-							{
-								"endCol": 2,
-								"fieldId": "tags",
-								"height": 22,
-								"id": "indicator-quick-view-info-tags-field",
-								"index": 0,
-								"sectionItemType": "field",
-								"startCol": 0
-							},
-							{
-								"endCol": 2,
-								"fieldId": "trafficlightprotocol",
-								"height": 22,
-								"id": "1a6f45b0-c02e-11ea-8c96-378efcdc37ad",
-								"index": 1,
-								"sectionItemType": "field",
-								"startCol": 0
-							}
-						],
-						"maxW": 3,
-						"minH": 1,
-						"minW": 1,
-						"moved": false,
-						"name": "Tags and TLP",
-						"static": false,
-						"w": 1,
-						"x": 0,
-						"y": 2
+						"y": 0
 					},
 					{
 						"h": 2,
@@ -651,7 +542,7 @@
 						"type": "relatedIncidents",
 						"w": 1,
 						"x": 0,
-						"y": 5
+						"y": 8
 					},
 					{
 						"h": 3,
@@ -663,7 +554,7 @@
 						"type": "comments",
 						"w": 1,
 						"x": 0,
-						"y": 7
+						"y": 10
 					},
 					{
 						"displayType": "ROW",
@@ -672,152 +563,11 @@
 						"i": "indicator-quick-view-info-34c55dc0-ba19-11ea-96e1-0b84fdedf11e",
 						"items": [
 							{
-								"dropEffect": "move",
 								"endCol": 2,
-								"fieldId": "sha256",
+								"fieldId": "timestamp",
 								"height": 22,
-								"id": "481c4ef0-9881-11eb-a24d-4941fb0e06df",
+								"id": "f4fdcf40-84ee-11ec-a589-e73aadc98c9a",
 								"index": 0,
-								"listId": "indicator-quick-view-info-34c55dc0-ba19-11ea-96e1-0b84fdedf11e",
-								"sectionItemType": "field",
-								"startCol": 0
-							},
-							{
-								"endCol": 2,
-								"fieldId": "sha1",
-								"height": 22,
-								"id": "4d0fdb20-9881-11eb-a24d-4941fb0e06df",
-								"index": 1,
-								"sectionItemType": "field",
-								"startCol": 0
-							},
-							{
-								"endCol": 2,
-								"fieldId": "md5",
-								"height": 22,
-								"id": "51cc2ab0-9881-11eb-a24d-4941fb0e06df",
-								"index": 2,
-								"sectionItemType": "field",
-								"startCol": 0
-							},
-							{
-								"endCol": 2,
-								"fieldId": "sha512",
-								"height": 22,
-								"id": "4af49c40-9881-11eb-a24d-4941fb0e06df",
-								"index": 3,
-								"sectionItemType": "field",
-								"startCol": 0
-							},
-							{
-								"dropEffect": "move",
-								"endCol": 2,
-								"fieldId": "imphash",
-								"height": 22,
-								"id": "5bedb400-9881-11eb-a24d-4941fb0e06df",
-								"index": 4,
-								"listId": "indicator-quick-view-info-34c55dc0-ba19-11ea-96e1-0b84fdedf11e",
-								"sectionItemType": "field",
-								"startCol": 0
-							},
-							{
-								"endCol": 2,
-								"fieldId": "ssdeep",
-								"height": 22,
-								"id": "5ef7e6c0-9881-11eb-a24d-4941fb0e06df",
-								"index": 5,
-								"sectionItemType": "field",
-								"startCol": 0
-							},
-							{
-								"endCol": 2,
-								"fieldId": "size",
-								"height": 22,
-								"id": "63bb3b30-9881-11eb-a24d-4941fb0e06df",
-								"index": 6,
-								"sectionItemType": "field",
-								"startCol": 0
-							},
-							{
-								"endCol": 2,
-								"fieldId": "filetype",
-								"height": 22,
-								"id": "6601cfd0-9881-11eb-a24d-4941fb0e06df",
-								"index": 7,
-								"sectionItemType": "field",
-								"startCol": 0
-							},
-							{
-								"endCol": 2,
-								"fieldId": "fileextension",
-								"height": 22,
-								"id": "688df8f0-9881-11eb-a24d-4941fb0e06df",
-								"index": 8,
-								"sectionItemType": "field",
-								"startCol": 0
-							},
-							{
-								"endCol": 2,
-								"fieldId": "associatedfilenames",
-								"height": 22,
-								"id": "6b76e810-9881-11eb-a24d-4941fb0e06df",
-								"index": 9,
-								"sectionItemType": "field",
-								"startCol": 0
-							},
-							{
-								"endCol": 2,
-								"fieldId": "path",
-								"height": 22,
-								"id": "6e7ef7f0-9881-11eb-a24d-4941fb0e06df",
-								"index": 10,
-								"sectionItemType": "field",
-								"startCol": 0
-							},
-							{
-								"endCol": 2,
-								"fieldId": "quarantined",
-								"height": 22,
-								"id": "72b7e6b0-9881-11eb-a24d-4941fb0e06df",
-								"index": 11,
-								"sectionItemType": "field",
-								"startCol": 0
-							},
-							{
-								"endCol": 2,
-								"fieldId": "signed",
-								"height": 22,
-								"id": "756aaaa0-9881-11eb-a24d-4941fb0e06df",
-								"index": 12,
-								"sectionItemType": "field",
-								"startCol": 0
-							},
-							{
-								"endCol": 2,
-								"fieldId": "signaturecopyright",
-								"height": 22,
-								"id": "4431f560-9881-11eb-a24d-4941fb0e06df",
-								"index": 13,
-								"sectionItemType": "field",
-								"startCol": 0
-							},
-							{
-								"endCol": 2,
-								"fieldId": "signaturedescription",
-								"height": 22,
-								"id": "43434fa0-9881-11eb-a24d-4941fb0e06df",
-								"index": 14,
-								"sectionItemType": "field",
-								"startCol": 0
-							},
-							{
-								"dropEffect": "move",
-								"endCol": 2,
-								"fieldId": "downloadurl",
-								"height": 22,
-								"id": "7b3e3690-9881-11eb-a24d-4941fb0e06df",
-								"index": 15,
-								"listId": "indicator-quick-view-info-34c55dc0-ba19-11ea-96e1-0b84fdedf11e",
 								"sectionItemType": "field",
 								"startCol": 0
 							},
@@ -825,30 +575,103 @@
 								"endCol": 2,
 								"fieldId": "modified",
 								"height": 22,
-								"id": "35aa4170-a2b6-11eb-b6c7-1f96e76b92a7",
-								"index": 16,
+								"id": "faca7d60-84ee-11ec-a589-e73aadc98c9a",
+								"index": 1,
 								"sectionItemType": "field",
 								"startCol": 0
 							},
 							{
 								"endCol": 2,
-								"fieldId": "firstseen",
+								"fieldId": "stixid",
 								"height": 22,
-								"id": "339459c0-a2b6-11eb-b6c7-1f96e76b92a7",
-								"index": 17,
+								"id": "1c1e4a00-84ef-11ec-a589-e73aadc98c9a",
+								"index": 2,
+								"sectionItemType": "field",
+								"startCol": 0
+							},
+							{
+								"dropEffect": "move",
+								"endCol": 2,
+								"fieldId": "filetype",
+								"height": 22,
+								"id": "6601cfd0-9881-11eb-a24d-4941fb0e06df",
+								"index": 3,
+								"listId": "indicator-quick-view-info-34c55dc0-ba19-11ea-96e1-0b84fdedf11e",
+								"sectionItemType": "field",
+								"startCol": 0
+							},
+							{
+								"endCol": 2,
+								"fieldId": "blocked",
+								"height": 22,
+								"id": "070ebfa0-84ef-11ec-a589-e73aadc98c9a",
+								"index": 4,
+								"sectionItemType": "field",
+								"startCol": 0
+							},
+							{
+								"endCol": 2,
+								"fieldId": "associatedfilenames",
+								"height": 22,
+								"id": "26e49ed0-84ef-11ec-a589-e73aadc98c9a",
+								"index": 5,
+								"sectionItemType": "field",
+								"startCol": 0
+							},
+							{
+								"endCol": 2,
+								"fieldId": "fileextension",
+								"height": 22,
+								"id": "36c2d0b0-84ef-11ec-a589-e73aadc98c9a",
+								"index": 6,
+								"sectionItemType": "field",
+								"startCol": 0
+							},
+							{
+								"endCol": 2,
+								"fieldId": "path",
+								"height": 22,
+								"id": "3ce12140-84ef-11ec-a589-e73aadc98c9a",
+								"index": 7,
+								"sectionItemType": "field",
+								"startCol": 0
+							},
+							{
+								"endCol": 2,
+								"fieldId": "size",
+								"height": 22,
+								"id": "408ceb30-84ef-11ec-a589-e73aadc98c9a",
+								"index": 8,
+								"sectionItemType": "field",
+								"startCol": 0
+							},
+							{
+								"endCol": 2,
+								"fieldId": "trafficlightprotocol",
+								"height": 22,
+								"id": "45046990-84ef-11ec-a589-e73aadc98c9a",
+								"index": 9,
+								"sectionItemType": "field",
+								"startCol": 0
+							},
+							{
+								"endCol": 2,
+								"fieldId": "tags",
+								"height": 22,
+								"id": "4830ca50-84ef-11ec-a589-e73aadc98c9a",
+								"index": 10,
 								"sectionItemType": "field",
 								"startCol": 0
 							}
 						],
 						"maxW": 3,
 						"minH": 1,
-						"minW": 1,
 						"moved": false,
 						"name": "File Details",
 						"static": false,
 						"w": 1,
 						"x": 0,
-						"y": 3
+						"y": 4
 					},
 					{
 						"h": 1,
@@ -857,14 +680,97 @@
 						"items": [],
 						"maxW": 3,
 						"minH": 1,
-						"minW": 1,
 						"moved": false,
 						"name": "Reputation Status",
 						"static": false,
 						"type": "reputationStatus",
 						"w": 1,
 						"x": 0,
-						"y": 0
+						"y": 1
+					},
+					{
+						"displayType": "ROW",
+						"h": 2,
+						"hideName": false,
+						"i": "indicator-quick-view-info-54ef93c0-84ef-11ec-a589-e73aadc98c9a",
+						"items": [
+							{
+								"endCol": 2,
+								"fieldId": "md5",
+								"height": 22,
+								"id": "6013c000-84ef-11ec-a589-e73aadc98c9a",
+								"index": 0,
+								"sectionItemType": "field",
+								"startCol": 0
+							},
+							{
+								"endCol": 2,
+								"fieldId": "sha1",
+								"height": 22,
+								"id": "62be6da0-84ef-11ec-a589-e73aadc98c9a",
+								"index": 1,
+								"sectionItemType": "field",
+								"startCol": 0
+							},
+							{
+								"endCol": 2,
+								"fieldId": "sha256",
+								"height": 22,
+								"id": "63a8a690-84ef-11ec-a589-e73aadc98c9a",
+								"index": 2,
+								"sectionItemType": "field",
+								"startCol": 0
+							},
+							{
+								"endCol": 2,
+								"fieldId": "sha512",
+								"height": 22,
+								"id": "6476f310-84ef-11ec-a589-e73aadc98c9a",
+								"index": 3,
+								"sectionItemType": "field",
+								"startCol": 0
+							},
+							{
+								"endCol": 2,
+								"fieldId": "imphash",
+								"height": 22,
+								"id": "68d28500-84ef-11ec-a589-e73aadc98c9a",
+								"index": 4,
+								"sectionItemType": "field",
+								"startCol": 0
+							},
+							{
+								"endCol": 2,
+								"fieldId": "ssdeep",
+								"height": 22,
+								"id": "6af89950-84ef-11ec-a589-e73aadc98c9a",
+								"index": 5,
+								"sectionItemType": "field",
+								"startCol": 0
+							}
+						],
+						"maxW": 3,
+						"minH": 1,
+						"moved": false,
+						"name": "Hashes",
+						"static": false,
+						"w": 1,
+						"x": 0,
+						"y": 6
+					},
+					{
+						"h": 2,
+						"i": "indicator-quick-view-info-70b39430-84ef-11ec-a589-e73aadc98c9a",
+						"items": [],
+						"maxW": 3,
+						"minH": 1,
+						"moved": false,
+						"name": "Reputation",
+						"static": false,
+						"type": "reputationSources",
+						"w": 1,
+						"x": 0,
+						"y": 2
 					}
 				],
 				"type": "custom"
@@ -894,7 +800,7 @@
 			}
 		]
 	},
-	"itemVersion": "3.2.46",
+	"itemVersion": "3.3.1",
 	"locked": false,
 	"mobile": null,
 	"name": "File Indicator",
