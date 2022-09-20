@@ -2,7 +2,7 @@ contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 5.0.0
-    itemVersion: 2.2.9
+    itemVersion: 2.3.2
     packID: CommonPlaybooks
     packName: Common Playbooks
     packPropagationLabels:
@@ -638,6 +638,21 @@ outputs:
 - contextPath: VMRay.ThreatIndicator.Operation
   description: The operation that caused the indicators.
   type: string
+- contextPath: SecneurXAnalysis.Report.SHA256
+  description: SHA256 value of the analyzed sample
+  type: string
+- contextPath: SecneurXAnalysis.Report.Verdict
+  description: Summary result of the analyzed sample
+  type: string
+- contextPath: SecneurXAnalysis.Report.Tags
+  description: More details of the analyzed sample
+  type: string
+- contextPath: SecneurXAnalysis.Report.IOC
+  description: List of IOC's observed in the analyzed sample
+  type: string
+- contextPath: SecneurXAnalysis.Report.Status
+  description: Analysis queued sample state
+  type: String
 starttaskid: "0"
 system: true
 tasks:
@@ -663,6 +678,7 @@ tasks:
       - "20"
       - "21"
       - "22"
+      - "23"
     note: false
     quietmode: 0
     separatecontext: false
@@ -1425,6 +1441,39 @@ tasks:
           "y": 195
         }
       }
+  "23":
+    continueonerrortype: ""
+    id: "23"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#none#':
+      - "3"
+    note: false
+    quietmode: 0
+    separatecontext: true
+    skipunavailable: true
+    task:
+      brand: ""
+      description: Detonates a file using the SecneurX Analysis Integration. Returns
+        relevant reports to the War Room and file reputations to the context data.
+      id: 424a0a83-0985-4401-8d3a-8040b957c728
+      iscommand: false
+      name: Detonate File - SecneurX Analysis
+      playbookName: Detonate File - SecneurX Analysis
+      type: playbook
+      version: -1
+    taskid: 424a0a83-0985-4401-8d3a-8040b957c728
+    timertriggers: []
+    type: playbook
+    view: |-
+      {
+        "position": {
+          "x": 5660,
+          "y": 195
+        }
+      }
 version: -1
 view: |-
   {
@@ -1432,7 +1481,7 @@ view: |-
     "paper": {
       "dimensions": {
         "height": 385,
-        "width": 5980,
+        "width": 6420,
         "x": -380,
         "y": 50
       }
