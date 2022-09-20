@@ -2,7 +2,7 @@ contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 6.0.0
-    itemVersion: 3.2.8
+    itemVersion: 3.3.5
     packID: Phishing
     packName: Phishing
     packPropagationLabels:
@@ -257,6 +257,8 @@ tasks:
     note: false
     quietmode: 0
     reputationcalc: 1
+    results:
+    - reportedemailentryid
     scriptarguments:
       entryid:
         simple: ${inputs.File.EntryID}
@@ -351,6 +353,8 @@ tasks:
     note: false
     quietmode: 0
     reputationcalc: 2
+    results:
+    - AttachmentName
     scriptarguments:
       entryid:
         simple: ${reportedemailentryid}
@@ -1700,6 +1704,8 @@ tasks:
     note: false
     quietmode: 0
     reputationcalc: 1
+    results:
+    - reportedemailentryid
     scriptarguments:
       entryid:
         simple: ${File.EntryID}
@@ -2460,6 +2466,7 @@ tasks:
                         simple: File.MD5
                     operator: notIn
                     right:
+                      iscontext: true
                       value:
                         simple: IncidentFiles.MD5
                 - - left:
