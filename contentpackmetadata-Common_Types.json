@@ -25,7 +25,6 @@
 				"name": "Mail Listener - Incoming Mapper"
 			}
 		],
-		"correlationrule": null,
 		"dashboard": null,
 		"genericfield": null,
 		"generictype": null,
@@ -1037,6 +1036,11 @@
 			},
 			{
 				"description": "",
+				"name": "Triage SLA",
+				"type": "timer"
+			},
+			{
+				"description": "",
 				"name": "Source Create time",
 				"type": "shortText"
 			},
@@ -1691,6 +1695,11 @@
 				"type": "shortText"
 			},
 			{
+				"description": "",
+				"name": "Containment SLA",
+				"type": "timer"
+			},
+			{
 				"description": "Notes regarding the assets compliance.",
 				"name": "Compliance Notes",
 				"type": "multiSelect"
@@ -1779,115 +1788,115 @@
 		"incidenttype": [
 			{
 				"closureScript": "",
-				"days": 3,
+				"days": 0,
 				"hours": 0,
 				"name": "Vulnerability",
 				"playbook": "",
-				"weeks": 1
+				"weeks": 0
 			},
 			{
 				"closureScript": "",
-				"days": 3,
+				"days": 0,
 				"hours": 0,
 				"name": "Reconnaissance",
 				"playbook": "",
-				"weeks": 1
+				"weeks": 0
 			},
 			{
 				"closureScript": "",
-				"days": 3,
+				"days": 0,
 				"hours": 0,
 				"name": "Hunt",
 				"playbook": "",
-				"weeks": 1
+				"weeks": 0
 			},
 			{
 				"closureScript": "",
-				"days": 3,
+				"days": 0,
 				"hours": 0,
 				"name": "Exfiltration",
 				"playbook": "",
-				"weeks": 1
+				"weeks": 0
 			},
 			{
 				"closureScript": "",
-				"days": 3,
+				"days": 0,
 				"hours": 0,
 				"name": "Policy Violation",
 				"playbook": "",
-				"weeks": 1
+				"weeks": 0
 			},
 			{
 				"closureScript": "",
-				"days": 3,
+				"days": 0,
 				"hours": 0,
 				"name": "DoS",
 				"playbook": "",
-				"weeks": 1
+				"weeks": 0
 			},
 			{
 				"closureScript": "",
-				"days": 3,
+				"days": 0,
 				"hours": 0,
 				"name": "Network",
 				"playbook": "",
-				"weeks": 1
+				"weeks": 0
 			},
 			{
 				"closureScript": "",
-				"days": 3,
+				"days": 0,
 				"hours": 0,
 				"name": "C2Communication",
 				"playbook": "",
-				"weeks": 1
+				"weeks": 0
 			},
 			{
 				"closureScript": "",
-				"days": 3,
+				"days": 0,
 				"hours": 0,
 				"name": "Lateral Movement",
 				"playbook": "",
-				"weeks": 1
+				"weeks": 0
 			},
 			{
 				"closureScript": "",
-				"days": 3,
+				"days": 0,
 				"hours": 0,
 				"name": "Authentication",
 				"playbook": "",
-				"weeks": 1
+				"weeks": 0
 			},
 			{
 				"closureScript": "",
-				"days": 3,
+				"days": 0,
 				"hours": 0,
 				"name": "Simulation",
 				"playbook": "",
-				"weeks": 1
+				"weeks": 0
 			},
 			{
 				"closureScript": "",
-				"days": 3,
+				"days": 0,
 				"hours": 0,
 				"name": "Defacement",
 				"playbook": "",
-				"weeks": 1
+				"weeks": 0
 			},
 			{
 				"closureScript": "",
-				"days": 3,
+				"days": 0,
 				"hours": 0,
 				"name": "Exploit",
 				"playbook": "",
-				"weeks": 1
+				"weeks": 0
 			},
 			{
 				"closureScript": "",
-				"days": 3,
+				"days": 0,
 				"hours": 0,
 				"name": "UnknownBinary",
 				"playbook": "",
-				"weeks": 1
+				"weeks": 0
 			},
 			{
 				"closureScript": "",
@@ -2900,8 +2909,6 @@
 			}
 		],
 		"list": null,
-		"modelingrule": null,
-		"parsingrule": null,
 		"playbook": null,
 		"report": null,
 		"reputation": [
@@ -3093,19 +3100,17 @@
 			}
 		],
 		"widget": null,
-		"wizard": null,
-		"xsiamdashboard": null,
-		"xsiamreport": null
+		"wizard": null
 	},
-	"created": "2020-07-26T23:01:30+03:00",
-	"currentVersion": "3.2.46",
+	"created": "2020-07-26T20:01:30Z",
+	"currentVersion": "3.3.1",
 	"definitionId": "",
 	"dependencies": {
 		"Base": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": true,
-			"minVersion": "1.31.19",
+			"minVersion": "1.31.24",
 			"name": "Base"
 		},
 		"CVESearch": {
@@ -3119,7 +3124,7 @@
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": true,
-			"minVersion": "1.7.35",
+			"minVersion": "1.7.60",
 			"name": "Common Scripts"
 		},
 		"Compliance": {
@@ -3133,14 +3138,14 @@
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.4.1",
+			"minVersion": "1.4.2",
 			"name": "Malware Core"
 		},
 		"Phishing": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "3.3.3",
+			"minVersion": "3.3.5",
 			"name": "Phishing"
 		},
 		"SplunkPy": {
@@ -3153,7 +3158,7 @@
 	},
 	"deprecated": false,
 	"description": "This Content Pack will get you up and running in no-time and provide you with the most commonly used incident \u0026 indicator fields and types.",
-	"downloads": 51092,
+	"downloads": 51817,
 	"eulaLink": "https://github.com/demisto/content/blob/master/LICENSE",
 	"fromServerVersion": "5.0.0",
 	"general": [
@@ -3170,7 +3175,7 @@
 			"name": "CVE Search v2"
 		}
 	],
-	"itemVersion": "3.2.46",
+	"itemVersion": "3.3.1",
 	"keywords": [],
 	"legacy": true,
 	"name": "Common Types",
@@ -3198,9 +3203,9 @@
 		"Partner Spotlight"
 	],
 	"toServerVersion": "",
-	"updated": "2022-09-13T17:06:36+03:00",
+	"updated": "2022-09-19T22:44:30Z",
 	"useCases": [],
 	"version": -1,
-	"versionInfo": "3649843",
+	"versionInfo": "3687475",
 	"videos": []
 }
