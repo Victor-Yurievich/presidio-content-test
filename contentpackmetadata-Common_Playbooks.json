@@ -11,7 +11,6 @@
 	"contentItems": {
 		"automation": null,
 		"classifier": null,
-		"correlationrule": null,
 		"dashboard": null,
 		"genericfield": null,
 		"generictype": null,
@@ -21,315 +20,349 @@
 		"integration": null,
 		"layoutscontainer": null,
 		"list": null,
-		"modelingrule": null,
-		"parsingrule": null,
 		"playbook": [
 			{
-				"description": "This playbook returns a file sample correlating to a path into the War Room using the following sub-playbooks:\ninputs:\n1) Get File Sample From Path - D2.\n2) Get File Sample From Path - VMware Carbon Black EDR (Live Response API).\n",
-				"name": "Get File Sample From Path - Generic V2"
-			},
-			{
-				"description": "This playbook enables threat hunting for IOCs in your enterprise. It currently supports the following integrations: - Splunk - Qradar - Pan-os - Cortex data lake - Autofocus",
-				"name": "Threat Hunting - Generic"
-			},
-			{
-				"description": "Enrich accounts using one or more integrations.\nSupported integrations:\n- Active Directory",
-				"name": "Account Enrichment - Generic v2.1"
+				"description": "This playbook blocks malicious Domains using all integrations that are enabled.\n\nSupported integrations for this playbook:\n* Zscaler\n* Symantec Messaging Gateway\n* FireEye EX\n* Trend Micro Apex One\n* Proofpoint Threat Response",
+				"name": "Block Domain - Generic"
 			},
 			{
 				"description": "This playbook identifies duplicate incidents using one of the supported methods.\nSelect one of the following methods to identify duplicate incidents in Cortex XSOAR.\n- ml: Machine learning model, which is trained mostly on phishing incidents.\n-rules: Rules help identify duplicate incidents when the logic is well defined, for example, the same label or custom fields.\n-text: Statistics algorithm that compares text, which is generally useful for phishing incidents.\nFor each method, the playbook will search for the oldest similar incident. when there is a match for a similar incident the playbook will close the current incident and will link it to the older incident. ",
 				"name": "Dedup - Generic v3"
 			},
 			{
-				"description": "This playbook retrieves a file sample from an endpoint using the following playbooks:\n- Get File Sample From Path - Generic\n- Get File Sample By Hash - Generic v2",
-				"name": "Retrieve File from Endpoint - Generic"
+				"description": "Enrich accounts using one or more integrations.\nSupported integrations:\n- Active Directory",
+				"name": "Account Enrichment - Generic v2.1"
 			},
 			{
-				"description": "'This playbook retrieves a file sample from an endpoint using the following playbooks:'\n- Get File Sample From Path - Generic v2.\n- Get File Sample By Hash - Generic v3.",
-				"name": "Retrieve File from Endpoint - Generic V2"
-			},
-			{
-				"description": "This playbook polls a context key to check if a specific value exists.",
-				"name": "Context Polling - Generic"
-			},
-			{
-				"description": "This playbook searches for a specific hash in the supported sandboxes. If the hash is known, the playbook provides a detailed analysis of the sandbox report. Currently supported sandboxes are Falcon X and Wildfire. ",
-				"name": "Search For Hash In Sandbox - Generic"
-			},
-			{
-				"description": "Get indicators internal Dbot score",
-				"name": "DBot Indicator Enrichment - Generic"
-			},
-			{
-				"description": "This playbook searches and delete emails with similar attributes of a malicious email.",
-				"name": "Search And Delete Emails - Generic"
-			},
-			{
-				"description": "Determines if a critical assest is associated with the invesigation. The playbook returns a severity level of \"Critical\" if at least one critical asset is associated with the investigation.\nCritical assets refer to: users, user groups, endpoints and endpoint groups.",
-				"name": "Calculate Severity - Critical Assets v2"
-			},
-			{
-				"description": "Calculates the incident severity level according to the highest indicator DBotScore.",
-				"name": "Calculate Severity - Indicators DBotScore"
-			},
-			{
-				"description": "Enrich domains using one or more integrations.\nDomain enrichment includes:\n* Threat information",
-				"name": "Domain Enrichment - Generic v2"
-			},
-			{
-				"description": "Enrich IP addresses using one or more integrations.\n\n- Resolve IP addresses to hostnames (DNS)\n- Provide threat information\n- Separate internal and external IP addresses\n- For internal IP addresses, get host information",
-				"name": "IP Enrichment - Generic v2"
-			},
-			{
-				"description": "Detonate file through active integrations that support file detonation",
-				"name": "Detonate File - Generic"
-			},
-			{
-				"description": "Calculates the incident severity level according to the methodology of a 3rd-party integration.",
-				"name": "Calculate Severity - 3rd-party integrations"
-			},
-			{
-				"description": "Enrich entities using one or more integrations.",
-				"name": "Entity Enrichment - Generic v3"
-			},
-			{
-				"description": "This playbook searches and deletes emails with similar attributes of a malicious email using one of the following integrations: * EWS * Office 365 * Gmail * Agari Phishing Defense",
-				"name": "Search And Delete Emails - Generic v2"
-			},
-			{
-				"description": "Calculate and assign the incident severity based on the highest returned severity level from the following calculations:\n\n- DBotScores of indicators\n- Critical assets\n- Email authenticity\n- Current incident severity\n- Microsoft Headers",
-				"name": "Calculate Severity - Generic v2"
-			},
-			{
-				"description": "This playbook blocks malicious IPs using all integrations that are enabled.\n\nSupported integrations for this playbook:\n* Check Point Firewall\n* Palo Alto Networks Minemeld\n* Palo Alto Networks PAN-OS\n* Zscaler\n* FortiGate",
-				"name": "Block IP - Generic v2"
-			},
-			{
-				"description": "Hunt using available tools",
-				"name": "Search Endpoints By Hash - Generic V2"
-			},
-			{
-				"description": "This playbook enables threat hunting for IOCs in your enterprise. It currently supports the following integrations: - Splunk\n- Qradar\n- Pan-os \n- Cortex data lake \n- Autofocus\n- Microsoft 365 Defender",
-				"name": "Threat Hunting - Generic"
-			},
-			{
-				"description": "This playbook iterates over closed incidents, generates a summary report for each closed incident, and emails the reports to specified users. ",
-				"name": "Send Investigation Summary Reports"
-			},
-			{
-				"description": "Enrich IP addresses using one or more integrations.\n\n- Resolve IP addresses to hostnames (DNS)\n- Provide threat information\n- Separate internal and external addresses",
-				"name": "IP Enrichment - External - Generic v2"
-			},
-			{
-				"description": "Returns a file sample to the war-room from a path on an endpoint using one or more integrations\n\ninputs:\n* UseD2 - if \"True\", use Demisto Dissolvable Agent (D2) to return the file (default: False)",
-				"name": "Get File Sample From Path - Generic"
-			},
-			{
-				"description": "The playbook enables you to get all of the corresponding file hashes for a file even if there is only one hash type available.\nFor example, if we have only the SHA256 hash, the playbook will get the SHA1 and MD5 hashes as long as the\noriginal searched hash is recognized by any our the threat intelligence integrations.\n",
-				"name": "Convert file hash to corresponding hashes"
-			},
-			{
-				"description": "Use this playbook to retrieve the original email in the thread, including headers and attahcments, when the reporting user forwarded the original email not as an attachment.\n\nYou must have the necessary permissions in your email service to execute global search.\n\n- EWS: eDiscovery\n- Gmail: Google Apps Domain-Wide Delegation of Authority",
-				"name": "Get Original Email - Generic"
-			},
-			{
-				"description": "This playbook identifies duplicate incidents using the Cortex XSOAR machine learning method (script).\nIn this playbook, you can choose fields and/or indicators to be compared against other incidents in the Cortex XSOAR database. \n\nNote: To identify similar incidents you must *must* properly define the playbook inputs. ",
-				"name": "Dedup - Generic v4"
-			},
-			{
-				"description": "This playbook uses the generic command !endpoint to retrieve details on a specific endpoint.\nThis command currently supports the following integrations:\n- Palo Alto Networks Cortex XDR - Investigation and Response.\n- CrowdStrike Falcon. ",
-				"name": "Get endpoint details - Generic"
-			},
-			{
-				"description": "Calculates and sets the incident severity based on the combination of the current incident severity, and the severity returned from the Evaluate Severity - Set By Highest DBotScore playbook.",
-				"name": "Calculate Severity - Standard"
-			},
-			{
-				"description": "'This playbook retrieves a file sample from an endpoint using the following playbooks:'\n- Get File Sample From Path - Generic v2.\n- Get File Sample By Hash - Generic v3.",
-				"name": "Retrieve File from Endpoint - Generic V3"
-			},
-			{
-				"description": "Enrich a file using one or more integrations.\n\n- Provide threat information",
-				"name": "File Enrichment - Generic v2"
-			},
-			{
-				"description": "This playbook blocks malicious Domains using all integrations that are enabled.\n\nSupported integrations for this playbook:\n* Zscaler\n* Symantec Messaging Gateway\n* FireEye EX\n* Trend Micro Apex One\n* Proofpoint Threat Response",
-				"name": "Block Domain - Generic"
-			},
-			{
-				"description": "This playbook is used to block files from running on endpoints. \nThis playbook supports the following integrations:\n- Palo Alto Networks Traps\n- Palo Alto Networks Cortex XDR\n- Cybereason\n- Carbon Black Enterprise Response\n- Cylance Protect v2\n",
-				"name": "Block File - Generic v2"
-			},
-			{
-				"description": "This playbook performs CVE Enrichment using the following integrations:\n- VulnDB\n- CVE Search\n- IBM X-Force Exchange",
-				"name": "CVE Enrichment - Generic v2"
-			},
-			{
-				"description": "This playbook unisolates endpoints according to the endpoint ID or host name provided in the playbook.\nIt currently supports the following integrations:\n- Carbon Black Response\n- Cortex XDR\n- Crowdstrike Falcon\n- FireEye HX \n- Cybereason\n- Microsoft Defender For Endpoint",
-				"name": "Unisolate Endpoint - Generic"
-			},
-			{
-				"description": "This playbook blocks malicious usernames using all integrations that you have enabled.\n\nSupported integrations for this playbook:\n* Active Directory\n* PAN-OS - This requires PAN-OS 9.1 or higher.",
-				"name": "Block Account - Generic"
-			},
-			{
-				"description": "Hunt for assets with a given CVE using available tools",
-				"name": "Search Endpoint by CVE - Generic"
-			},
-			{
-				"description": "Pauses execution until the date and time that was specified in the plabyook input is reached.",
-				"name": "Wait Until Datetime"
-			},
-			{
-				"description": "You should run this playbook as a scheduled job, whicn should run at an interval of once every 15 minutes. This playbook functions by calling the sub-playbook: \"Send Investigation Summary Reports\", and closes the incident. By default, the playbook will search all incidents closed within the last hour. If you want to run the playbook more frequently, you should adjust the search query of the child playbook: \"Send Investigation Summary\". Reports.",
-				"name": "Send Investigation Summary Reports Job"
-			},
-			{
-				"description": "This playbook returns a file sample from a specified path and host that you input in the following playbooks:\n1) PS Remote Get File Sample From Path.\n2) Get File Sample From Path - VMware Carbon Black EDR (Live Response API).\n",
-				"name": "Get File Sample From Path - Generic V3"
-			},
-			{
-				"description": "This playbook uploads, detonates, and analyzes files for supported sandboxes. Currently supported sandboxes are Falcon X and Wildfire. ",
-				"name": "Detonate and Analyze File - Generic"
-			},
-			{
-				"description": "This playbook executes one sub-playbook and one automation to check the email headers:\n- **Process Microsoft's Anti-Spam Headers** - This playbook stores the SCL, BCL and PCL scores if they exist to the relevant incident fields (Phishing SCL Score, Phishing PCL Score, Phishing BCL Score).\n- **CheckEmailAuthenticity** - This automation checks email authenticity based on its SPF, DMARC, and DKIM.",
-				"name": "Email Headers Check - Generic"
-			},
-			{
-				"description": "This playbook will block emails at your mail relay integration.",
-				"name": "Block Email - Generic"
-			},
-			{
-				"description": "Enrich entities using one or more integrations",
-				"name": "Entity Enrichment - Generic v2"
-			},
-			{
-				"description": "Deprecated. Use the Dedup Generic v3 playbook instead. This playbook identifies duplicate incidents using one of the supported methods.",
-				"name": "Dedup - Generic v2"
-			},
-			{
-				"description": "This playbook retrieves forensics from hosts for the following integrations:\n - Illusive Networks \n - Microsoft Defender For Endpoint",
-				"name": "Get host forensics - Generic"
-			},
-			{
-				"description": "Calculates the incident severity level according to the highest DBotScore.",
-				"name": "Calculate Severity By Highest DBotScore"
-			},
-			{
-				"description": "This playbook blocks malicious URLs using all integrations that are enabled.\n\nSupported integrations for this playbook:\n* Palo Alto Networks Minemeld\n* Palo Alto Networks PAN-OS\n* Zscaler",
-				"name": "Block URL - Generic"
-			},
-			{
-				"description": "This playbook returns a file sample correlating to a hash in the war-room using the following sub-playbooks:\n- Get File Sample By Hash - Carbon Black Enterprise Response\n- Get File Sample By Hash - Cylance Protect v2",
-				"name": "Get File Sample By Hash - Generic v2"
-			},
-			{
-				"description": "Detonate URL through active integrations that support URL detonation.",
-				"name": "Detonate URL - Generic"
-			},
-			{
-				"description": "Enrich email addresses.\n- Get information from Active Directory for internal addresses\n- Get the domain-squatting reputation for external addresses",
-				"name": "Email Address Enrichment - Generic v2.1"
-			},
-			{
-				"description": "Use this playbook as a sub-playbook to block execution of the master playbook until a remote action is complete.\nThis playbook implements polling by continuously running the command in Step \\#2 until the operation completes.\nThe remote action should have the following structure:\n\n1. Initiate the operation.\n2. Poll to check if the operation completed.\n3. (optional) Get the results of the operation.",
-				"name": "GenericPolling"
-			},
-			{
-				"description": "This playbook retrieves a specified EML/MSG file directly from the email security gateway product.",
-				"name": "Get Email From Email Gateway - Generic"
+				"description": "This playbook blocks malicious Indicators using all integrations that are enabled, using the following sub-playbooks:\n\n- Block URL - Generic\n- Block Account - Generic\n- Block IP - Generic v3\n- Block File - Generic v2\n- Block Email - Generic\n- Block Domain - Generic\n\n",
+				"name": "Block Indicators - Generic v3"
 			},
 			{
 				"description": "This playbook blocks malicious IP addresses using all integrations that are enabled. The direction of the traffic that will be blocked is determined by the XSOAR user (and set by default to outgoing)\nNote the following:\n-  some of those integrations require specific parameters to run, which are based on the playbook inputs. Also, certain integrations use FW rules or appended network objects.\n- Note that the appended network objects should be specified in blocking rules inside the system later on. \n\n\nSupported integrations for this playbook [Network security products such as FW/WAF/IPs/etc.]: \n\n* Check Point Firewall\n* Palo Alto Networks PAN-OS\n* Zscaler\n* FortiGate\n* Aria Packet Intelligence\n* Cisco Firepower \n* Cisco Secure Cloud Analytics\n* Cisco ASA\n* Akamai WAF\n* F5 SilverLine\n* ThreatX\n* Signal Sciences WAF\n* Sophos Firewall\n\n",
 				"name": "Block IP - Generic v3"
 			},
 			{
-				"description": "Get file reputation using one or more integrations",
-				"name": "File Enrichment - File reputation"
+				"description": "'This playbook retrieves a file sample from an endpoint using the following playbooks:'\n- Get File Sample From Path - Generic v2.\n- Get File Sample By Hash - Generic v3.",
+				"name": "Retrieve File from Endpoint - Generic V2"
 			},
 			{
-				"description": "This playbook takes the command line from the alert and performs the following actions:\n- Checks for base64 string and decodes if exists\n- Extracts and enriches indicators from the command line\n- Checks specific arguments for malicious usage \n\nAt the end of the playbook, it sets a possible verdict for the command line, based on the finding:\n1. Indicators found in the command line\n2. Found AMSI techniques\n3. Found suspicious parameters\n4. Usage of malicious tools\n5. Indication of network activity",
-				"name": "Command-Line Analysis"
+				"description": "This playbook enables threat hunting for IOCs in your enterprise. It currently supports the following integrations: - Splunk\n- Qradar\n- Pan-os \n- Cortex data lake \n- Autofocus\n- Microsoft 365 Defender",
+				"name": "Threat Hunting - Generic"
 			},
 			{
-				"description": "Enrich URLs using one or more integrations.\n\nURL enrichment includes:\n* SSL verification for URLs\n* Threat information\n* Providing of URL screenshots",
-				"name": "URL Enrichment - Generic v2"
+				"description": "Deprecated. Use the Dedup Generic v3 playbook instead. This playbook identifies duplicate incidents using one of the supported methods.",
+				"name": "Dedup - Generic v2"
 			},
 			{
-				"description": "This playbook blocks malicious Indicators using all integrations that are enabled, using the following sub-playbooks:\n\n- Block URL - Generic\n- Block Account - Generic\n- Block IP - Generic v2\n- Block File - Generic v2\n- Block Email - Generic\n- Block Domain - Generic\n\n",
-				"name": "Block Indicators - Generic v2"
+				"description": "Use this playbook to retrieve the original email in the thread, including headers and attahcments, when the reporting user forwarded the original email not as an attachment.\n\nYou must have the necessary permissions in your email service to execute global search.\n\n- EWS: eDiscovery\n- Gmail: Google Apps Domain-Wide Delegation of Authority",
+				"name": "Get Original Email - Generic"
 			},
 			{
-				"description": "Enrich Internal IP addresses using one or more integrations.\n\n- Resolve IP address to hostname (DNS)\n- Separate internal and external IP addresses\n- Get host information for IP addresses",
-				"name": "IP Enrichment - Internal - Generic v2"
+				"description": "Detonate file through active integrations that support file detonation",
+				"name": "Detonate File - Generic"
 			},
 			{
-				"description": "This playbook isolates a given endpoint using the following integrations:\n- Carbon Black Enterprise Response\n- Palo Alto Networks Traps",
-				"name": "Isolate Endpoint - Generic"
+				"description": "This playbook uploads, detonates, and analyzes files for supported sandboxes. Currently supported sandboxes are Falcon X and Wildfire. ",
+				"name": "Detonate and Analyze File - Generic"
 			},
 			{
-				"description": "This playbook searches and deletes emails with similar attributes of a malicious email using one of the following integrations: * EWS * Office 365 * Gmail * Agari Phishing Defense",
-				"name": "Search And Delete Emails - Generic v2"
+				"description": "This playbook blocks malicious IPs using all integrations that are enabled.\n\nSupported integrations for this playbook:\n* Check Point Firewall\n* Palo Alto Networks Minemeld\n* Palo Alto Networks PAN-OS\n* Zscaler\n* FortiGate",
+				"name": "Block IP - Generic v2"
 			},
 			{
-				"description": "This playbook isolates a given endpoint using various endpoint product integrations.\nMake sure to provide valid playbook inputs for the integration you are using.",
-				"name": "Isolate Endpoint - Generic V2"
+				"description": "This playbook searches for a specific hash in the supported sandboxes. If the hash is known, the playbook provides a detailed analysis of the sandbox report. Currently supported sandboxes are Falcon X and Wildfire. ",
+				"name": "Search For Hash In Sandbox - Generic"
 			},
 			{
-				"description": "This playbook extracts indicators from a file.\nSupported file types:\n- CSV\n- PDF\n- TXT\n- HTM, HTML\n- DOC, DOCX\n- PPT\n- PPTX\n- RTF\n- XLS\n- XLSX\n- XML",
-				"name": "Extract Indicators From File - Generic v2"
+				"description": "This playbook retrieves a specified EML/MSG file directly from the email security gateway product.",
+				"name": "Get Email From Email Gateway - Generic"
 			},
 			{
-				"description": "Enrich an endpoint by hostname using one or more integrations.\nSupported integrations:\n- Active Directory Query v2\n- McAfee ePolicy Orchestrator\n- Carbon Black Enterprise Response v2\n- Cylance Protect v2\n- CrowdStrike Falcon Host\n- ExtraHop Reveal(x)",
-				"name": "Endpoint Enrichment - Generic v2.1"
+				"description": "Calculates the incident severity level according to the highest indicator DBotScore.",
+				"name": "Calculate Severity - Indicators DBotScore"
+			},
+			{
+				"description": "This playbook retrieves a file sample from an endpoint using the following playbooks:\n- Get File Sample From Path - Generic\n- Get File Sample By Hash - Generic v2",
+				"name": "Retrieve File from Endpoint - Generic"
+			},
+			{
+				"description": "This playbook executes one sub-playbook and one automation to check the email headers:\n- **Process Microsoft's Anti-Spam Headers** - This playbook stores the SCL, BCL and PCL scores if they exist to the relevant incident fields (Phishing SCL Score, Phishing PCL Score, Phishing BCL Score).\n- **CheckEmailAuthenticity** - This automation checks email authenticity based on its SPF, DMARC, and DKIM.",
+				"name": "Email Headers Check - Generic"
+			},
+			{
+				"description": "You should run this playbook as a scheduled job, whicn should run at an interval of once every 15 minutes. This playbook functions by calling the sub-playbook: \"Send Investigation Summary Reports\", and closes the incident. By default, the playbook will search all incidents closed within the last hour. If you want to run the playbook more frequently, you should adjust the search query of the child playbook: \"Send Investigation Summary\". Reports.",
+				"name": "Send Investigation Summary Reports Job"
+			},
+			{
+				"description": "This playbook returns a file sample correlating to a path into the War Room using the following sub-playbooks:\ninputs:\n1) Get File Sample From Path - D2.\n2) Get File Sample From Path - VMware Carbon Black EDR (Live Response API).\n",
+				"name": "Get File Sample From Path - Generic V2"
+			},
+			{
+				"description": "This playbook iterates over closed incidents, generates a summary report for each closed incident, and emails the reports to specified users. ",
+				"name": "Send Investigation Summary Reports"
+			},
+			{
+				"description": "Enrich entities using one or more integrations.",
+				"name": "Entity Enrichment - Generic v3"
+			},
+			{
+				"description": "This playbook returns a file sample from a specified path and host that you input in the following playbooks:\n1) PS Remote Get File Sample From Path.\n2) Get File Sample From Path - VMware Carbon Black EDR (Live Response API).\n",
+				"name": "Get File Sample From Path - Generic V3"
+			},
+			{
+				"description": "Hunt for assets with a given CVE using available tools",
+				"name": "Search Endpoint by CVE - Generic"
+			},
+			{
+				"description": "This playbook blocks malicious usernames using all integrations that you have enabled.\n\nSupported integrations for this playbook:\n* Active Directory\n* PAN-OS - This requires PAN-OS 9.1 or higher.\n* SailPoint\n* PingOne\n* AWS IAM\n* Clarizen IAM\n* Envoy IAM\n* ExceedLMS IAM\n* Okta",
+				"name": "Block Account - Generic v2"
+			},
+			{
+				"description": "Enrich a file using one or more integrations.\n\n- Provide threat information",
+				"name": "File Enrichment - Generic v2"
+			},
+			{
+				"description": "Pauses execution until the date and time that was specified in the plabyook input is reached.",
+				"name": "Wait Until Datetime"
+			},
+			{
+				"description": "Enrich accounts using one or more integrations.\nSupported integrations:\n- Active Directory\n- SailPoint IdentityNow\n- SailPoint IdentityIQ\n- PingOne\n- Okta\n- AWS IAM\n\nAlso, the playbook supports the generic command 'iam-get-user' (implemented in IAM integrations. For more information, visit https://xsoar.pan.dev/docs/integrations/iam-integrations.",
+				"name": "Account Enrichment - Generic v2.1"
+			},
+			{
+				"description": "This playbook blocks malicious URLs using all integrations that are enabled.\n\nSupported integrations for this playbook:\n* Palo Alto Networks Minemeld\n* Palo Alto Networks PAN-OS\n* Zscaler",
+				"name": "Block URL - Generic"
+			},
+			{
+				"description": "This playbook enables threat hunting for IOCs in your enterprise. It currently supports the following integrations: - Splunk - Qradar - Pan-os - Cortex data lake - Autofocus",
+				"name": "Threat Hunting - Generic"
+			},
+			{
+				"description": "The playbook enables you to get all of the corresponding file hashes for a file even if there is only one hash type available.\nFor example, if we have only the SHA256 hash, the playbook will get the SHA1 and MD5 hashes as long as the\noriginal searched hash is recognized by any our the threat intelligence integrations.\n",
+				"name": "Convert file hash to corresponding hashes"
 			},
 			{
 				"description": "This playbook returns a file sample correlating to a hash in the War Room using the following sub-playbooks:\n- Get binary file by MD5 hash from Carbon Black telemetry data - VMware Carbon Black EDR v2.\n- Get the threat (file) attached to a specific SHA256 hash - Cylance Protect v2.",
 				"name": "Get File Sample By Hash - Generic v3"
 			},
 			{
+				"description": "This playbook blocks malicious Indicators using all integrations that are enabled, using the following sub-playbooks:\n\n- Block URL - Generic\n- Block Account - Generic\n- Block IP - Generic v2\n- Block File - Generic v2\n- Block Email - Generic\n- Block Domain - Generic\n\n",
+				"name": "Block Indicators - Generic v2"
+			},
+			{
+				"description": "Calculates the incident severity level according to the methodology of a 3rd-party integration.",
+				"name": "Calculate Severity - 3rd-party integrations"
+			},
+			{
+				"description": "Enrich IP addresses using one or more integrations.\n\n- Resolve IP addresses to hostnames (DNS)\n- Provide threat information\n- Separate internal and external IP addresses\n- For internal IP addresses, get host information",
+				"name": "IP Enrichment - Generic v2"
+			},
+			{
+				"description": "Get indicators internal Dbot score",
+				"name": "DBot Indicator Enrichment - Generic"
+			},
+			{
+				"description": "This playbook extracts indicators from a file.\nSupported file types:\n- CSV\n- PDF\n- TXT\n- HTM, HTML\n- DOC, DOCX\n- PPT\n- PPTX\n- RTF\n- XLS\n- XLSX\n- XML",
+				"name": "Extract Indicators From File - Generic v2"
+			},
+			{
+				"description": "This playbook uses the generic command !endpoint to retrieve details on a specific endpoint.\nThis command currently supports the following integrations:\n- Palo Alto Networks Cortex XDR - Investigation and Response.\n- CrowdStrike Falcon. ",
+				"name": "Get endpoint details - Generic"
+			},
+			{
+				"description": "This playbook blocks malicious URLs using all integrations that are enabled.\n\nSupported integrations for this playbook:\n* Palo Alto Networks PAN-OS\n* Zscaler\n* Sophos\n* Forcepoint\n* Checkpoint\n* Netcraft",
+				"name": "Block URL - Generic v2"
+			},
+			{
+				"description": "Calculate and assign the incident severity based on the highest returned severity level from the following calculations:\n\n- DBotScores of indicators\n- Critical assets\n- Email authenticity\n- Current incident severity\n- Microsoft Headers",
+				"name": "Calculate Severity - Generic v2"
+			},
+			{
+				"description": "'This playbook retrieves a file sample from an endpoint using the following playbooks:'\n- Get File Sample From Path - Generic v2.\n- Get File Sample By Hash - Generic v3.",
+				"name": "Retrieve File from Endpoint - Generic V3"
+			},
+			{
+				"description": "Enrich URLs using one or more integrations.\n\nURL enrichment includes:\n* SSL verification for URLs\n* Threat information\n* Providing of URL screenshots",
+				"name": "URL Enrichment - Generic v2"
+			},
+			{
+				"description": "This playbook searches and delete emails with similar attributes of a malicious email.",
+				"name": "Search And Delete Emails - Generic"
+			},
+			{
+				"description": "This playbook performs CVE Enrichment using the following integrations:\n- VulnDB\n- CVE Search\n- IBM X-Force Exchange",
+				"name": "CVE Enrichment - Generic v2"
+			},
+			{
+				"description": "This playbook identifies duplicate incidents using the Cortex XSOAR machine learning method (script).\nIn this playbook, you can choose fields and/or indicators to be compared against other incidents in the Cortex XSOAR database. \n\nNote: To identify similar incidents you must *must* properly define the playbook inputs. ",
+				"name": "Dedup - Generic v4"
+			},
+			{
+				"description": "This playbook isolates a given endpoint using various endpoint product integrations.\nMake sure to provide valid playbook inputs for the integration you are using.",
+				"name": "Isolate Endpoint - Generic V2"
+			},
+			{
+				"description": "This playbook blocks malicious usernames using all integrations that you have enabled.\n\nSupported integrations for this playbook:\n* Active Directory\n* PAN-OS - This requires PAN-OS 9.1 or higher.",
+				"name": "Block Account - Generic"
+			},
+			{
+				"description": "This playbook retrieves forensics from hosts for the following integrations:\n - Illusive Networks \n - Microsoft Defender For Endpoint",
+				"name": "Get host forensics - Generic"
+			},
+			{
+				"description": "Hunt using available tools",
+				"name": "Search Endpoints By Hash - Generic V2"
+			},
+			{
+				"description": "Enrich an endpoint by hostname using one or more integrations.\nSupported integrations:\n- Active Directory Query v2\n- McAfee ePolicy Orchestrator\n- Carbon Black Enterprise Response v2\n- Cylance Protect v2\n- CrowdStrike Falcon Host\n- ExtraHop Reveal(x)",
+				"name": "Endpoint Enrichment - Generic v2.1"
+			},
+			{
+				"description": "Enrich domains using one or more integrations.\nDomain enrichment includes:\n* Threat information",
+				"name": "Domain Enrichment - Generic v2"
+			},
+			{
+				"description": "This playbook is used to block files from running on endpoints. \nThis playbook supports the following integrations:\n- Palo Alto Networks Traps\n- Palo Alto Networks Cortex XDR\n- Cybereason\n- Carbon Black Enterprise Response\n- Cylance Protect v2\n",
+				"name": "Block File - Generic v2"
+			},
+			{
+				"description": "Enrich Internal IP addresses using one or more integrations.\n\n- Resolve IP address to hostname (DNS)\n- Separate internal and external IP addresses\n- Get host information for IP addresses",
+				"name": "IP Enrichment - Internal - Generic v2"
+			},
+			{
+				"description": "This playbook will block emails at your mail relay integration.\n\nSupported integrations for this playbook:\n* Mimecast\n* FireEye Email Security (EX)\n* Cisco Email Security\n* Symantec Email Security\n",
+				"name": "Block Email - Generic v2"
+			},
+			{
+				"description": "Enrich IP addresses using one or more integrations.\n\n- Resolve IP addresses to hostnames (DNS)\n- Provide threat information\n- Separate internal and external addresses",
+				"name": "IP Enrichment - External - Generic v2"
+			},
+			{
+				"description": "Enrich entities using one or more integrations",
+				"name": "Entity Enrichment - Generic v2"
+			},
+			{
+				"description": "Determines if a critical assest is associated with the invesigation. The playbook returns a severity level of \"Critical\" if at least one critical asset is associated with the investigation.\nCritical assets refer to: users, user groups, endpoints and endpoint groups.",
+				"name": "Calculate Severity - Critical Assets v2"
+			},
+			{
+				"description": "This playbook takes the command line from the alert and performs the following actions:\n- Checks for base64 string and decodes if exists\n- Extracts and enriches indicators from the command line\n- Checks specific arguments for malicious usage \n\nAt the end of the playbook, it sets a possible verdict for the command line, based on the finding:\n1. Indicators found in the command line\n2. Found AMSI techniques\n3. Found suspicious parameters\n4. Usage of malicious tools\n5. Indication of network activity",
+				"name": "Command-Line Analysis"
+			},
+			{
+				"description": "This playbook searches and deletes emails with similar attributes of a malicious email using one of the following integrations: * EWS * Office 365 * Gmail * Agari Phishing Defense",
+				"name": "Search And Delete Emails - Generic v2"
+			},
+			{
+				"description": "This playbook returns a file sample correlating to a hash in the war-room using the following sub-playbooks:\n- Get File Sample By Hash - Carbon Black Enterprise Response\n- Get File Sample By Hash - Cylance Protect v2",
+				"name": "Get File Sample By Hash - Generic v2"
+			},
+			{
+				"description": "This playbook polls a context key to check if a specific value exists.",
+				"name": "Context Polling - Generic"
+			},
+			{
+				"description": "Calculates the incident severity level according to the highest DBotScore.",
+				"name": "Calculate Severity By Highest DBotScore"
+			},
+			{
+				"description": "This playbook blocks malicious Domains using all integrations that are enabled.\n\nSupported integrations for this playbook:\n* Zscaler\n* Symantec Messaging Gateway\n* FireEye EX\n* Trend Micro Apex One\n* Proofpoint Threat Response\n* Cisco Stealthwatch Cloud\n",
+				"name": "Block Domain - Generic v2"
+			},
+			{
+				"description": "Detonate URL through active integrations that support URL detonation.",
+				"name": "Detonate URL - Generic"
+			},
+			{
 				"description": "This playbook polls a field to check if a specific value exists.",
 				"name": "Field Polling - Generic"
+			},
+			{
+				"description": "This playbook searches and deletes emails with similar attributes of a malicious email using one of the following integrations: * EWS * Office 365 * Gmail * Agari Phishing Defense",
+				"name": "Search And Delete Emails - Generic v2"
+			},
+			{
+				"description": "Use this playbook as a sub-playbook to block execution of the master playbook until a remote action is complete.\nThis playbook implements polling by continuously running the command in Step \\#2 until the operation completes.\nThe remote action should have the following structure:\n\n1. Initiate the operation.\n2. Poll to check if the operation completed.\n3. (optional) Get the results of the operation.",
+				"name": "GenericPolling"
+			},
+			{
+				"description": "This playbook will block emails at your mail relay integration.",
+				"name": "Block Email - Generic"
+			},
+			{
+				"description": "Get file reputation using one or more integrations",
+				"name": "File Enrichment - File reputation"
+			},
+			{
+				"description": "Returns a file sample to the war-room from a path on an endpoint using one or more integrations\n\ninputs:\n* UseD2 - if \"True\", use Demisto Dissolvable Agent (D2) to return the file (default: False)",
+				"name": "Get File Sample From Path - Generic"
+			},
+			{
+				"description": "Calculates and sets the incident severity based on the combination of the current incident severity, and the severity returned from the Evaluate Severity - Set By Highest DBotScore playbook.",
+				"name": "Calculate Severity - Standard"
+			},
+			{
+				"description": "Enrich email addresses.\n- Get information from Active Directory for internal addresses\n- Get the domain-squatting reputation for external addresses",
+				"name": "Email Address Enrichment - Generic v2.1"
+			},
+			{
+				"description": "This playbook isolates a given endpoint using the following integrations:\n- Carbon Black Enterprise Response\n- Palo Alto Networks Traps",
+				"name": "Isolate Endpoint - Generic"
+			},
+			{
+				"description": "This playbook unisolates endpoints according to the endpoint ID or host name provided in the playbook.\nIt currently supports the following integrations:\n- Carbon Black Response\n- Cortex XDR\n- Crowdstrike Falcon\n- FireEye HX \n- Cybereason\n- Microsoft Defender For Endpoint",
+				"name": "Unisolate Endpoint - Generic"
 			}
 		],
 		"report": null,
 		"reputation": null,
 		"widget": null,
-		"wizard": null,
-		"xsiamdashboard": null,
-		"xsiamreport": null
+		"wizard": null
 	},
-	"created": "2020-08-17T14:42:31+03:00",
-	"currentVersion": "2.2.9",
+	"created": "2020-08-17T11:42:31Z",
+	"currentVersion": "2.3.2",
 	"definitionId": "",
 	"dependencies": {
 		"ANYRUN": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.0.9",
+			"minVersion": "1.0.10",
 			"name": "ANY.RUN"
 		},
 		"ARIAPacketIntelligence": {
 			"author": "ARIA Cybersecurity Solutions",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "2.0.8",
+			"minVersion": "2.0.9",
 			"name": "ARIAPacketIntelligence"
+		},
+		"AWS-IAM": {
+			"author": "Cortex XSOAR",
+			"certification": "certified",
+			"mandatory": false,
+			"minVersion": "1.1.11",
+			"name": "AWS - IAM"
+		},
+		"AWS-ILM": {
+			"author": "Cortex XSOAR",
+			"certification": "certified",
+			"mandatory": false,
+			"minVersion": "1.0.5",
+			"name": "AWS-ILM"
 		},
 		"Active_Directory_Query": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.4.15",
+			"minVersion": "1.5.0",
 			"name": "Active Directory Query"
 		},
 		"AgariPhishingDefense": {
 			"author": "Agari",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.1.0",
+			"minVersion": "1.1.1",
 			"name": "Agari Phishing Defense"
 		},
 		"Akamai_WAF": {
@@ -343,21 +376,28 @@
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "2.0.12",
+			"minVersion": "2.0.16",
 			"name": "Anomali ThreatStream"
+		},
+		"Attlasian": {
+			"author": "Cortex XSOAR",
+			"certification": "certified",
+			"mandatory": false,
+			"minVersion": "1.1.7",
+			"name": "Atlassian IAM"
 		},
 		"Base": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": true,
-			"minVersion": "1.31.8",
+			"minVersion": "1.31.24",
 			"name": "Base"
 		},
 		"CarbonBlackProtect": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.0.25",
+			"minVersion": "1.0.28",
 			"name": "Carbon Black Enterprise Protection"
 		},
 		"Carbon_Black_Enterprise_Live_Response": {
@@ -371,29 +411,36 @@
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "2.1.17",
+			"minVersion": "2.1.24",
 			"name": "Carbon Black Enterprise Response"
 		},
 		"CheckpointFirewall": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "2.2.1",
+			"minVersion": "2.3.2",
 			"name": "Check Point Firewall"
 		},
 		"Cisco-umbrella": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.0.11",
+			"minVersion": "1.0.14",
 			"name": "Cisco Umbrella Investigate"
 		},
 		"CiscoASA": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.0.20",
+			"minVersion": "1.0.22",
 			"name": "Cisco ASA"
+		},
+		"CiscoEmailSecurity": {
+			"author": "Cortex XSOAR",
+			"certification": "certified",
+			"mandatory": false,
+			"minVersion": "1.0.9",
+			"name": "Cisco Email Security (Beta)"
 		},
 		"CiscoFirepower": {
 			"author": "Cortex XSOAR",
@@ -402,53 +449,67 @@
 			"minVersion": "1.1.1",
 			"name": "Cisco Firepower"
 		},
+		"CiscoStealthwatch": {
+			"author": "Cortex XSOAR",
+			"certification": "certified",
+			"mandatory": false,
+			"minVersion": "1.0.6",
+			"name": "Cisco Secure Network Analytics (Stealthwatch)"
+		},
+		"Clarizen": {
+			"author": "Cortex XSOAR",
+			"certification": "certified",
+			"mandatory": false,
+			"minVersion": "1.0.4",
+			"name": "Clarizen IAM"
+		},
 		"Code42": {
 			"author": "Code42",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "2.0.13",
+			"minVersion": "3.0.0",
 			"name": "Code42"
 		},
 		"CommonScripts": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": true,
-			"minVersion": "1.7.13",
+			"minVersion": "1.7.60",
 			"name": "Common Scripts"
 		},
 		"CommonTypes": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": true,
-			"minVersion": "3.2.37",
+			"minVersion": "3.2.46",
 			"name": "Common Types"
 		},
 		"CortexXDR": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "4.7.3",
+			"minVersion": "4.8.16",
 			"name": "Palo Alto Networks Cortex XDR - Investigation and Response"
 		},
 		"CrowdStrikeFalcon": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.8.8",
+			"minVersion": "1.9.1",
 			"name": "CrowdStrike Falcon"
 		},
 		"CrowdStrikeFalconSandbox": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "2.0.3",
+			"minVersion": "2.0.6",
 			"name": "CrowdStrike Falcon Sandbox"
 		},
 		"CrowdStrikeFalconX": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.2.9",
+			"minVersion": "1.2.11",
 			"name": "CrowdStrike FalconX"
 		},
 		"CrowdStrikeHost": {
@@ -462,36 +523,50 @@
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.1.1",
+			"minVersion": "1.1.2",
 			"name": "Cuckoo Sandbox"
 		},
 		"Cybereason": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.0.20",
+			"minVersion": "1.0.22",
 			"name": "Cybereason"
 		},
 		"Cylance_Protect": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.1.0",
+			"minVersion": "1.1.1",
 			"name": "Cylance Protect"
 		},
 		"D2": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.0.5",
+			"minVersion": "1.0.7",
 			"name": "D2"
 		},
 		"EWS": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.12.1",
+			"minVersion": "1.13.0",
 			"name": "EWS"
+		},
+		"Envoy": {
+			"author": "Cortex XSOAR",
+			"certification": "certified",
+			"mandatory": false,
+			"minVersion": "1.0.3",
+			"name": "Envoy"
+		},
+		"ExceedLMS": {
+			"author": "Cortex XSOAR",
+			"certification": "certified",
+			"mandatory": false,
+			"minVersion": "1.0.4",
+			"name": "Exceed LMS"
 		},
 		"ExtraHop": {
 			"author": "ExtraHop",
@@ -504,7 +579,7 @@
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.0.17",
+			"minVersion": "1.0.18",
 			"name": "F5 Silverline"
 		},
 		"FeedMitreAttackv2": {
@@ -518,7 +593,7 @@
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": true,
-			"minVersion": "1.0.2",
+			"minVersion": "1.1.0",
 			"name": "Filters And Transformers"
 		},
 		"FireEyeEX": {
@@ -532,15 +607,29 @@
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "2.2.6",
+			"minVersion": "2.2.7",
 			"name": "FireEye HX"
+		},
+		"Forcepoint": {
+			"author": "Cortex XSOAR",
+			"certification": "certified",
+			"mandatory": false,
+			"minVersion": "1.0.5",
+			"name": "Forcepoint"
 		},
 		"FortiGate": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.0.7",
+			"minVersion": "1.0.13",
 			"name": "FortiGate"
+		},
+		"GitHub": {
+			"author": "Cortex XSOAR",
+			"certification": "certified",
+			"mandatory": false,
+			"minVersion": "2.0.4",
+			"name": "GitHub"
 		},
 		"Gmail": {
 			"author": "Cortex XSOAR",
@@ -553,21 +642,28 @@
 			"author": "Hatching",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.0.5",
+			"minVersion": "1.0.6",
 			"name": "Hatching Triage"
+		},
+		"HelloIAMWorld": {
+			"author": "Cortex XSOAR",
+			"certification": "certified",
+			"mandatory": false,
+			"minVersion": "1.1.5",
+			"name": "Hello World IAM"
 		},
 		"HybridAnalysis": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.0.2",
-			"name": "Hybrid Analysis"
+			"minVersion": "1.0.3",
+			"name": "Hybrid Analysis (Deprecated)"
 		},
 		"IllusiveNetworks": {
 			"author": "Illusive Networks",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.0.17",
+			"minVersion": "1.0.18",
 			"name": "Illusive Networks"
 		},
 		"ImageOCR": {
@@ -588,56 +684,77 @@
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.1.14",
+			"minVersion": "1.1.15",
 			"name": "Kenna"
 		},
 		"Lastline": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.0.13",
+			"minVersion": "1.0.14",
 			"name": "Lastline"
 		},
 		"McAfee-TIE": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.0.4",
+			"minVersion": "1.0.5",
 			"name": "McAfee Threat Intelligence Exchange"
 		},
 		"McAfee_Advanced_Threat_Defense": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.0.17",
+			"minVersion": "1.0.19",
 			"name": "McAfee Advanced Threat Defense"
 		},
 		"Microsoft365Defender": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "4.0.1",
+			"minVersion": "4.2.0",
 			"name": "Microsoft 365 Defender"
 		},
 		"MicrosoftDefenderAdvancedThreatProtection": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.11.5",
+			"minVersion": "1.12.4",
 			"name": "Microsoft Defender for Endpoint"
 		},
 		"Mimecast": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.1.10",
+			"minVersion": "2.1.0",
 			"name": "Mimecast"
+		},
+		"Netcraft": {
+			"author": "Cortex XSOAR",
+			"certification": "certified",
+			"mandatory": false,
+			"minVersion": "1.0.13",
+			"name": "Netcraft"
+		},
+		"Okta": {
+			"author": "Cortex XSOAR",
+			"certification": "certified",
+			"mandatory": false,
+			"minVersion": "3.0.6",
+			"name": "Okta"
+		},
+		"Oracle_IAM": {
+			"author": "Cortex XSOAR",
+			"certification": "certified",
+			"mandatory": false,
+			"minVersion": "1.0.3",
+			"name": "Oracle IAM"
 		},
 		"PAN-OS": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.14.8",
+			"minVersion": "1.14.19",
 			"name": "PAN-OS"
 		},
 		"PANWComprehensiveInvestigation": {
@@ -658,22 +775,36 @@
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "2.1.5",
+			"minVersion": "2.1.6",
 			"name": "Palo Alto Networks WildFire"
 		},
 		"Phishing": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "3.2.8",
+			"minVersion": "3.3.5",
 			"name": "Phishing"
+		},
+		"PingIdentity": {
+			"author": "Ping Identity",
+			"certification": "certified",
+			"mandatory": false,
+			"minVersion": "1.0.1",
+			"name": "PingIdentity"
 		},
 		"Polygon": {
 			"author": "Group-IB",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.0.7",
+			"minVersion": "1.0.8",
 			"name": "Polygon"
+		},
+		"PrismaCloud": {
+			"author": "Cortex XSOAR",
+			"certification": "certified",
+			"mandatory": false,
+			"minVersion": "2.0.15",
+			"name": "Prisma Cloud"
 		},
 		"ProofpointServerProtection": {
 			"author": "Cortex XSOAR",
@@ -686,14 +817,14 @@
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.0.12",
+			"minVersion": "1.0.13",
 			"name": "Proofpoint Threat Response (Beta)"
 		},
 		"QRadar": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "2.2.2",
+			"minVersion": "2.2.10",
 			"name": "IBM QRadar"
 		},
 		"Rapid7_Nexpose": {
@@ -710,6 +841,13 @@
 			"minVersion": "1.0.10",
 			"name": "RiskSense"
 		},
+		"SAP_IAM": {
+			"author": "Cortex XSOAR",
+			"certification": "certified",
+			"mandatory": false,
+			"minVersion": "1.0.4",
+			"name": "SAP-IAM"
+		},
 		"SNDBOX": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
@@ -717,53 +855,102 @@
 			"minVersion": "1.0.7",
 			"name": "SNDBOX (Deprecated)"
 		},
+		"SailPointIdentityIQ": {
+			"author": "SailPoint",
+			"certification": "certified",
+			"mandatory": false,
+			"minVersion": "1.0.6",
+			"name": "SailPoint IdentityIQ"
+		},
+		"SailPointIdentityNow": {
+			"author": "SailPoint",
+			"certification": "certified",
+			"mandatory": false,
+			"minVersion": "1.0.4",
+			"name": "SailPoint IdentityNow"
+		},
+		"Salesforce": {
+			"author": "Cortex XSOAR",
+			"certification": "certified",
+			"mandatory": false,
+			"minVersion": "2.0.4",
+			"name": "Salesforce"
+		},
+		"SalesforceFusion": {
+			"author": "Cortex XSOAR",
+			"certification": "certified",
+			"mandatory": false,
+			"minVersion": "1.0.3",
+			"name": "Salesforce Fusion"
+		},
+		"SecneurXAnalysis": {
+			"author": "SecneurX Technologies",
+			"certification": "certified",
+			"mandatory": false,
+			"minVersion": "1.0.0",
+			"name": "SecneurX Analysis"
+		},
+		"ServiceNow": {
+			"author": "Cortex XSOAR",
+			"certification": "certified",
+			"mandatory": false,
+			"minVersion": "2.3.23",
+			"name": "ServiceNow"
+		},
 		"SignalSciences": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.0.9",
+			"minVersion": "1.0.10",
 			"name": "Signal Sciences WAF"
+		},
+		"Slack": {
+			"author": "Cortex XSOAR",
+			"certification": "certified",
+			"mandatory": false,
+			"minVersion": "3.1.2",
+			"name": "Slack"
 		},
 		"SophosXGFirewall": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.1.2",
+			"minVersion": "1.1.3",
 			"name": "Sophos XG Firewall"
 		},
 		"SplunkPy": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "2.4.4",
+			"minVersion": "2.4.12",
 			"name": "Splunk"
 		},
 		"Stealthwatch_Cloud": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.0.9",
+			"minVersion": "1.0.10",
 			"name": "Cisco Secure Cloud Analytics (Stealthwatch Cloud)"
 		},
 		"Symantec_Messaging_Gateway": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.0.4",
+			"minVersion": "1.0.5",
 			"name": "Symantec Messaging Gateway"
 		},
 		"ThreatGrid": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.2.13",
+			"minVersion": "1.2.14",
 			"name": "Cisco Secure Malware Analytics"
 		},
 		"ThreatX": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.0.7",
+			"minVersion": "1.0.8",
 			"name": "ThreatX"
 		},
 		"Threat_Crowd": {
@@ -784,22 +971,22 @@
 			"author": "VMRay",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.1.5",
+			"minVersion": "1.1.6",
 			"name": "VMRay Analyzer"
 		},
 		"VirusTotal": {
 			"author": "VirusTotal",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "2.4.4",
+			"minVersion": "2.4.10",
 			"name": "VirusTotal"
 		},
 		"VirusTotal-Private_API": {
 			"author": "VirusTotal",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.0.15",
-			"name": "VirusTotal - Private API"
+			"minVersion": "1.0.16",
+			"name": "VirusTotal - Private API (Deprecated)"
 		},
 		"VulnDB": {
 			"author": "Cortex XSOAR",
@@ -819,41 +1006,48 @@
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.1.14",
+			"minVersion": "1.1.15",
 			"name": "IBM X-Force Exchange"
+		},
+		"Zoom": {
+			"author": "Cortex XSOAR",
+			"certification": "certified",
+			"mandatory": false,
+			"minVersion": "1.1.3",
+			"name": "Zoom"
 		},
 		"Zscaler": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.2.0",
+			"minVersion": "1.2.5",
 			"name": "Zscaler Internet Access"
 		},
 		"epo": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "2.0.6",
+			"minVersion": "2.0.10",
 			"name": "McAfee ePO"
 		},
 		"fireeye": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.0.9",
+			"minVersion": "1.0.10",
 			"name": "FireEye (AX Series)"
 		},
 		"rasterize": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": true,
-			"minVersion": "1.2.0",
+			"minVersion": "1.2.6",
 			"name": "Rasterize"
 		}
 	},
 	"deprecated": false,
 	"description": "Frequently used playbooks pack.",
-	"downloads": 32113,
+	"downloads": 38494,
 	"eulaLink": "https://github.com/demisto/content/blob/master/LICENSE",
 	"fromServerVersion": "5.0.0",
 	"general": [
@@ -868,6 +1062,10 @@
 		{
 			"imagePath": "content/packs/Active_Directory_Query/ActiveDirectoryQueryv2_image.png",
 			"name": "Active Directory Query v2"
+		},
+		{
+			"imagePath": "content/packs/rasterize/Rasterize_image.png",
+			"name": "Rasterize"
 		},
 		{
 			"imagePath": "content/packs/EWS/EWS_image.png",
@@ -902,12 +1100,24 @@
 			"name": "O365 - Security And Compliance - Content Search (beta)"
 		},
 		{
-			"imagePath": "content/packs/rasterize/Rasterize_image.png",
-			"name": "Rasterize"
-		},
-		{
 			"imagePath": "content/packs/PAN-OS/Panorama_image.png",
 			"name": "Palo Alto Networks PAN-OS"
+		},
+		{
+			"imagePath": "content/packs/ServiceNow/ServiceNow_image.png",
+			"name": "ServiceNow (Deprecated)"
+		},
+		{
+			"imagePath": "content/packs/ServiceNow/ServiceNowCMDB_image.png",
+			"name": "ServiceNow CMDB"
+		},
+		{
+			"imagePath": "content/packs/ServiceNow/ServiceNowIAM_image.png",
+			"name": "ServiceNow IAM"
+		},
+		{
+			"imagePath": "content/packs/ServiceNow/ServiceNowv2_image.png",
+			"name": "ServiceNow v2"
 		},
 		{
 			"imagePath": "content/packs/CortexXDR/CortexXDR-IOC_image.png",
@@ -922,12 +1132,12 @@
 			"name": "Palo Alto Networks Cortex XDR - Investigation and Response"
 		},
 		{
-			"imagePath": "content/packs/VirusTotal/VirusTotal_image.png",
-			"name": "VirusTotal"
-		},
-		{
 			"imagePath": "content/packs/VirusTotal/VirusTotal%28APIv3%29_image.png",
 			"name": "VirusTotal (API v3)"
+		},
+		{
+			"imagePath": "content/packs/VirusTotal/VirusTotal_image.png",
+			"name": "VirusTotal (Deprecated)"
 		},
 		{
 			"imagePath": "content/packs/VirusTotal/VirusTotal-Premium%28APIv3%29_image.png",
@@ -946,14 +1156,6 @@
 			"name": "SplunkPy"
 		},
 		{
-			"imagePath": "content/packs/Palo_Alto_Networks_WildFire/WildFire-Reports_image.png",
-			"name": "Palo Alto Networks WildFire Reports"
-		},
-		{
-			"imagePath": "content/packs/Palo_Alto_Networks_WildFire/WildFire-v2_image.png",
-			"name": "Palo Alto Networks WildFire v2"
-		},
-		{
 			"imagePath": "content/packs/QRadar/QRadar_image.png",
 			"name": "IBM QRadar (Deprecated)"
 		},
@@ -966,12 +1168,32 @@
 			"name": "IBM QRadar v3"
 		},
 		{
+			"imagePath": "content/packs/Palo_Alto_Networks_WildFire/WildFire-Reports_image.png",
+			"name": "Palo Alto Networks WildFire Reports"
+		},
+		{
+			"imagePath": "content/packs/Palo_Alto_Networks_WildFire/WildFire-v2_image.png",
+			"name": "Palo Alto Networks WildFire v2"
+		},
+		{
 			"imagePath": "content/packs/FeedMitreAttackv2/MITREATT%26CKv2_image.png",
 			"name": "MITRE ATT\u0026CK"
 		},
 		{
 			"imagePath": "content/packs/FeedMitreAttackv2/MITREATT%26CKv2_image.png",
 			"name": "MITRE ATT\u0026CK Feed v2"
+		},
+		{
+			"imagePath": "content/packs/Slack/SlackIAM_image.png",
+			"name": "Slack IAM"
+		},
+		{
+			"imagePath": "content/packs/Slack/SlackV2_image.png",
+			"name": "Slack v2"
+		},
+		{
+			"imagePath": "content/packs/Slack/SlackV3_image.png",
+			"name": "Slack v3"
 		},
 		{
 			"imagePath": "content/packs/XForceExchange/XFE_image.png",
@@ -982,12 +1204,24 @@
 			"name": "IBM X-Force Exchange v2"
 		},
 		{
+			"imagePath": "content/packs/MicrosoftDefenderAdvancedThreatProtection/MicrosoftDefenderAdvancedThreatProtection_image.png",
+			"name": "Microsoft Defender for Endpoint"
+		},
+		{
 			"imagePath": "content/packs/Gmail/Gmail_image.png",
 			"name": "Gmail"
 		},
 		{
-			"imagePath": "content/packs/MicrosoftDefenderAdvancedThreatProtection/MicrosoftDefenderAdvancedThreatProtection_image.png",
-			"name": "Microsoft Defender for Endpoint"
+			"imagePath": "content/packs/Okta/OktaIAM_image.png",
+			"name": "Okta IAM"
+		},
+		{
+			"imagePath": "content/packs/Okta/Oktav2_image.png",
+			"name": "Okta v2"
+		},
+		{
+			"imagePath": "content/packs/Okta/okta_image.png",
+			"name": "okta (Deprecated)"
 		},
 		{
 			"imagePath": "content/packs/ImageOCR/ImageOCR_image.png",
@@ -998,16 +1232,36 @@
 			"name": "Zscaler Internet Access"
 		},
 		{
-			"imagePath": "content/packs/VirusTotal-Private_API/VirusTotal-PrivateAPI_image.png",
-			"name": "VirusTotal - Private API"
-		},
-		{
 			"imagePath": "content/packs/Carbon_Black_Enterprise_Response/carbonblack-v2_image.png",
 			"name": "VMware Carbon Black EDR (Deprecated)"
 		},
 		{
 			"imagePath": "content/packs/Carbon_Black_Enterprise_Response/VMwareCarbonBlackEDRv2_image.png",
 			"name": "VMware Carbon Black EDR v2"
+		},
+		{
+			"imagePath": "content/packs/GitHub/GitHub_image.png",
+			"name": "GitHub"
+		},
+		{
+			"imagePath": "content/packs/GitHub/GitHubIAM_image.png",
+			"name": "GitHub IAM"
+		},
+		{
+			"imagePath": "content/packs/PrismaCloud/RedLock_image.png",
+			"name": "Prisma Cloud (RedLock)"
+		},
+		{
+			"imagePath": "content/packs/PrismaCloud/PrismaCloudIAM_image.png",
+			"name": "PrismaCloud IAM"
+		},
+		{
+			"imagePath": "content/packs/VirusTotal-Private_API/VirusTotal-PrivateAPI_image.png",
+			"name": "VirusTotal - Private API (Deprecated)"
+		},
+		{
+			"imagePath": "content/packs/AWS-IAM/AWS-IAM_image.png",
+			"name": "AWS - Identity and Access Management"
 		},
 		{
 			"imagePath": "content/packs/CheckpointFirewall/CheckPoint_image.png",
@@ -1034,22 +1288,6 @@
 			"name": "VMware Carbon Black App Control v2"
 		},
 		{
-			"imagePath": "content/packs/FireEyeHX/FireEyeHXv2_image.png",
-			"name": "FireEye Endpoint Security (HX) v2"
-		},
-		{
-			"imagePath": "content/packs/FireEyeHX/FireEyeHX_image.png",
-			"name": "FireEye HX"
-		},
-		{
-			"imagePath": "content/packs/Cybereason/Cybereason_image.png",
-			"name": "Cybereason"
-		},
-		{
-			"imagePath": "content/packs/CrowdStrikeFalconX/CrowdStrikeFalconX_image.png",
-			"name": "CrowdStrike Falcon X"
-		},
-		{
 			"imagePath": "content/packs/epo/epo_image.png",
 			"name": "McAfee ePO (Deprecated)"
 		},
@@ -1058,16 +1296,44 @@
 			"name": "McAfee ePO v2"
 		},
 		{
+			"imagePath": "content/packs/CrowdStrikeFalconX/CrowdStrikeFalconX_image.png",
+			"name": "CrowdStrike Falcon X"
+		},
+		{
+			"imagePath": "content/packs/FireEyeHX/FireEyeHXv2_image.png",
+			"name": "FireEye Endpoint Security (HX) v2"
+		},
+		{
+			"imagePath": "content/packs/FireEyeHX/FireEyeHX_image.png",
+			"name": "FireEye HX (Deprecated)"
+		},
+		{
+			"imagePath": "content/packs/Cybereason/Cybereason_image.png",
+			"name": "Cybereason"
+		},
+		{
 			"imagePath": "content/packs/McAfee_Advanced_Threat_Defense/McAfeeAdvancedThreatDefense_image.png",
 			"name": "McAfee Advanced Threat Defense"
 		},
 		{
-			"imagePath": "content/packs/Rapid7_Nexpose/Rapid7Nexpose_image.png",
-			"name": "Rapid7 Nexpose"
+			"imagePath": "content/packs/Microsoft365Defender/Microsoft365Defender_image.png",
+			"name": "Microsoft 365 Defender"
+		},
+		{
+			"imagePath": "content/packs/Microsoft365Defender/O365DefenderSafeLinks_image.png",
+			"name": "O365 Defender SafeLinks"
+		},
+		{
+			"imagePath": "content/packs/Microsoft365Defender/O365DefenderSafeLinks-SingleUser_image.png",
+			"name": "O365 Defender SafeLinks - Single User"
 		},
 		{
 			"imagePath": "content/packs/Cisco-umbrella/CiscoUmbrellaInvestigate_image.png",
 			"name": "Cisco Umbrella Investigate"
+		},
+		{
+			"imagePath": "content/packs/Rapid7_Nexpose/Rapid7Nexpose_image.png",
+			"name": "Rapid7 Nexpose"
 		},
 		{
 			"imagePath": "content/packs/ThreatGrid/CiscoSecureMalwareAnalytics_image.png",
@@ -1082,28 +1348,56 @@
 			"name": "Cylance Protect v2"
 		},
 		{
-			"imagePath": "content/packs/ExtraHop/ExtraHopv2_image.png",
-			"name": "ExtraHop Reveal(x) v2"
+			"imagePath": "content/packs/ANYRUN/ANYRUN_image.png",
+			"name": "ANY.RUN"
 		},
 		{
 			"imagePath": "content/packs/VMRay/vmray_image.png",
 			"name": "VMRay"
 		},
 		{
-			"imagePath": "content/packs/ANYRUN/ANYRUN_image.png",
-			"name": "ANY.RUN"
+			"imagePath": "content/packs/CrowdStrikeFalconSandbox/VxStream_image.png",
+			"name": "CrowdStrike Falcon Sandbox (Deprecated)"
 		},
 		{
-			"imagePath": "content/packs/Microsoft365Defender/Microsoft365Defender_image.png",
-			"name": "Microsoft 365 Defender"
+			"imagePath": "content/packs/CrowdStrikeFalconSandbox/CrowdStrikeFalconSandboxV2_image.png",
+			"name": "CrowdStrike Falcon Sandbox v2 (Hybrid-Analysis)"
 		},
 		{
-			"imagePath": "content/packs/Microsoft365Defender/O365DefenderSafeLinks_image.png",
-			"name": "O365 Defender SafeLinks"
+			"imagePath": "content/packs/ExtraHop/ExtraHopv2_image.png",
+			"name": "ExtraHop Reveal(x) v2"
 		},
 		{
-			"imagePath": "content/packs/Microsoft365Defender/O365DefenderSafeLinks-SingleUser_image.png",
-			"name": "O365 Defender SafeLinks - Single User"
+			"imagePath": "content/packs/ProofpointThreatResponse/ProofpointThreatResponse_image.png",
+			"name": "Proofpoint Threat Response (Beta)"
+		},
+		{
+			"imagePath": "content/packs/Threat_Crowd/ThreatCrowd_image.png",
+			"name": "Threat Crowd (Deprecated)"
+		},
+		{
+			"imagePath": "content/packs/Threat_Crowd/ThreatCrowd_v2_image.png",
+			"name": "Threat Crowd v2"
+		},
+		{
+			"imagePath": "content/packs/CiscoASA/CiscoASA_image.png",
+			"name": "Cisco ASA"
+		},
+		{
+			"imagePath": "content/packs/CuckooSandbox/CuckooSandbox_image.png",
+			"name": "Cuckoo Sandbox"
+		},
+		{
+			"imagePath": "content/packs/Lastline/Lastlinev2_image.png",
+			"name": "Lastline v2"
+		},
+		{
+			"imagePath": "content/packs/FortiGate/FortiGate_image.png",
+			"name": "FortiGate"
+		},
+		{
+			"imagePath": "content/packs/Carbon_Black_Enterprise_Live_Response/carbonblackliveresponse_image.png",
+			"name": "VMware Carbon Black EDR (Live Response API)"
 		},
 		{
 			"imagePath": "content/packs/Traps/Traps_image.png",
@@ -1122,56 +1416,24 @@
 			"name": "Palo Alto Traps ESM (Deprecated)"
 		},
 		{
-			"imagePath": "content/packs/Lastline/Lastlinev2_image.png",
-			"name": "Lastline v2"
-		},
-		{
 			"imagePath": "content/packs/JoeSecurity/JoeSecurity_image.png",
 			"name": "Joe Security"
 		},
 		{
-			"imagePath": "content/packs/Threat_Crowd/ThreatCrowd_image.png",
-			"name": "Threat Crowd (Deprecated)"
-		},
-		{
-			"imagePath": "content/packs/Threat_Crowd/ThreatCrowd_v2_image.png",
-			"name": "Threat Crowd v2"
-		},
-		{
-			"imagePath": "content/packs/Carbon_Black_Enterprise_Live_Response/carbonblackliveresponse_image.png",
-			"name": "VMware Carbon Black EDR (Live Response API)"
-		},
-		{
-			"imagePath": "content/packs/CiscoASA/CiscoASA_image.png",
-			"name": "Cisco ASA"
-		},
-		{
-			"imagePath": "content/packs/CuckooSandbox/CuckooSandbox_image.png",
-			"name": "Cuckoo Sandbox"
-		},
-		{
-			"imagePath": "content/packs/ProofpointServerProtection/ProofpointProtectionServerv2_image.png",
-			"name": "Proofpoint Protection Server v2"
+			"imagePath": "content/packs/McAfee-TIE/McAfeeThreatIntelligenceExchange_image.png",
+			"name": "McAfee Threat Intelligence Exchange"
 		},
 		{
 			"imagePath": "content/packs/Kenna/Kennav2_image.png",
 			"name": "Kenna v2"
 		},
 		{
-			"imagePath": "content/packs/FortiGate/FortiGate_image.png",
-			"name": "FortiGate"
+			"imagePath": "content/packs/ProofpointServerProtection/ProofpointServerProtection_image.png",
+			"name": "Proofpoint Protection Server (Deprecated)"
 		},
 		{
-			"imagePath": "content/packs/CrowdStrikeFalconSandbox/VxStream_image.png",
-			"name": "CrowdStrike Falcon Sandbox (Deprecated)"
-		},
-		{
-			"imagePath": "content/packs/CrowdStrikeFalconSandbox/CrowdStrikeFalconSandboxV2_image.png",
-			"name": "CrowdStrike Falcon Sandbox v2"
-		},
-		{
-			"imagePath": "content/packs/McAfee-TIE/McAfeeThreatIntelligenceExchange_image.png",
-			"name": "McAfee Threat Intelligence Exchange"
+			"imagePath": "content/packs/ProofpointServerProtection/ProofpointProtectionServerv2_image.png",
+			"name": "Proofpoint Protection Server v2"
 		},
 		{
 			"imagePath": "content/packs/CrowdStrikeHost/FalconHost_image.png",
@@ -1182,56 +1444,76 @@
 			"name": "Group-IB THF Polygon"
 		},
 		{
-			"imagePath": "content/packs/VulnDB/VulnDB_image.png",
-			"name": "VulnDB"
-		},
-		{
 			"imagePath": "content/packs/fireeye/fireeye_image.png",
 			"name": "FireEye (AX Series)"
 		},
 		{
-			"imagePath": "content/packs/CiscoFirepower/CiscoFirepower_image.png",
-			"name": "Cisco Firepower"
+			"imagePath": "content/packs/VulnDB/VulnDB_image.png",
+			"name": "VulnDB"
 		},
 		{
-			"imagePath": "content/packs/IllusiveNetworks/IllusiveNetworks_image.png",
-			"name": "IllusiveNetworks"
+			"imagePath": "content/packs/Salesforce/Salesforce_image.png",
+			"name": "Salesforce"
 		},
 		{
-			"imagePath": "content/packs/RiskSense/RiskSense_image.png",
-			"name": "RiskSense"
-		},
-		{
-			"imagePath": "content/packs/SNDBOX/SNDBOX_image.png",
-			"name": "SNDBOX (Deprecated)"
+			"imagePath": "content/packs/Salesforce/SalesforceIAM_image.png",
+			"name": "Salesforce IAM"
 		},
 		{
 			"imagePath": "content/packs/Mimecast/MimecastV2_image.png",
 			"name": "Mimecast v2"
 		},
 		{
+			"imagePath": "content/packs/CiscoFirepower/CiscoFirepower_image.png",
+			"name": "Cisco Firepower"
+		},
+		{
+			"imagePath": "content/packs/HybridAnalysis/HybridAnalysis_image.png",
+			"name": "Hybrid Analysis (Deprecated)"
+		},
+		{
+			"imagePath": "content/packs/IllusiveNetworks/IllusiveNetworks_image.png",
+			"name": "IllusiveNetworks"
+		},
+		{
+			"imagePath": "content/packs/SNDBOX/SNDBOX_image.png",
+			"name": "SNDBOX (Deprecated)"
+		},
+		{
+			"imagePath": "content/packs/RiskSense/RiskSense_image.png",
+			"name": "RiskSense"
+		},
+		{
 			"imagePath": "content/packs/Code42/Code42_image.png",
 			"name": "Code42"
+		},
+		{
+			"imagePath": "content/packs/Netcraft/Netcraft_image.png",
+			"name": "Netcraft"
 		},
 		{
 			"imagePath": "content/packs/SignalSciences/SignalSciencesWAF_image.png",
 			"name": "Signal Sciences WAF"
 		},
 		{
-			"imagePath": "content/packs/Symantec_Messaging_Gateway/SymantecMessagingGateway_image.png",
-			"name": "Symantec Messaging Gateway"
-		},
-		{
-			"imagePath": "content/packs/HybridAnalysis/HybridAnalysis_image.png",
-			"name": "Hybrid Analysis"
+			"imagePath": "content/packs/Stealthwatch_Cloud/StealthwatchCloud_image.png",
+			"name": "Cisco Secure Cloud Analytics (Stealthwatch Cloud)"
 		},
 		{
 			"imagePath": "content/packs/ARIAPacketIntelligence/ARIAPacketIntelligence_image.png",
 			"name": "ARIA Packet Intelligence"
 		},
 		{
-			"imagePath": "content/packs/Stealthwatch_Cloud/StealthwatchCloud_image.png",
-			"name": "Cisco Secure Cloud Analytics (Stealthwatch Cloud)"
+			"imagePath": "content/packs/Symantec_Messaging_Gateway/SymantecMessagingGateway_image.png",
+			"name": "Symantec Messaging Gateway"
+		},
+		{
+			"imagePath": "content/packs/Forcepoint/Forcepoint_image.png",
+			"name": "Forcepoint"
+		},
+		{
+			"imagePath": "content/packs/CiscoEmailSecurity/CiscoEmailSecurity_image.png",
+			"name": "CiscoEmailSecurity (Beta)"
 		},
 		{
 			"imagePath": "content/packs/TrendMicroApex/TrendMicroApex_image.png",
@@ -1242,12 +1524,20 @@
 			"name": "ThreatX"
 		},
 		{
-			"imagePath": "content/packs/Akamai_WAF/AkamaiWAF_image.png",
-			"name": "Akamai WAF"
+			"imagePath": "content/packs/Zoom/Zoom_image.png",
+			"name": "Zoom"
+		},
+		{
+			"imagePath": "content/packs/Zoom/Zoom_IAM_image.png",
+			"name": "Zoom_IAM"
 		},
 		{
 			"imagePath": "content/packs/HatchingTriage/HatchingTriage_image.png",
 			"name": "Hatching Triage"
+		},
+		{
+			"imagePath": "content/packs/Akamai_WAF/AkamaiWAF_image.png",
+			"name": "Akamai WAF"
 		},
 		{
 			"imagePath": "content/packs/AgariPhishingDefense/AgariPhishingDefense_image.png",
@@ -1258,15 +1548,71 @@
 			"name": "FireEye Email Security"
 		},
 		{
+			"imagePath": "content/packs/HelloIAMWorld/HelloIAMWorld_image.png",
+			"name": "Hello World IAM"
+		},
+		{
 			"imagePath": "content/packs/SophosXGFirewall/sophos_firewall_image.png",
 			"name": "Sophos Firewall"
 		},
 		{
+			"imagePath": "content/packs/SailPointIdentityIQ/SailPointIdentityIQ_image.png",
+			"name": "SailPoint IdentityIQ"
+		},
+		{
+			"imagePath": "content/packs/Attlasian/AtlassianIAM_image.png",
+			"name": "Atlassian IAM"
+		},
+		{
 			"imagePath": "content/packs/F5Silverline/F5Silverline_image.png",
 			"name": "F5 Silverline"
+		},
+		{
+			"imagePath": "content/packs/CiscoStealthwatch/CiscoStealthwatch_image.png",
+			"name": "Cisco Secure Network Analytics (Stealthwatch)"
+		},
+		{
+			"imagePath": "content/packs/SailPointIdentityNow/SailPointIdentityNow_image.png",
+			"name": "SailPoint IdentityNow"
+		},
+		{
+			"imagePath": "content/packs/AWS-ILM/AWS-ILM_image.png",
+			"name": "AWS - IAM (user lifecycle management)"
+		},
+		{
+			"imagePath": "content/packs/SAP_IAM/SAP-IAM_image.png",
+			"name": "SAP - IAM"
+		},
+		{
+			"imagePath": "content/packs/Oracle_IAM/OracleIAM_image.png",
+			"name": "Oracle IAM"
+		},
+		{
+			"imagePath": "content/packs/PingIdentity/PingOne_image.png",
+			"name": "PingOne"
+		},
+		{
+			"imagePath": "content/packs/SalesforceFusion/SalesforceFusionIAM_image.png",
+			"name": "Salesforce Fusion IAM"
+		},
+		{
+			"imagePath": "content/packs/ExceedLMS/ExceedLMSIAM_image.png",
+			"name": "ExceedLMS IAM"
+		},
+		{
+			"imagePath": "content/packs/Envoy/EnvoyIAM_image.png",
+			"name": "Envoy IAM"
+		},
+		{
+			"imagePath": "content/packs/Clarizen/ClarizenIAM_image.png",
+			"name": "Clarizen IAM"
+		},
+		{
+			"imagePath": "content/packs/SecneurXAnalysis/SecneurxAnalysis_image.png",
+			"name": "SecneurX Analysis"
 		}
 	],
-	"itemVersion": "2.2.9",
+	"itemVersion": "2.3.2",
 	"keywords": [],
 	"legacy": true,
 	"name": "Common Playbooks",
@@ -1291,9 +1637,9 @@
 	},
 	"tags": [],
 	"toServerVersion": "",
-	"updated": "2022-09-11T01:50:07+03:00",
+	"updated": "2022-09-19T22:32:07Z",
 	"useCases": [],
 	"version": -1,
-	"versionInfo": "3254147",
+	"versionInfo": "3687475",
 	"videos": []
 }
