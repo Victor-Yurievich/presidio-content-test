@@ -138,7 +138,7 @@
 	"formatScript": "",
 	"fromServerVersion": "5.5.0",
 	"id": "cveRep",
-	"itemVersion": "3.2.46",
+	"itemVersion": "3.3.1",
 	"layout": "cveRep",
 	"legacyNames": null,
 	"locked": false,
