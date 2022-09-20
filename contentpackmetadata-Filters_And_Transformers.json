@@ -28,7 +28,6 @@
 			}
 		],
 		"classifier": null,
-		"correlationrule": null,
 		"dashboard": null,
 		"genericfield": null,
 		"generictype": null,
@@ -38,31 +37,27 @@
 		"integration": null,
 		"layoutscontainer": null,
 		"list": null,
-		"modelingrule": null,
-		"parsingrule": null,
 		"playbook": null,
 		"report": null,
 		"reputation": null,
 		"widget": null,
-		"wizard": null,
-		"xsiamdashboard": null,
-		"xsiamreport": null
+		"wizard": null
 	},
-	"created": "2022-01-05T00:18:23+02:00",
-	"currentVersion": "1.0.2",
+	"created": "2022-01-04T22:18:23Z",
+	"currentVersion": "1.1.0",
 	"definitionId": "",
 	"dependencies": {
 		"Base": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": true,
-			"minVersion": "1.31.8",
+			"minVersion": "1.31.17",
 			"name": "Base"
 		}
 	},
 	"deprecated": false,
 	"description": "Frequently used filters and transformers pack.",
-	"downloads": 3118,
+	"downloads": 3571,
 	"eulaLink": "https://github.com/demisto/content/blob/master/LICENSE",
 	"fromServerVersion": "6.1.0",
 	"general": [
@@ -74,7 +69,7 @@
 	"id": "FiltersAndTransformers",
 	"installMessage": "",
 	"integrations": [],
-	"itemVersion": "1.0.2",
+	"itemVersion": "1.1.0",
 	"keywords": [],
 	"legacy": true,
 	"name": "Filters And Transformers",
@@ -101,9 +96,9 @@
 		"Transformer"
 	],
 	"toServerVersion": "",
-	"updated": "2022-08-24T02:13:32+03:00",
+	"updated": "2022-08-23T23:13:31Z",
 	"useCases": [],
 	"version": -1,
-	"versionInfo": "3254147",
+	"versionInfo": "3520117",
 	"videos": []
 }
