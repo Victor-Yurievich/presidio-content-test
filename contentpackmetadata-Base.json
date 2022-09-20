@@ -212,7 +212,6 @@
 			}
 		],
 		"classifier": null,
-		"correlationrule": null,
 		"dashboard": [
 			{
 				"name": "System Health"
@@ -226,23 +225,19 @@
 		"integration": null,
 		"layoutscontainer": null,
 		"list": null,
-		"modelingrule": null,
-		"parsingrule": null,
 		"playbook": null,
 		"report": null,
 		"reputation": null,
 		"widget": null,
-		"wizard": null,
-		"xsiamdashboard": null,
-		"xsiamreport": null
+		"wizard": null
 	},
-	"created": "2020-08-02T14:28:20+03:00",
-	"currentVersion": "1.31.21",
+	"created": "2020-08-02T11:28:20Z",
+	"currentVersion": "1.31.24",
 	"definitionId": "",
 	"dependencies": {},
 	"deprecated": false,
 	"description": "The base pack for Cortex XSOAR.",
-	"downloads": 78293,
+	"downloads": 79104,
 	"eulaLink": "https://github.com/demisto/content/blob/master/LICENSE",
 	"fromServerVersion": "6.0.0",
 	"general": [
@@ -254,7 +249,7 @@
 	"id": "Base",
 	"installMessage": "",
 	"integrations": [],
-	"itemVersion": "1.31.21",
+	"itemVersion": "1.31.24",
 	"keywords": [
 		"base",
 		"common"
@@ -282,9 +277,9 @@
 	},
 	"tags": [],
 	"toServerVersion": "",
-	"updated": "2022-09-13T17:24:18+03:00",
+	"updated": "2022-09-19T21:52:12Z",
 	"useCases": [],
 	"version": -1,
-	"versionInfo": "3649843",
+	"versionInfo": "3687475",
 	"videos": []
 }
