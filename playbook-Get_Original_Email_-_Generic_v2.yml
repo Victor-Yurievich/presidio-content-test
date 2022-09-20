@@ -2,7 +2,7 @@ contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 6.0.0
-    itemVersion: 3.2.8
+    itemVersion: 3.3.5
     packID: Phishing
     packName: Phishing
     packPropagationLabels:
@@ -276,7 +276,7 @@ tasks:
         complex:
           root: inputs.UserID
     separatecontext: true
-    skipunavailable: false
+    skipunavailable: true
     task:
       brand: ""
       description: "This v2 playbook uses the reporter's email headers to retrieve
