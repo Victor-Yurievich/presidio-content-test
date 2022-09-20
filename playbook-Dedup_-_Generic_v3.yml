@@ -2,7 +2,7 @@ contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 5.5.0
-    itemVersion: 2.2.9
+    itemVersion: 2.3.2
     packID: CommonPlaybooks
     packName: Common Playbooks
     packPropagationLabels:
@@ -702,7 +702,7 @@ tasks:
         complex:
           root: inputs.DuplicateThreshold
     separatecontext: false
-    skipunavailable: false
+    skipunavailable: true
     task:
       brand: ""
       description: Finds similar incidents using an out-of-the-box deduplication preprocessing
