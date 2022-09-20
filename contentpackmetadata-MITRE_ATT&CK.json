@@ -124,7 +124,7 @@
 		"ATT\u0026CK"
 	],
 	"legacy": true,
-	"name": "MITRE ATT\u0026CK v2",
+	"name": "MITRE ATT\u0026CK",
 	"packID": "FeedMitreAttackv2",
 	"packName": "",
 	"premium": false,
