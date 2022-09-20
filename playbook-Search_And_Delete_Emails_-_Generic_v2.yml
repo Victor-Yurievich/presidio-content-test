@@ -2,7 +2,7 @@ contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 6.1.0
-    itemVersion: 2.2.9
+    itemVersion: 2.3.2
     packID: CommonPlaybooks
     packName: Common Playbooks
     packPropagationLabels:
@@ -59,15 +59,9 @@ inputs:
   playbookInputQuery: null
   required: false
   value: {}
-- description: Used only in O365. Description of the compliance search.
-  key: O365Description
-  playbookInputQuery: null
-  required: false
-  value: {}
 - description: Used only in O365. Whether to include mailboxes other than regular
     user mailboxes in the compliance search.
-  key: |
-    O365AllowNotFoundExchangeLocations
+  key: O365AllowNotFoundExchangeLocations
   playbookInputQuery: null
   required: false
   value:
@@ -89,15 +83,6 @@ inputs:
   playbookInputQuery: null
   required: false
   value: {}
-- description: The email address to which the email was sent. This is used in 0365
-    to search for and delete emails only from the recipient's inbox.
-  key: To
-  playbookInputQuery: null
-  required: false
-  value:
-    complex:
-      accessor: emailto
-      root: incident
 - description: Whether to limit the search to the current week.
   key: SearchThisWeek
   playbookInputQuery: null
@@ -512,7 +497,7 @@ tasks:
           operator: isEqualString
           right:
             value:
-              simple: EWS v2
+              simple: EWS
       label: Only EWS enabled
     - condition:
       - - left:
