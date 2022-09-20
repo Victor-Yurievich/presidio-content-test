@@ -11,14 +11,14 @@ contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 6.1.0
-    itemVersion: 1.0.2
+    itemVersion: 1.1.0
     packID: FiltersAndTransformers
     packName: Filters And Transformers
     packPropagationLabels:
     - all
     propagationLabels: []
     toServerVersion: ""
-dockerimage: demisto/python3:3.10.4.29342
+dockerimage: demisto/python3:3.10.5.31928
 engineinfo: {}
 mainengineinfo: {}
 name: ExtractEmailTransformer
@@ -33,12 +33,16 @@ script: |
 
   def main():
       try:
-          list_results = []
-          for val in argToList(demisto.args().get('value')):
-              list_results.extend(list(re.findall(emailRegex, val)))
-          return_results(list_results)
+          return_results(extract(argToList(demisto.args().get('value'))))
       except Exception as error:
           return_error(str(error), error)
+
+
+  def extract(values: list[str]) -> list[str]:
+      list_results = []
+      for val in values:
+          list_results.extend(re.findall(emailRegex, (val or '').lower()))
+      return list_results
 
 
   if __name__ in ('__main__', '__builtin__', 'builtins'):
