@@ -2,7 +2,7 @@ contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 5.0.0
-    itemVersion: 2.2.9
+    itemVersion: 2.3.2
     packID: CommonPlaybooks
     packName: Common Playbooks
     packPropagationLabels:
@@ -32,6 +32,26 @@ inputs:
   value:
     complex:
       root: File
+- description: ""
+  key: ""
+  playbookInputQuery:
+    daterange:
+      fromdate: "0001-01-01T00:00:00Z"
+      fromdatelicenseval: "0001-01-01T00:00:00Z"
+      period:
+        by: ""
+        byfrom: ""
+        byto: ""
+        field: ""
+        fromvalue: null
+        tovalue: null
+      todate: "0001-01-01T00:00:00Z"
+    query: ""
+    queryEntity: indicators
+    results: null
+    runFromLastJobTime: true
+  required: false
+  value: {}
 name: Extract Indicators From File - Generic v2
 outputs:
 - contextPath: Domain.Name
@@ -823,10 +843,25 @@ tasks:
                     right:
                       value:
                         simple: xlsb
+                - - left:
+                      iscontext: true
+                      value:
+                        simple: File.Extension
+                    operator: isNotExists
+                  - left:
+                      iscontext: true
+                      value:
+                        simple: File.Extension
+                    operator: isNotEqualString
+                    right:
+                      value:
+                        simple: xlsm
                 root: File
                 transformers:
                 - operator: uniq
           operator: isExists
+          right:
+            value: {}
       label: "yes"
     continueonerrortype: ""
     id: "9"
@@ -845,12 +880,12 @@ tasks:
     task:
       brand: ""
       description: Checks if there is a Word file (DOC, DOCX) in context.
-      id: 839e3d49-c17e-4eb3-85b5-a797e1627d32
+      id: 77dcaf0d-5cb9-4f91-812a-695afc8225f1
       iscommand: false
       name: Is there a Word file?
       type: condition
       version: -1
-    taskid: 839e3d49-c17e-4eb3-85b5-a797e1627d32
+    taskid: 77dcaf0d-5cb9-4f91-812a-695afc8225f1
     timertriggers: []
     type: condition
     view: |-
@@ -1009,6 +1044,19 @@ tasks:
               right:
                 value:
                   simple: pptx
+          - - left:
+                iscontext: true
+                value:
+                  simple: File.Extension
+              operator: isNotExists
+            - left:
+                iscontext: true
+                value:
+                  simple: File.Extension
+              operator: isNotEqualString
+              right:
+                value:
+                  simple: xlsm
           root: File
           transformers:
           - operator: uniq
@@ -1017,13 +1065,13 @@ tasks:
     task:
       brand: ""
       description: Extracts indicators from word files (DOC, DOCX).
-      id: 54ad5a67-0f23-40af-8e77-451ddbc84108
+      id: a7b3afc7-61ea-41b9-8b87-2b7026f8c1db
       iscommand: false
       name: Extract indicators from Word file
       script: ExtractIndicatorsFromWordFile
       type: regular
       version: -1
-    taskid: 54ad5a67-0f23-40af-8e77-451ddbc84108
+    taskid: a7b3afc7-61ea-41b9-8b87-2b7026f8c1db
     timertriggers: []
     type: regular
     view: |-
