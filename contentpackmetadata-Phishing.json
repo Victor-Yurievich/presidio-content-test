@@ -12,16 +12,25 @@
 		"incidentfield",
 		"incidenttype",
 		"playbook",
-		"layoutscontainer",
-		"wizard"
+		"layoutscontainer"
 	],
 	"contentItems": {
 		"automation": [
 			{
-				"description": "Use this script to delete a reported phishing email from the mailbox it was reported to",
-				"name": "DeleteReportedEmail",
+				"description": "Links a Phishing incident to its related Phishing Campaign incident.",
+				"name": "LinkToPhishingCampaign",
 				"tags": [
-					"basescript"
+					"dynamic-section",
+					"phishing",
+					"campaign"
+				]
+			},
+			{
+				"description": "Deprecated. Use the FindDuplicateEmailIncidents script instead.",
+				"name": "PhishingDedupPreprocessingRule",
+				"tags": [
+					"ml",
+					"phishing"
 				]
 			},
 			{
@@ -41,25 +50,15 @@
 				]
 			},
 			{
+				"description": "Use this script to delete a reported phishing email from the mailbox it was reported to",
+				"name": "DeleteReportedEmail",
+				"tags": [
+					"basescript"
+				]
+			},
+			{
 				"description": "Can be used to find duplicate emails for incidents of type Phishing, including  malicious, spam, and legitimate emails.",
 				"name": "FindDuplicateEmailIncidents",
-				"tags": [
-					"ml",
-					"phishing"
-				]
-			},
-			{
-				"description": "Links a Phishing incident to its related Phishing Campaign incident.",
-				"name": "LinkToPhishingCampaign",
-				"tags": [
-					"dynamic-section",
-					"phishing",
-					"campaign"
-				]
-			},
-			{
-				"description": "Deprecated. Use the FindDuplicateEmailIncidents script instead.",
-				"name": "PhishingDedupPreprocessingRule",
 				"tags": [
 					"ml",
 					"phishing"
@@ -72,29 +71,19 @@
 		"generictype": null,
 		"incidentfield": [
 			{
-				"description": "The subject of a reported (forwarded or attached) phishing email.",
-				"name": "Reported Email Subject",
+				"description": "The email address of the sender in a reported (forwarded or attached) phishing email.",
+				"name": "Reported Email From",
 				"type": "shortText"
 			},
 			{
 				"description": "",
-				"name": "Attachment size",
-				"type": "shortText"
+				"name": "Email Size",
+				"type": "number"
 			},
 			{
 				"description": "",
-				"name": "Email Internal Message ID",
-				"type": "shortText"
-			},
-			{
-				"description": "Indicates the authenticity of the email. This check is done using the CheckEmailAuthenticity script.",
-				"name": "Email Authenticity Check",
-				"type": "singleSelect"
-			},
-			{
-				"description": "Phishing incident sub-type. Can be \"Spear Phishing\", \"Whaling\", \"Credential Harvesting\", \"Malware\", \"Scam\", or \"Automatic\".",
-				"name": "Phishing Sub-type",
-				"type": "multiSelect"
+				"name": "Phishing Reporter Email Headers",
+				"type": "grid"
 			},
 			{
 				"description": "",
@@ -103,112 +92,17 @@
 			},
 			{
 				"description": "",
-				"name": "Email Latest Message",
+				"name": "Email Body HTML",
+				"type": "html"
+			},
+			{
+				"description": "",
+				"name": "Email Sender IP",
 				"type": "shortText"
 			},
 			{
-				"description": "The number of the recipients in the \"To\" field of an email.",
-				"name": "Email Recipients Count",
-				"type": "number"
-			},
-			{
-				"description": "",
-				"name": "Email Subject",
-				"type": "shortText"
-			},
-			{
-				"description": "",
-				"name": "Email Keywords",
-				"type": "shortText"
-			},
-			{
-				"description": "",
-				"name": "Email Return Path",
-				"type": "shortText"
-			},
-			{
-				"description": "",
-				"name": "Phishing Reporter Email Headers",
-				"type": "grid"
-			},
-			{
-				"description": "The message ID of the reported email in a reported (forwarded or attached) phishing email. For example, if Email A is a phishing email, and Email A is attached to Email B in the phishing report, the value of this field is the message ID of Email A.",
-				"name": "Reported Email Message ID",
-				"type": "shortText"
-			},
-			{
-				"description": "",
-				"name": "Email Source",
-				"type": "shortText"
-			},
-			{
-				"description": "",
-				"name": "Email BCC",
-				"type": "shortText"
-			},
-			{
-				"description": "",
-				"name": "Attachment type",
-				"type": "shortText"
-			},
-			{
-				"description": "",
-				"name": "Email Received",
-				"type": "shortText"
-			},
-			{
-				"description": "Indicates the words in the text that contributed to the decision made by the machine-learning model.",
-				"name": "DBotTextSuggestionHighlighted",
-				"type": "markdown"
-			},
-			{
-				"description": "The email address of the recipient in a reported (forwarded or attached) phishing email.",
-				"name": "Reported Email To",
-				"type": "shortText"
-			},
-			{
-				"description": "",
-				"name": "Email To",
-				"type": "shortText"
-			},
-			{
-				"description": "",
-				"name": "Attachment ID",
-				"type": "shortText"
-			},
-			{
-				"description": "",
-				"name": "Attachment Name",
-				"type": "shortText"
-			},
-			{
-				"description": "",
-				"name": "Email Message ID",
-				"type": "shortText"
-			},
-			{
-				"description": "",
-				"name": "Email Delete From Brand",
-				"type": "singleSelect"
-			},
-			{
-				"description": "",
-				"name": "Email HTML",
-				"type": "longText"
-			},
-			{
-				"description": "",
-				"name": "Email CC",
-				"type": "shortText"
-			},
-			{
-				"description": "",
-				"name": "Email Labels",
-				"type": "shortText"
-			},
-			{
-				"description": "",
-				"name": "Email Delete Reason",
+				"description": "The subject of a reported (forwarded or attached) phishing email.",
+				"name": "Reported Email Subject",
 				"type": "shortText"
 			},
 			{
@@ -218,62 +112,17 @@
 			},
 			{
 				"description": "",
-				"name": "Email Reply To",
+				"name": "Email Internal Message ID",
 				"type": "shortText"
 			},
 			{
 				"description": "",
-				"name": "Email Client Name",
-				"type": "shortText"
-			},
-			{
-				"description": "",
-				"name": "Email Size",
-				"type": "number"
-			},
-			{
-				"description": "Classification of the email. Can be \"Legitimate\", \"Spam\", or \"Malicious\".",
-				"name": "Email Classification",
+				"name": "Email Delete From Brand",
 				"type": "singleSelect"
 			},
 			{
 				"description": "",
-				"name": "Email URL Clicked",
-				"type": "shortText"
-			},
-			{
-				"description": "",
-				"name": "Email HTML Image",
-				"type": "longText"
-			},
-			{
-				"description": "",
-				"name": "Email To Count",
-				"type": "shortText"
-			},
-			{
-				"description": "",
-				"name": "Email Body",
-				"type": "longText"
-			},
-			{
-				"description": "A list of all of the email headers.",
-				"name": "Email Headers",
-				"type": "grid"
-			},
-			{
-				"description": "Spam confidence level score (Microsoft headers)",
-				"name": "Phishing SCL Score",
-				"type": "number"
-			},
-			{
-				"description": "The email address of the user who reported the email.",
-				"name": "Reporter Email Address",
-				"type": "shortText"
-			},
-			{
-				"description": "",
-				"name": "Attachment Hash",
+				"name": "Attachment ID",
 				"type": "shortText"
 			},
 			{
@@ -283,12 +132,32 @@
 			},
 			{
 				"description": "",
-				"name": "Email Body HTML",
-				"type": "html"
+				"name": "Reported Email CC",
+				"type": "shortText"
 			},
 			{
-				"description": "The mail to whom you reply",
-				"name": "Email In Reply To",
+				"description": "",
+				"name": "Attachment type",
+				"type": "shortText"
+			},
+			{
+				"description": "",
+				"name": "Email Message ID",
+				"type": "shortText"
+			},
+			{
+				"description": "",
+				"name": "Email Delete Result",
+				"type": "shortText"
+			},
+			{
+				"description": "The email address of the recipient in a reported (forwarded or attached) phishing email.",
+				"name": "Reported Email To",
+				"type": "shortText"
+			},
+			{
+				"description": "",
+				"name": "Email Client Name",
 				"type": "shortText"
 			},
 			{
@@ -298,8 +167,8 @@
 			},
 			{
 				"description": "",
-				"name": "Email Delete Type",
-				"type": "singleSelect"
+				"name": "Email Reply To",
+				"type": "shortText"
 			},
 			{
 				"description": "The phishing sub-type verdict that was predicted by the machine-learning model.",
@@ -308,22 +177,22 @@
 			},
 			{
 				"description": "",
-				"name": "Email Sender IP",
-				"type": "shortText"
-			},
-			{
-				"description": "The origin of the reported (phishing) email. \"Attached\" - The email was attached originally, \"Retrieved\" - The email was retrieved during the playbook run\", \"None\" - The email wasn't attached or retrieved.",
-				"name": "Reported Email Origin",
-				"type": "singleSelect"
+				"name": "Email HTML",
+				"type": "longText"
 			},
 			{
 				"description": "",
-				"name": "Email From",
+				"name": "Email Return Path",
 				"type": "shortText"
 			},
 			{
 				"description": "",
-				"name": "Attachment Extension",
+				"name": "Email CC",
+				"type": "shortText"
+			},
+			{
+				"description": "The email address of the user who reported the email.",
+				"name": "Reporter Email Address",
 				"type": "shortText"
 			},
 			{
@@ -333,18 +202,148 @@
 			},
 			{
 				"description": "",
-				"name": "Reported Email CC",
-				"type": "shortText"
-			},
-			{
-				"description": "The email address of the sender in a reported (forwarded or attached) phishing email.",
-				"name": "Reported Email From",
+				"name": "Attachment Hash",
 				"type": "shortText"
 			},
 			{
 				"description": "",
-				"name": "Email Delete Result",
+				"name": "Attachment Extension",
 				"type": "shortText"
+			},
+			{
+				"description": "",
+				"name": "Email Subject",
+				"type": "shortText"
+			},
+			{
+				"description": "",
+				"name": "Email BCC",
+				"type": "shortText"
+			},
+			{
+				"description": "The mail to whom you reply",
+				"name": "Email In Reply To",
+				"type": "shortText"
+			},
+			{
+				"description": "Phishing incident sub-type. Can be \"Spear Phishing\", \"Whaling\", \"Credential Harvesting\", \"Malware\", \"Scam\", or \"Automatic\".",
+				"name": "Phishing Sub-type",
+				"type": "multiSelect"
+			},
+			{
+				"description": "",
+				"name": "Email HTML Image",
+				"type": "longText"
+			},
+			{
+				"description": "The origin of the reported (phishing) email. \"Attached\" - The email was attached originally, \"Retrieved\" - The email was retrieved during the playbook run\", \"None\" - The email wasn't attached or retrieved.",
+				"name": "Reported Email Origin",
+				"type": "singleSelect"
+			},
+			{
+				"description": "",
+				"name": "Email Source",
+				"type": "shortText"
+			},
+			{
+				"description": "Indicates the authenticity of the email. This check is done using the CheckEmailAuthenticity script.",
+				"name": "Email Authenticity Check",
+				"type": "singleSelect"
+			},
+			{
+				"description": "",
+				"name": "Email From",
+				"type": "shortText"
+			},
+			{
+				"description": "",
+				"name": "Email Latest Message",
+				"type": "shortText"
+			},
+			{
+				"description": "",
+				"name": "Email URL Clicked",
+				"type": "shortText"
+			},
+			{
+				"description": "Indicates the words in the text that contributed to the decision made by the machine-learning model.",
+				"name": "DBotTextSuggestionHighlighted",
+				"type": "markdown"
+			},
+			{
+				"description": "",
+				"name": "Email Keywords",
+				"type": "shortText"
+			},
+			{
+				"description": "",
+				"name": "Email To Count",
+				"type": "shortText"
+			},
+			{
+				"description": "Spam confidence level score (Microsoft headers)",
+				"name": "Phishing SCL Score",
+				"type": "number"
+			},
+			{
+				"description": "Classification of the email. Can be \"Legitimate\", \"Spam\", or \"Malicious\".",
+				"name": "Email Classification",
+				"type": "singleSelect"
+			},
+			{
+				"description": "A list of all of the email headers.",
+				"name": "Email Headers",
+				"type": "grid"
+			},
+			{
+				"description": "",
+				"name": "Email Received",
+				"type": "shortText"
+			},
+			{
+				"description": "The message ID of the reported email in a reported (forwarded or attached) phishing email. For example, if Email A is a phishing email, and Email A is attached to Email B in the phishing report, the value of this field is the message ID of Email A.",
+				"name": "Reported Email Message ID",
+				"type": "shortText"
+			},
+			{
+				"description": "",
+				"name": "Email To",
+				"type": "shortText"
+			},
+			{
+				"description": "",
+				"name": "Email Body",
+				"type": "longText"
+			},
+			{
+				"description": "",
+				"name": "Email Labels",
+				"type": "shortText"
+			},
+			{
+				"description": "",
+				"name": "Attachment Name",
+				"type": "shortText"
+			},
+			{
+				"description": "The number of the recipients in the \"To\" field of an email.",
+				"name": "Email Recipients Count",
+				"type": "number"
+			},
+			{
+				"description": "",
+				"name": "Email Delete Reason",
+				"type": "shortText"
+			},
+			{
+				"description": "",
+				"name": "Attachment size",
+				"type": "shortText"
+			},
+			{
+				"description": "",
+				"name": "Email Delete Type",
+				"type": "singleSelect"
 			}
 		],
 		"incidenttype": [
@@ -376,236 +375,119 @@
 				"name": "Get Original Email - Gmail"
 			},
 			{
-				"description": "Provides a basic response to phishing incidents. Playbook features:\n- Calculates reputation for all indicators\n- Extracts indicators from email attachments\n- Calculates severity for the incident based on indicator reputation\n- Updates reporting user about investigation status\n- Allows manual remediation of the incident",
-				"name": "Phishing - Core"
-			},
-			{
-				"description": "This playbook investigates and remediates a potential phishing incident. It engages with the user who triggered the incident while investigating the incident itself.\n\nNote: \n- Final remediation tasks are always decided by a human analyst. \n- Please do not rerun this playbook inside a phishing incident since it can produce an unexpected result. Create a new incident instead if needed.",
-				"name": "Phishing - Generic v3"
-			},
-			{
-				"description": "Enrich entities using one or more integrations",
-				"name": "Entity Enrichment - Phishing v2"
+				"description": "This playbook adds email details to the relevant context entities and handles the case where original emails are attached.",
+				"name": "Process Email - Core v2"
 			},
 			{
 				"description": "Add email details to the relevant context entities and handle the case where original emails are attached.",
 				"name": "Process Email - Core"
 			},
 			{
-				"description": "This v2 playbook is used inside the phishing flow. The inputs in this version do not use labels and also allow the user to supply an email brand.\nNote: You must have the necessary permissions in your email service to execute a global search.\n\nTo retrieve the email files directly from the email service providers, use one of the provided inputs (Agari Phishing Defense customers should also use the following):\n- EWS: eDiscovery\n- Gmail: Google Apps Domain-Wide Delegation of Authority\n- MSGraph: As described in the [message-get API](https://docs.microsoft.com/en-us/graph/api/message-get) and the [user-list-messages API](https://docs.microsoft.com/en-us/graph/api/user-list-messages)\n- EmailSecurityGateway retrieves EML files from:\n    * FireEye EX\n    * FireEye CM\n    * Proofpoint Protection Server\n    * Mimecast",
-				"name": "Get Original Email - Generic v2"
-			},
-			{
-				"description": "This playbook retrieves the original email in a thread, including headers and attachments, when the reporting user forwarded the original email not as an attachment.\nNote:\\ You must have the necessary eDiscovery permissions in the EWS integration to execute a global search.",
-				"name": "Get Original Email - EWS"
-			},
-			{
-				"description": "This playbook provides a basic response to phishing incidents, including:\n- Calculating reputation for all indicators\n- Extracting indicators from email attachments\n- Calculating severity for the incident based on indicator reputation\n- Updating the reporting user about investigation status\n- Enabling manual incident remediation \n\nThis updated playbook uses:\n  1) Incident fields instead of labels\n  2) The \"Process Email - Core v2\" playbook",
-				"name": "Phishing - Core v2"
-			},
-			{
 				"description": "Master playbook for phishing incidents. This playbook is a manual playbook.",
 				"name": "Phishing Playbook - Manual"
 			},
 			{
-				"description": "Add email details to the relevant context entities and handle the case where original emails are attached.",
-				"name": "Process Email - Generic"
-			},
-			{
-				"description": "Calculates a severity according to the verdict coming from the CheckEmailAuthenticity script.",
-				"name": "Calculate Severity By Email Authenticity"
+				"description": "Enrich entities using one or more integrations",
+				"name": "Entity Enrichment - Phishing v2"
 			},
 			{
 				"description": "This playbook adds email details to the relevant context entities and handles original email attachments.\n\nThe v2 playbook enables parsing email artifacts more efficiently, including:\n- Using incident fields and not incident labels.\n- Providing separate paths to \"Phishing Alerts\".\n- Using the new \"Get Original Email - Generic v2\" playbook to retrieve original emails as EML files from the following integrations:\n  * EWS v2\n  * Microsoft Graph Mail integration\n  * Gmail\n  * FireEye EX and FireEye CM\n  * Proofpoint Protection Server\n  * Agari Phishing Defense (EWS v2, MSGraph Mail, Gmail)\n  * Mimecast\n",
 				"name": "Process Email - Generic v2"
 			},
 			{
-				"description": "This playbook adds email details to the relevant context entities and handles the case where original emails are attached.",
-				"name": "Process Email - Core v2"
-			},
-			{
-				"description": "Runs various machine-learning based checks on phishing emails and URLs, in an attempt to predict whether they are phishing or benign.",
-				"name": "Phishing - Machine Learning Analysis"
-			},
-			{
 				"description": "Use this playbook to investigate and remediate a potential phishing incident. The playbook simultaneously engages with the user that triggered the incident, while investigating the incident itself.\n\nThe final remediation tasks are always decided by a human analyst.",
 				"name": "Phishing Investigation - Generic v2"
 			},
 			{
+				"description": "This v2 playbook is used inside the phishing flow. The inputs in this version do not use labels and also allow the user to supply an email brand.\nNote: You must have the necessary permissions in your email service to execute a global search.\n\nTo retrieve the email files directly from the email service providers, use one of the provided inputs (Agari Phishing Defense customers should also use the following):\n- EWS: eDiscovery\n- Gmail: Google Apps Domain-Wide Delegation of Authority\n- MSGraph: As described in the [message-get API](https://docs.microsoft.com/en-us/graph/api/message-get) and the [user-list-messages API](https://docs.microsoft.com/en-us/graph/api/user-list-messages)\n- EmailSecurityGateway retrieves EML files from:\n    * FireEye EX\n    * FireEye CM\n    * Proofpoint Protection Server\n    * Mimecast",
+				"name": "Get Original Email - Generic v2"
+			},
+			{
+				"description": "Provides a basic response to phishing incidents. Playbook features:\n- Calculates reputation for all indicators\n- Extracts indicators from email attachments\n- Calculates severity for the incident based on indicator reputation\n- Updates reporting user about investigation status\n- Allows manual remediation of the incident",
+				"name": "Phishing - Core"
+			},
+			{
+				"description": "Add email details to the relevant context entities and handle the case where original emails are attached.",
+				"name": "Process Email - Generic"
+			},
+			{
+				"description": "This playbook provides a basic response to phishing incidents, including:\n- Calculating reputation for all indicators\n- Extracting indicators from email attachments\n- Calculating severity for the incident based on indicator reputation\n- Updating the reporting user about investigation status\n- Enabling manual incident remediation \n\nThis updated playbook uses:\n  1) Incident fields instead of labels\n  2) The \"Process Email - Core v2\" playbook",
+				"name": "Phishing - Core v2"
+			},
+			{
 				"description": "This playbook stores the SCL, BCL, and PCL scores if they exist to the associated incident fields (Phishing SCL Score, Phishing PCL Score, and Phishing BCL Score).\nIt also does the following:\n1) Sets the email classification to \"spam\" if the SCL score is equal to or greater than 5.\n2) Sets the incident severity according to the playbook inputs (default is: PCL/BCL - Medium, SCL - Low). The severity of the incident is set only when one (or more) of the following occurs:\n  - PCL (Phishing Confidence Level) For a score between and including 4-8: The message content is likely to be phishing.\n  - [BCL](https://docs.microsoft.com/en-us/microsoft-365/security/office-365-security/bulk-complaint-level-values?view=o365-worldwide) (Bulk Complaint Level) For a score between and including 4-7: The message is from a bulk sender that generates a mixed number of complaints. \n    For a score between and including 8-9: The message is from a bulk sender that generates a high number of complaints.\n  - [SCL](https://docs.microsoft.com/en-us/microsoft-365/security/office-365-security/spam-confidence-levels?view=o365-worldwide) (Spam Confidence Level) For a score between and including 5-6: Spam filtering marks the message as spam. \n    For a score of 9: Spam filtering marks the message as high confidence spam. See [anti-spam stamps](https://docs.microsoft.com/en-us/exchange/antispam-and-antimalware/antispam-protection/antispam-stamps?view=exchserver-2019).",
 				"name": "Process Microsoft's Anti-Spam Headers"
+			},
+			{
+				"description": "This playbook investigates and remediates a potential phishing incident. It engages with the user that triggered the incident while investigating the incident itself.\nNote: Final remediation tasks are always decided by a human analyst. ",
+				"name": "Phishing - Generic v3"
+			},
+			{
+				"description": "This playbook retrieves the original email in a thread, including headers and attachments, when the reporting user forwarded the original email not as an attachment.\nNote:\\ You must have the necessary eDiscovery permissions in the EWS integration to execute a global search.",
+				"name": "Get Original Email - EWS"
+			},
+			{
+				"description": "Calculates a severity according to the verdict coming from the CheckEmailAuthenticity script.",
+				"name": "Calculate Severity By Email Authenticity"
 			}
 		],
 		"report": null,
 		"reputation": null,
 		"widget": null,
-		"wizard": [
-			{
-				"dependency_packs": null,
-				"description": "Welcome to the Deployment Wizard!  These steps will guide you through configuring your content pack so you'll have a working use case when the wizard finishes. Make sure to follow the steps in order, you can always continue the wizard where you left off. Learn more about this pack’s deployment.",
-				"fromVersion": "6.9.0",
-				"id": "Phishing",
-				"name": "Phishing"
-			}
-		]
+		"wizard": null
 	},
 	"created": "2020-07-26T19:55:56Z",
-	"currentVersion": "3.3.5",
+	"currentVersion": "3.2.8",
 	"definitionId": "",
 	"dependencies": {
-		"Active_Directory_Query": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "1.5.0",
-			"name": "Active Directory Query"
-		},
-		"AgariPhishingDefense": {
-			"author": "Agari",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "1.1.1",
-			"name": "Agari Phishing Defense"
-		},
-		"AutoFocus": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "2.0.24",
-			"name": "AutoFocus"
-		},
 		"Base": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": true,
-			"minVersion": "1.31.21",
+			"minVersion": "1.31.8",
 			"name": "Base"
 		},
 		"Campaign": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "3.2.14",
+			"minVersion": "3.2.13",
 			"name": "Phishing Campaign"
-		},
-		"Carbon_Black_Enterprise_Response": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "2.1.23",
-			"name": "Carbon Black Enterprise Response"
 		},
 		"CommonPlaybooks": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": true,
-			"minVersion": "2.3.1",
+			"minVersion": "2.2.9",
 			"name": "Common Playbooks"
 		},
 		"CommonScripts": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": true,
-			"minVersion": "1.7.56",
+			"minVersion": "1.7.12",
 			"name": "Common Scripts"
 		},
 		"CommonTypes": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": true,
-			"minVersion": "3.2.46",
+			"minVersion": "3.2.37",
 			"name": "Common Types"
-		},
-		"CortexXDR": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "4.8.15",
-			"name": "Palo Alto Networks Cortex XDR - Investigation and Response"
-		},
-		"CrowdStrikeFalconSandbox": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "2.0.6",
-			"name": "CrowdStrike Falcon Sandbox"
-		},
-		"CrowdStrikeFalconX": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "1.2.11",
-			"name": "CrowdStrike FalconX"
-		},
-		"CuckooSandbox": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "1.1.2",
-			"name": "Cuckoo Sandbox"
-		},
-		"Cybereason": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "1.0.22",
-			"name": "Cybereason"
-		},
-		"Cylance_Protect": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "1.1.1",
-			"name": "Cylance Protect"
 		},
 		"DemistoRESTAPI": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.3.1",
+			"minVersion": "1.3.0",
 			"name": "Demisto REST API"
 		},
 		"EWS": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
 			"mandatory": false,
-			"minVersion": "1.13.0",
+			"minVersion": "1.12.1",
 			"name": "EWS"
-		},
-		"EWSMailSender": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "1.1.13",
-			"name": "EWS Mail Sender"
-		},
-		"FiltersAndTransformers": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": true,
-			"minVersion": "1.1.0",
-			"name": "Filters And Transformers"
-		},
-		"FireEyeEX": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "2.0.8",
-			"name": "FireEye Email Security (EX)"
-		},
-		"FortiGate": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "1.0.12",
-			"name": "FortiGate"
-		},
-		"FortiSandbox": {
-			"author": "vibhuabharadwaj",
-			"certification": "",
-			"mandatory": false,
-			"minVersion": "1.0.3",
-			"name": "Forti Sandbox"
 		},
 		"Gmail": {
 			"author": "Cortex XSOAR",
@@ -614,104 +496,6 @@
 			"minVersion": "1.1.19",
 			"name": "Gmail"
 		},
-		"GmailSingleUser": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "1.2.15",
-			"name": "Gmail Single User"
-		},
-		"HybridAnalysis": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "1.0.3",
-			"name": "Hybrid Analysis (Deprecated)"
-		},
-		"IsItPhishing": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "1.0.2",
-			"name": "IsItPhishing"
-		},
-		"JoeSecurity": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "1.0.11",
-			"name": "Joe Security"
-		},
-		"Lastline": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "1.0.14",
-			"name": "Lastline"
-		},
-		"ML": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "1.4.3",
-			"name": "Machine Learning"
-		},
-		"MailSenderNew": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "1.0.6",
-			"name": "Mail Sender (New)"
-		},
-		"McAfee_Advanced_Threat_Defense": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "1.0.19",
-			"name": "McAfee Advanced Threat Defense"
-		},
-		"MicrosoftGraphListener": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "1.1.0",
-			"name": "Microsoft Graph Mail Single User"
-		},
-		"MicrosoftGraphMail": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "1.2.1",
-			"name": "Microsoft Graph Mail"
-		},
-		"Mimecast": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "2.1.0",
-			"name": "Mimecast"
-		},
-		"PAN-OS": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "1.14.19",
-			"name": "PAN-OS"
-		},
-		"Palo_Alto_Networks_WildFire": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "2.1.6",
-			"name": "Palo Alto Networks WildFire"
-		},
-		"PhishTank": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "2.0.18",
-			"name": "PhishTank"
-		},
 		"PhishingURL": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
@@ -719,101 +503,17 @@
 			"minVersion": "1.0.4",
 			"name": "Phishing URL"
 		},
-		"Polygon": {
-			"author": "Group-IB",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "1.0.8",
-			"name": "Polygon"
-		},
-		"ProofpointServerProtection": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "2.0.8",
-			"name": "Proofpoint Protection Server"
-		},
-		"ProofpointThreatResponse": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "1.0.13",
-			"name": "Proofpoint Threat Response (Beta)"
-		},
-		"Pwned": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "1.0.9",
-			"name": "Pwned"
-		},
-		"Symantec_Messaging_Gateway": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "1.0.4",
-			"name": "Symantec Messaging Gateway"
-		},
-		"ThreatGrid": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "1.2.14",
-			"name": "Cisco Secure Malware Analytics"
-		},
-		"TrendMicroApex": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "2.0.3",
-			"name": "Trend Micro Apex One"
-		},
-		"VMRay": {
-			"author": "VMRay",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "1.1.6",
-			"name": "VMRay Analyzer"
-		},
-		"VirusTotal": {
-			"author": "VirusTotal",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "2.4.10",
-			"name": "VirusTotal"
-		},
-		"VirusTotal-Private_API": {
-			"author": "VirusTotal",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "1.0.16",
-			"name": "VirusTotal - Private API (Deprecated)"
-		},
-		"Zscaler": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "1.2.4",
-			"name": "Zscaler Internet Access"
-		},
-		"fireeye": {
-			"author": "Cortex XSOAR",
-			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "1.0.10",
-			"name": "FireEye (AX Series)"
-		},
 		"rasterize": {
 			"author": "Cortex XSOAR",
 			"certification": "certified",
-			"mandatory": false,
-			"minVersion": "1.2.5",
+			"mandatory": true,
+			"minVersion": "1.2.0",
 			"name": "Rasterize"
 		}
 	},
 	"deprecated": false,
 	"description": "Phishing emails still hooking your end users? This Content Pack can drastically reduce the time your security team spends on phishing alerts.",
-	"downloads": 29329,
+	"downloads": 24815,
 	"eulaLink": "https://github.com/demisto/content/blob/master/LICENSE",
 	"fromServerVersion": "6.0.0",
 	"general": [
@@ -825,10 +525,6 @@
 	"id": "Phishing",
 	"installMessage": "",
 	"integrations": [
-		{
-			"imagePath": "content/packs/rasterize/Rasterize_image.png",
-			"name": "Rasterize"
-		},
 		{
 			"imagePath": "content/packs/EWS/EWS_image.png",
 			"name": "EWS (Deprecated)"
@@ -862,19 +558,19 @@
 			"name": "O365 - Security And Compliance - Content Search (beta)"
 		},
 		{
-			"imagePath": "content/packs/DemistoRESTAPI/CoreRESTAPI_image.png",
-			"name": "Core REST API"
-		},
-		{
 			"imagePath": "content/packs/DemistoRESTAPI/DemistoRESTAPI_image.png",
 			"name": "Demisto REST API"
+		},
+		{
+			"imagePath": "content/packs/rasterize/Rasterize_image.png",
+			"name": "Rasterize"
 		},
 		{
 			"imagePath": "content/packs/Gmail/Gmail_image.png",
 			"name": "Gmail"
 		}
 	],
-	"itemVersion": "3.3.5",
+	"itemVersion": "3.2.8",
 	"keywords": [],
 	"legacy": true,
 	"name": "Phishing",
@@ -899,22 +595,18 @@
 		"url": "https://www.paloaltonetworks.com/cortex"
 	},
 	"tags": [
-		"Spam",
 		"Scam",
-		"Incident Response",
 		"Getting Started",
-		"Email",
-		"Use Case"
+		"Use Case",
+		"Spam",
+		"Email"
 	],
 	"toServerVersion": "",
-	"updated": "2022-09-15T22:36:45Z",
+	"updated": "2022-07-11T11:20:51Z",
 	"useCases": [
-		"Phishing",
-		"Incident Response"
+		"Phishing"
 	],
 	"version": -1,
-	"versionInfo": "3666867",
-	"videos": [
-		"https://www.youtube.com/watch?v=SY-3L348PoY"
-	]
+	"versionInfo": "3254147",
+	"videos": []
 }
