@@ -2,11 +2,12 @@ contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 5.0.0
-    itemVersion: 3.3.5
+    itemVersion: 3.2.8
     packID: Phishing
     packName: Phishing
     packPropagationLabels:
     - all
+    prevname: ""
     propagationLabels: []
     toServerVersion: ""
 description: Master playbook for phishing incidents. This playbook is a manual playbook.
